@@ -62,6 +62,7 @@ int
 mkfulldir_internal (wchar_t *path)
 {
 	wchar_t *token;
+	wchar_t *context;
 	struct _stat st;
 	static wchar_t tokpath[_MAX_PATH];
 	static wchar_t trail[_MAX_PATH];
@@ -69,7 +70,7 @@ mkfulldir_internal (wchar_t *path)
 	StringCbCopyW (tokpath, _MAX_PATH, path);
 	trail[0] = L'\0';
 
-	token = wcstok (tokpath, L"\\/");
+	token = wcstok (tokpath, L"\\/", &context);
 
 	if (tokpath[0] == L'\\' && tokpath[1] == L'\\')
 	{			/* unc */
@@ -80,13 +81,13 @@ mkfulldir_internal (wchar_t *path)
 		{
 			StringCbCatW (trail, _MAX_PATH, token);
 			StringCbCatW (trail, _MAX_PATH, L"\\");
-			token = wcstok (NULL, L"\\/");
+			token = wcstok (NULL, L"\\/", &context);
 			if (token)
 			{		/* get share name */
 				StringCbCatW (trail, _MAX_PATH, token);
 				StringCbCatW (trail, _MAX_PATH, L"\\");
 			}
-			token = wcstok (NULL, L"\\/");
+			token = wcstok (NULL, L"\\/", &context);
 		}
 	}
 
@@ -94,7 +95,7 @@ mkfulldir_internal (wchar_t *path)
 	{			/* drive letter */
 		StringCbCatW (trail, _MAX_PATH, tokpath);
 		StringCbCatW (trail, _MAX_PATH, L"\\");
-		token = wcstok (NULL, L"\\/");
+		token = wcstok (NULL, L"\\/", &context);
 	}
 
 	while (token != NULL)
@@ -103,7 +104,7 @@ mkfulldir_internal (wchar_t *path)
 		StringCbCatW (trail, _MAX_PATH, token);
 		x = _wmkdir (trail);
 		StringCbCatW (trail, _MAX_PATH, L"\\");
-		token = wcstok (NULL, L"\\/");
+		token = wcstok (NULL, L"\\/", &context);
 	}
 
 	return _wstat (path, &st);

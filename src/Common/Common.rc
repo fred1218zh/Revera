@@ -504,87 +504,87 @@ END
 // BIN
 //
 
-IDR_BOOT_SECTOR         BIN                     "..\\Boot\\Windows\\Release\\BootSector.bin"
-IDR_BOOT_SECTOR_AES     BIN                     "..\\Boot\\Windows\\Release_AES\\BootSector.bin"
-IDR_BOOT_SECTOR_SERPENT BIN                     "..\\Boot\\Windows\\Release_Serpent\\BootSector.bin"
-IDR_BOOT_SECTOR_TWOFISH BIN                     "..\\Boot\\Windows\\Release_Twofish\\BootSector.bin"
-IDR_BOOT_SECTOR_CAMELLIA BIN                     "..\\Boot\\Windows\\Release_Camellia\\BootSector.bin"
-IDR_BOOT_LOADER_DECOMPRESSOR BIN                     "..\\Boot\\Windows\\Release\\Decompressor.com"
-IDR_BOOT_LOADER         BIN                     "..\\Boot\\Windows\\Release\\BootLoader.com.gz"
-IDR_BOOT_LOADER_AES     BIN                     "..\\Boot\\Windows\\Release_AES\\BootLoader.com.gz"
-IDR_BOOT_LOADER_SERPENT BIN                     "..\\Boot\\Windows\\Release_Serpent\\BootLoader.com.gz"
-IDR_BOOT_LOADER_TWOFISH BIN                     "..\\Boot\\Windows\\Release_Twofish\\BootLoader.com.gz"
-IDR_BOOT_LOADER_CAMELLIA BIN                     "..\\Boot\\Windows\\Release_Camellia\\BootLoader.com.gz"
+IDR_BOOT_SECTOR         BIN                     "..\Boot\Windows\Release\BootSector.bin"
+IDR_BOOT_SECTOR_AES     BIN                     "..\Boot\Windows\Release_AES\BootSector.bin"
+IDR_BOOT_SECTOR_SERPENT BIN                     "..\Boot\Windows\Release_Serpent\BootSector.bin"
+IDR_BOOT_SECTOR_TWOFISH BIN                     "..\Boot\Windows\Release_Twofish\BootSector.bin"
+IDR_BOOT_SECTOR_CAMELLIA BIN                     "..\Boot\Windows\Release_Camellia\BootSector.bin"
+IDR_BOOT_LOADER_DECOMPRESSOR BIN                     "..\Boot\Windows\Release\Decompressor.com"
+IDR_BOOT_LOADER         BIN                     "..\Boot\Windows\Release\BootLoader.com.gz"
+IDR_BOOT_LOADER_AES     BIN                     "..\Boot\Windows\Release_AES\BootLoader.com.gz"
+IDR_BOOT_LOADER_SERPENT BIN                     "..\Boot\Windows\Release_Serpent\BootLoader.com.gz"
+IDR_BOOT_LOADER_TWOFISH BIN                     "..\Boot\Windows\Release_Twofish\BootLoader.com.gz"
+IDR_BOOT_LOADER_CAMELLIA BIN                     "..\Boot\Windows\Release_Camellia\BootLoader.com.gz"
 
-IDR_BOOT_SECTOR_SHA2    BIN                     "..\\Boot\\Windows\\Release_SHA2\\BootSector.bin"
-IDR_BOOT_SECTOR_AES_SHA2 BIN                     "..\\Boot\\Windows\\Release_AES_SHA2\\BootSector.bin"
-IDR_BOOT_SECTOR_SERPENT_SHA2 BIN                     "..\\Boot\\Windows\\Release_Serpent_SHA2\\BootSector.bin"
-IDR_BOOT_SECTOR_TWOFISH_SHA2 BIN                     "..\\Boot\\Windows\\Release_Twofish_SHA2\\BootSector.bin"
-IDR_BOOT_SECTOR_CAMELLIA_SHA2 BIN                     "..\\Boot\\Windows\\Release_Camellia_SHA2\\BootSector.bin"
-IDR_BOOT_LOADER_SHA2    BIN                     "..\\Boot\\Windows\\Release_SHA2\\BootLoader.com.gz"
-IDR_BOOT_LOADER_AES_SHA2 BIN                     "..\\Boot\\Windows\\Release_AES_SHA2\\BootLoader.com.gz"
-IDR_BOOT_LOADER_SERPENT_SHA2 BIN                     "..\\Boot\\Windows\\Release_Serpent_SHA2\\BootLoader.com.gz"
-IDR_BOOT_LOADER_TWOFISH_SHA2 BIN                     "..\\Boot\\Windows\\Release_Twofish_SHA2\\BootLoader.com.gz"
-IDR_BOOT_LOADER_CAMELLIA_SHA2 BIN                     "..\\Boot\\Windows\\Release_Camellia_SHA2\\BootLoader.com.gz"
+IDR_BOOT_SECTOR_SHA2    BIN                     "..\Boot\Windows\Release_SHA2\BootSector.bin"
+IDR_BOOT_SECTOR_AES_SHA2 BIN                     "..\Boot\Windows\Release_AES_SHA2\BootSector.bin"
+IDR_BOOT_SECTOR_SERPENT_SHA2 BIN                     "..\Boot\Windows\Release_Serpent_SHA2\BootSector.bin"
+IDR_BOOT_SECTOR_TWOFISH_SHA2 BIN                     "..\Boot\Windows\Release_Twofish_SHA2\BootSector.bin"
+IDR_BOOT_SECTOR_CAMELLIA_SHA2 BIN                     "..\Boot\Windows\Release_Camellia_SHA2\BootSector.bin"
+IDR_BOOT_LOADER_SHA2    BIN                     "..\Boot\Windows\Release_SHA2\BootLoader.com.gz"
+IDR_BOOT_LOADER_AES_SHA2 BIN                     "..\Boot\Windows\Release_AES_SHA2\BootLoader.com.gz"
+IDR_BOOT_LOADER_SERPENT_SHA2 BIN                     "..\Boot\Windows\Release_Serpent_SHA2\BootLoader.com.gz"
+IDR_BOOT_LOADER_TWOFISH_SHA2 BIN                     "..\Boot\Windows\Release_Twofish_SHA2\BootLoader.com.gz"
+IDR_BOOT_LOADER_CAMELLIA_SHA2 BIN                     "..\Boot\Windows\Release_Camellia_SHA2\BootLoader.com.gz"
 
 
-IDR_RESCUE_BOOT_SECTOR  BIN                     "..\\Boot\\Windows\\Rescue\\BootSector.bin"
-IDR_RESCUE_BOOT_SECTOR_AES BIN                     "..\\Boot\\Windows\\Rescue_AES\\BootSector.bin"
-IDR_RESCUE_BOOT_SECTOR_SERPENT BIN                     "..\\Boot\\Windows\\Rescue_Serpent\\BootSector.bin"
-IDR_RESCUE_BOOT_SECTOR_TWOFISH BIN                     "..\\Boot\\Windows\\Rescue_Twofish\\BootSector.bin"
-IDR_RESCUE_BOOT_SECTOR_CAMELLIA BIN                     "..\\Boot\\Windows\\Rescue_Camellia\\BootSector.bin"
-IDR_RESCUE_LOADER       BIN                     "..\\Boot\\Windows\\Rescue\\BootLoader.com.gz"
-IDR_RESCUE_LOADER_AES   BIN                     "..\\Boot\\Windows\\Rescue_AES\\BootLoader.com.gz"
-IDR_RESCUE_LOADER_SERPENT BIN                     "..\\Boot\\Windows\\Rescue_Serpent\\BootLoader.com.gz"
-IDR_RESCUE_LOADER_TWOFISH BIN                     "..\\Boot\\Windows\\Rescue_Twofish\\BootLoader.com.gz"
-IDR_RESCUE_LOADER_CAMELLIA BIN                     "..\\Boot\\Windows\\Rescue_Camellia\\BootLoader.com.gz"
+IDR_RESCUE_BOOT_SECTOR  BIN                     "..\Boot\Windows\Rescue\BootSector.bin"
+IDR_RESCUE_BOOT_SECTOR_AES BIN                     "..\Boot\Windows\Rescue_AES\BootSector.bin"
+IDR_RESCUE_BOOT_SECTOR_SERPENT BIN                     "..\Boot\Windows\Rescue_Serpent\BootSector.bin"
+IDR_RESCUE_BOOT_SECTOR_TWOFISH BIN                     "..\Boot\Windows\Rescue_Twofish\BootSector.bin"
+IDR_RESCUE_BOOT_SECTOR_CAMELLIA BIN                     "..\Boot\Windows\Rescue_Camellia\BootSector.bin"
+IDR_RESCUE_LOADER       BIN                     "..\Boot\Windows\Rescue\BootLoader.com.gz"
+IDR_RESCUE_LOADER_AES   BIN                     "..\Boot\Windows\Rescue_AES\BootLoader.com.gz"
+IDR_RESCUE_LOADER_SERPENT BIN                     "..\Boot\Windows\Rescue_Serpent\BootLoader.com.gz"
+IDR_RESCUE_LOADER_TWOFISH BIN                     "..\Boot\Windows\Rescue_Twofish\BootLoader.com.gz"
+IDR_RESCUE_LOADER_CAMELLIA BIN                     "..\Boot\Windows\Rescue_Camellia\BootLoader.com.gz"
 
-IDR_RESCUE_BOOT_SECTOR_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_SHA2\\BootSector.bin"
-IDR_RESCUE_BOOT_SECTOR_AES_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_AES_SHA2\\BootSector.bin"
-IDR_RESCUE_BOOT_SECTOR_SERPENT_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_Serpent_SHA2\\BootSector.bin"
-IDR_RESCUE_BOOT_SECTOR_TWOFISH_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_Twofish_SHA2\\BootSector.bin"
-IDR_RESCUE_BOOT_SECTOR_CAMELLIA_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_Camellia_SHA2\\BootSector.bin"
-IDR_RESCUE_LOADER_SHA2  BIN                     "..\\Boot\\Windows\\Rescue_SHA2\\BootLoader.com.gz"
-IDR_RESCUE_LOADER_AES_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_AES_SHA2\\BootLoader.com.gz"
-IDR_RESCUE_LOADER_SERPENT_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_Serpent_SHA2\\BootLoader.com.gz"
-IDR_RESCUE_LOADER_TWOFISH_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_Twofish_SHA2\\BootLoader.com.gz"
-IDR_RESCUE_LOADER_CAMELLIA_SHA2 BIN                     "..\\Boot\\Windows\\Rescue_Camellia_SHA2\\BootLoader.com.gz"
-IDR_EFI_DCSBOOT         BIN                     "..\\Boot\\EFI\\DcsBoot.efi"
-IDR_EFI_DCSINT          BIN                     "..\\Boot\\EFI\\DcsInt.efi"
-IDR_EFI_DCSCFG          BIN                     "..\\Boot\\EFI\\DcsCfg.efi"
-IDR_EFI_LEGACYSPEAKER   BIN                     "..\\Boot\\EFI\\LegacySpeaker.efi"
-IDR_EFI_DCSBML         BIN                     "..\\Boot\\EFI\\DcsBml.efi"
-IDR_EFI_DCSRE          BIN                     "..\\Boot\\EFI\\DcsRe.efi"
-IDR_EFI_DCSINFO         BIN                     "..\\Boot\\EFI\\DcsInfo.efi"
+IDR_RESCUE_BOOT_SECTOR_SHA2 BIN                     "..\Boot\Windows\Rescue_SHA2\BootSector.bin"
+IDR_RESCUE_BOOT_SECTOR_AES_SHA2 BIN                     "..\Boot\Windows\Rescue_AES_SHA2\BootSector.bin"
+IDR_RESCUE_BOOT_SECTOR_SERPENT_SHA2 BIN                     "..\Boot\Windows\Rescue_Serpent_SHA2\BootSector.bin"
+IDR_RESCUE_BOOT_SECTOR_TWOFISH_SHA2 BIN                     "..\Boot\Windows\Rescue_Twofish_SHA2\BootSector.bin"
+IDR_RESCUE_BOOT_SECTOR_CAMELLIA_SHA2 BIN                     "..\Boot\Windows\Rescue_Camellia_SHA2\BootSector.bin"
+IDR_RESCUE_LOADER_SHA2  BIN                     "..\Boot\Windows\Rescue_SHA2\BootLoader.com.gz"
+IDR_RESCUE_LOADER_AES_SHA2 BIN                     "..\Boot\Windows\Rescue_AES_SHA2\BootLoader.com.gz"
+IDR_RESCUE_LOADER_SERPENT_SHA2 BIN                     "..\Boot\Windows\Rescue_Serpent_SHA2\BootLoader.com.gz"
+IDR_RESCUE_LOADER_TWOFISH_SHA2 BIN                     "..\Boot\Windows\Rescue_Twofish_SHA2\BootLoader.com.gz"
+IDR_RESCUE_LOADER_CAMELLIA_SHA2 BIN                     "..\Boot\Windows\Rescue_Camellia_SHA2\BootLoader.com.gz"
+IDR_EFI_DCSBOOT         BIN                     "..\Boot\EFI\DcsBoot.efi"
+IDR_EFI_DCSINT          BIN                     "..\Boot\EFI\DcsInt.efi"
+IDR_EFI_DCSCFG          BIN                     "..\Boot\EFI\DcsCfg.efi"
+IDR_EFI_LEGACYSPEAKER   BIN                     "..\Boot\EFI\LegacySpeaker.efi"
+IDR_EFI_DCSBML         BIN                     "..\Boot\EFI\DcsBml.efi"
+IDR_EFI_DCSRE          BIN                     "..\Boot\EFI\DcsRe.efi"
+IDR_EFI_DCSINFO         BIN                     "..\Boot\EFI\DcsInfo.efi"
 #ifndef WIN64
-IDR_EFI_DCSBOOT32         BIN                     "..\\Boot\\EFI\\DcsBoot32.efi"
-IDR_EFI_DCSINT32          BIN                     "..\\Boot\\EFI\\DcsInt32.efi"
-IDR_EFI_DCSCFG32          BIN                     "..\\Boot\\EFI\\DcsCfg32.efi"
-IDR_EFI_LEGACYSPEAKER32   BIN                     "..\\Boot\\EFI\\LegacySpeaker32.efi"
-IDR_EFI_DCSBML32         BIN                     "..\\Boot\\EFI\\DcsBml32.efi"
-IDR_EFI_DCSRE32          BIN                     "..\\Boot\\EFI\\DcsRe32.efi"
-IDR_EFI_DCSINFO32         BIN                     "..\\Boot\\EFI\\DcsInfo32.efi"
+IDR_EFI_DCSBOOT32         BIN                     "..\Boot\EFI\DcsBoot32.efi"
+IDR_EFI_DCSINT32          BIN                     "..\Boot\EFI\DcsInt32.efi"
+IDR_EFI_DCSCFG32          BIN                     "..\Boot\EFI\DcsCfg32.efi"
+IDR_EFI_LEGACYSPEAKER32   BIN                     "..\Boot\EFI\LegacySpeaker32.efi"
+IDR_EFI_DCSBML32         BIN                     "..\Boot\EFI\DcsBml32.efi"
+IDR_EFI_DCSRE32          BIN                     "..\Boot\EFI\DcsRe32.efi"
+IDR_EFI_DCSINFO32         BIN                     "..\Boot\EFI\DcsInfo32.efi"
 #endif
 /////////////////////////////////////////////////////////////////////////////
 //
 // XML
 //
 
-IDR_LANGUAGE            XML                     "..\\Common\\Language.xml"
+IDR_LANGUAGE            XML                     "..\Common\Language.xml"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // HEADER
 //
 
-IDR_COMMON_RSRC_HEADER  HEADER                  "..\\Common\\Resource.h"
+IDR_COMMON_RSRC_HEADER  HEADER                  "..\Common\Resource.h"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // TEXT
 //
 
-IDR_LICENSE             TEXT                    "..\\Resources\\Texts\\License.rtf"
+IDR_LICENSE             TEXT                    "..\Resources/Texts\License.rtf"
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -619,18 +619,18 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_TRUECRYPT_ICON      ICON                    "..\\Common\\VeraCrypt.ico"
-IDI_TRUECRYPT_VOL_ICON  ICON                    "..\\Common\\VeraCrypt_volume.ico"
-IDI_TRUECRYPT_MOUNTED_ICON ICON                    "..\\Common\\VeraCrypt_mounted.ico"
+IDI_TRUECRYPT_ICON      ICON                    "..\Common\VeraCrypt.ico"
+IDI_TRUECRYPT_VOL_ICON  ICON                    "..\Common\VeraCrypt_volume.ico"
+IDI_TRUECRYPT_MOUNTED_ICON ICON                    "..\Common\VeraCrypt_mounted.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
 //
 
-IDB_TEXTUAL_LOGO_BKG    BITMAP                  "..\\Common\\Textual_logo_background.bmp"
-IDB_TEXTUAL_LOGO_96DPI  BITMAP                  "..\\Common\\Textual_logo_96dpi.bmp"
-IDB_TEXTUAL_LOGO_288DPI BITMAP                  "..\\Common\\Textual_logo_288dpi.bmp"
+IDB_TEXTUAL_LOGO_BKG    BITMAP                  "..\Common/Textual_logo_background.bmp"
+IDB_TEXTUAL_LOGO_96DPI  BITMAP                  "..\Common/Textual_logo_96dpi.bmp"
+IDB_TEXTUAL_LOGO_288DPI BITMAP                  "..\Common/Textual_logo_288dpi.bmp"
 #endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 

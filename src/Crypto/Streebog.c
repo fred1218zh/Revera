@@ -10,7 +10,7 @@
 #include "cpu.h"
 
 #if defined (_MSC_VER) && (_MSC_VER < 1600)
-#error "Streebog SSE code requires at least Visual C++ 2010 when building on Windows"
+//#error "Streebog SSE code requires at least Visual C++ 2010 when building on Windows"
 #endif
 
 #if 1

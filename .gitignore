@@ -1,0 +1,34 @@
+src/.vs
+src/Boot/Release Loader
+src/Boot/Windows/Release
+src/Boot/Windows/Release Loader
+src/Boot/Windows/Release_*
+src/Boot/Windows/Rescue
+src/Boot/Windows/Rescue_*
+*.log
+*.aps
+src/Common/Debug/
+src/Common/obj_driver_debug/
+src/Common/obj_driver_release/
+src/Common/Release/
+src/Crypto/Debug/
+src/Crypto/obj_driver_debug/
+src/Crypto/obj_driver_release/
+src/Crypto/Release/
+src/Debug/
+src/Driver/obj_driver_debug/
+src/Driver/obj_driver_release/
+*.tlb
+src/ExpandVolume/Debug/
+src/ExpandVolume/Release/
+src/Format/Debug/
+src/Format/Release/
+src/Mount/Debug/
+src/Mount/Release/
+src/Release/
+src/Setup/Debug/
+src/Setup/Release/
+src/Format/FormatCom_h.h
+src/Format/FormatCom_i.c
+src/Mount/MainCom_h.h
+src/Mount/MainCom_i.c
