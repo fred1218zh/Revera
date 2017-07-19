@@ -32,3 +32,8 @@ src/Format/FormatCom_h.h
 src/Format/FormatCom_i.c
 src/Mount/MainCom_h.h
 src/Mount/MainCom_i.c
+src/Common/x64/
+src/Crypto/x64/
+src/ExpandVolume/x64/
+src/Format/x64/
+src/Mount/x64/
