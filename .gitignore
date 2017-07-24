@@ -37,3 +37,4 @@ src/Crypto/x64/
 src/ExpandVolume/x64/
 src/Format/x64/
 src/Mount/x64/
+*.err
