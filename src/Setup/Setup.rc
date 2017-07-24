@@ -44,13 +44,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "IDRIX"
-            VALUE "FileDescription", "VeraCrypt Setup"
-            VALUE "FileVersion", "1.21"
-            VALUE "LegalTrademarks", "VeraCrypt"
-            VALUE "OriginalFilename", "VeraCrypt Setup.exe"
-            VALUE "ProductName", "VeraCrypt"
-            VALUE "ProductVersion", "1.21"
+            VALUE "CompanyName", "SLIBIO"
+            VALUE "FileDescription", "Revera Setup"
+            VALUE "FileVersion", "17.7"
+            VALUE "LegalTrademarks", "Revera"
+            VALUE "OriginalFilename", "Revera Setup.exe"
+            VALUE "ProductName", "Revera"
+            VALUE "ProductVersion", "17.7"
         END
     END
     BLOCK "VarFileInfo"

@@ -45,11 +45,11 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "IDRIX"
             VALUE "FileDescription", "VeraCrypt Driver"
-            VALUE "FileVersion", "1.21"
+            VALUE "FileVersion", "17.7"
             VALUE "LegalTrademarks", "VeraCrypt"
             VALUE "OriginalFilename", "veracrypt.sys"
             VALUE "ProductName", "VeraCrypt"
-            VALUE "ProductVersion", "1.21"
+            VALUE "ProductVersion", "17.7"
         END
     END
     BLOCK "VarFileInfo"
