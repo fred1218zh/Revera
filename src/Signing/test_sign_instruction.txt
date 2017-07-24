@@ -1,0 +1,11 @@
+1) Disable Secure Boot in BIOS Setup
+
+2) Run Command Prompt as Administrator
+
+bcdedit /set testsigning on
+
+3) If you don't like signing
+
+bcdedit /set nointegritychecks on
+
+4) Restart
