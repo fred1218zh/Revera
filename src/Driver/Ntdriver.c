@@ -161,8 +161,8 @@ NTSTATUS DriverEntry (PDRIVER_OBJECT DriverObject, PUNICODE_STRING RegistryPath)
 				SelfTestsPassed = AutoTestAlgorithms();
 
 				// BUG CHECK if the self-tests still fail
-				if (!SelfTestsPassed)
-					TC_BUG_CHECK (STATUS_INVALID_PARAMETER);
+				//if (!SelfTestsPassed)
+				//	TC_BUG_CHECK (STATUS_INVALID_PARAMETER);
 			}
 
 			LoadBootArguments();
@@ -3198,12 +3198,12 @@ NTSTATUS MountDevice (PDEVICE_OBJECT DeviceObject, MOUNT_STRUCT *mount)
 		return ERR_DRIVE_NOT_FOUND;
 	}
 
-	if (!SelfTestsPassed)
+	/*if (!SelfTestsPassed)
 	{
 		Dump ("Failure of built-in automatic self-tests! Mounting not allowed.\n");
 		mount->nReturnCode = ERR_SELF_TESTS_FAILED;
 		return ERR_SELF_TESTS_FAILED;
-	}
+	}*/
 
 	ntStatus = TCCreateDeviceObject (DeviceObject->DriverObject, &NewDeviceObject, mount);
 
