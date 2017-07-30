@@ -167,7 +167,7 @@ BOOL CheckPasswordLength (HWND hwndDlg, unsigned __int32 passwordLength, int pim
 	return TRUE;
 }
 
-int ChangePwd (const wchar_t *lpszVolume, Password *oldPassword, int old_pkcs5, int old_pim, BOOL truecryptMode, Password *newPassword, int pkcs5, int pim, int wipePassCount, HWND hwndDlg)
+int ChangePwd (const wchar_t *lpszVolume, Password *oldPassword, int old_pkcs5, int old_pim, BOOL truecryptMode, Password *newPassword, int pkcs5, int pim, int wipePassCount, HWND hwndDlg, unsigned __int64 mountOffset)
 {
 	int nDosLinkCreated = 1, nStatus = ERR_OS_ERROR;
 	wchar_t szDiskFile[TC_MAX_PATH], szCFDevice[TC_MAX_PATH];
@@ -276,6 +276,13 @@ int ChangePwd (const wchar_t *lpszVolume, Password *oldPassword, int old_pkcs5, 
 		hostSize = fileSize.QuadPart;
 	}
 
+	if (hostSize <= mountOffset)
+	{
+		nStatus = ERR_VOL_SIZE_WRONG;
+		goto error;
+	}
+	hostSize -= mountOffset;
+
 	if (Randinit ())
 	{
 		if (CryptoAPILastError == ERROR_SUCCESS)
@@ -297,6 +304,7 @@ int ChangePwd (const wchar_t *lpszVolume, Password *oldPassword, int old_pkcs5, 
 
 	for (volumeType = TC_VOLUME_TYPE_NORMAL; volumeType < TC_VOLUME_TYPE_COUNT; volumeType++)
 	{
+
 		// Seek the volume header
 		switch (volumeType)
 		{
@@ -307,11 +315,15 @@ int ChangePwd (const wchar_t *lpszVolume, Password *oldPassword, int old_pkcs5, 
 		case TC_VOLUME_TYPE_HIDDEN:
 			if (TC_HIDDEN_VOLUME_HEADER_OFFSET + TC_VOLUME_HEADER_SIZE > hostSize)
 				continue;
-
+			if (mountOffset > 0) {
+				continue;
+			}
 			headerOffset.QuadPart = TC_HIDDEN_VOLUME_HEADER_OFFSET;
 			break;
 
 		}
+
+		headerOffset.QuadPart += mountOffset;
 
 		if (!SetFilePointerEx ((HANDLE) dev, headerOffset, NULL, FILE_BEGIN))
 		{
@@ -440,13 +452,14 @@ int ChangePwd (const wchar_t *lpszVolume, Password *oldPassword, int old_pkcs5, 
 				PCRYPTO_INFO dummyInfo = NULL;
 				LARGE_INTEGER hiddenOffset;
 
-				nStatus = WriteRandomDataToReservedHeaderAreas (hwndDlg, dev, cryptoInfo, cryptoInfo->VolumeSize.Value, !backupHeader, backupHeader);
+				nStatus = WriteRandomDataToReservedHeaderAreas (hwndDlg, dev, cryptoInfo, cryptoInfo->VolumeSize.Value, !backupHeader, backupHeader, mountOffset);
 				if (nStatus != ERR_SUCCESS)
 					goto error;
 
 				// write fake hidden volume header to protect against attacks that use statistical entropy
 				// analysis to detect presence of hidden volumes
 				hiddenOffset.QuadPart = backupHeader ? cryptoInfo->VolumeSize.Value + TC_VOLUME_HEADER_GROUP_SIZE + TC_HIDDEN_VOLUME_HEADER_OFFSET: TC_HIDDEN_VOLUME_HEADER_OFFSET;
+				hiddenOffset.QuadPart += mountOffset;
 
 				nStatus = CreateVolumeHeaderInMemory (hwndDlg, FALSE,
 					buffer,

@@ -119,6 +119,9 @@ typedef struct
 
  	byte*  SecRegionData;
  	SIZE_T SecRegionSize;
+
+	unsigned __int64 mountOffset;
+
 }  EncryptedIoQueue;
 
 

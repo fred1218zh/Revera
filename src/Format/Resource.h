@@ -76,7 +76,10 @@
 #define IDC_PASSWORD_DIRECT             1037
 #define IDC_SIZEBOX                     1038
 #define IDC_SELECT_VOLUME_LOCATION      1039
+#define IDC_MOUNT_OFFSET                1039
 #define IDC_NEXT                        1040
+#define IDC_MOUNT_OFFSET2               1040
+#define IDC_MOUNT_SIZE                  1040
 #define IDC_PREV                        1041
 #define IDT_ENCRYPTION_ALGO             1042
 #define IDT_HASH_ALGO                   1043
@@ -147,7 +150,7 @@
 #define IDC_SKIP_RESCUE_VERIFICATION    1108
 
 // Next default values for new objects
-//
+// 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1

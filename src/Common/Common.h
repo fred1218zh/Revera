@@ -90,6 +90,7 @@ typedef struct
 	int ProtectedHidVolPkcs5Prf;
 	int ProtectedHidVolPim;
 	wchar_t Label[33]; /* maximum label length is 32 for NTFS and 11 for FAT32 */
+	unsigned __int64 mountOffset;
 } MountOptions;
 
 #endif

@@ -14,13 +14,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -67,6 +65,7 @@ END
 
 IDR_FORMAT_RSRC_HEADER  HEADER                  "resource.h"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // TYPELIB
@@ -74,25 +73,26 @@ IDR_FORMAT_RSRC_HEADER  HEADER                  "resource.h"
 
 IDR_FORMAT_TLB          TYPELIB                 "Format.tlb"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDD_VOL_CREATION_WIZARD_DLG DIALOGEX 0, 0, 400, 229
+IDD_VOL_CREATION_WIZARD_DLG DIALOGEX 0, 0, 281, 229
 STYLE DS_SETFONT | DS_SETFOREGROUND | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "VeraCrypt Volume Creation Wizard"
+CAPTION "Revera Volume Creation Wizard"
 CLASS "VeraCryptCustomDlg"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    PUSHBUTTON      "&Help",IDHELP,176,209,50,14
-    PUSHBUTTON      "",IDC_PREV,235,209,50,14
-    DEFPUSHBUTTON   "",IDC_NEXT,285,209,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,343,209,50,14
-    LTEXT           "",IDC_BOX_TITLE,160,8,233,17
-    GROUPBOX        "",IDC_STATIC,4,0,392,203
-    CONTROL         116,IDC_BITMAP_WIZARD,"Static",SS_BITMAP | SS_SUNKEN,10,9,137,169
-    LTEXT           "",IDC_POS_BOX,160,24,231,172
+    PUSHBUTTON      "&Help",IDHELP,31,209,50,14
+    PUSHBUTTON      "",IDC_PREV,91,209,50,14
+    DEFPUSHBUTTON   "",IDC_NEXT,141,209,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,199,209,50,14
+    LTEXT           "",IDC_BOX_TITLE,20,6,233,22
+    GROUPBOX        "",IDC_STATIC,6,0,269,203
+    CONTROL         IDB_WIZARD,IDC_BITMAP_WIZARD,"Static",SS_BITMAP | SS_SUNKEN | NOT WS_VISIBLE,0,1,137,169
+    LTEXT           "",IDC_POS_BOX,19,17,231,172
 END
 
 IDD_CIPHER_PAGE_DLG DIALOGEX 0, 0, 226, 172
@@ -129,13 +129,17 @@ IDD_SIZE_PAGE_DLG DIALOGEX 0, 0, 226, 172
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    EDITTEXT        IDC_SIZEBOX,0,22,71,14,ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "&KB",IDC_KB,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,80,25,27,10
-    CONTROL         "&MB",IDC_MB,"Button",BS_AUTORADIOBUTTON,115,25,27,10
-    CONTROL         "&GB",IDC_GB,"Button",BS_AUTORADIOBUTTON,150,25,27,10
+    EDITTEXT        IDC_SIZEBOX,0,4,71,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "&KB",IDC_KB,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,80,7,27,10
+    CONTROL         "&MB",IDC_MB,"Button",BS_AUTORADIOBUTTON,115,7,27,10
+    CONTROL         "&GB",IDC_GB,"Button",BS_AUTORADIOBUTTON,150,7,27,10
     LTEXT           "",IDC_BOX_HELP,0,84,214,75
     LTEXT           "",IDC_SPACE_LEFT,0,44,214,33
-    CONTROL         "&TB",IDC_TB,"Button",BS_AUTORADIOBUTTON,185,25,27,10
+    CONTROL         "&TB",IDC_TB,"Button",BS_AUTORADIOBUTTON,185,7,27,10
+    EDITTEXT        IDC_MOUNT_OFFSET,35,20,71,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Offset",IDC_STATIC,5,23,28,12
+    EDITTEXT        IDC_MOUNT_SIZE,143,20,71,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Size",IDC_STATIC,118,23,19,12
 END
 
 IDD_VOLUME_LOCATION_PAGE_DLG DIALOGEX 0, 0, 226, 172
@@ -486,11 +490,11 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_VOL_CREATION_WIZARD_DLG, DIALOG
     BEGIN
-        RIGHTMARGIN, 393
+        RIGHTMARGIN, 274
         TOPMARGIN, 1
         BOTTOMMARGIN, 227
         HORZGUIDE, 216
@@ -720,17 +724,18 @@ END
 
 IDB_WIZARD              BITMAP                  "VeraCrypt_wizard.bmp"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_UACSTRING_FMT       "VeraCrypt"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

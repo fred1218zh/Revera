@@ -40,7 +40,6 @@
 int FormatWriteBufferSize = 1024 * 1024;
 static uint32 FormatSectorSize = 0;
 
-
 uint64 GetVolumeDataAreaSize (BOOL hiddenVolume, uint64 volumeSize)
 {
 	uint64 reservedSize;
@@ -100,6 +99,13 @@ int TCFormatVolume (volatile FORMAT_VOL_PARAMETERS *volParams)
 	LARGE_INTEGER offset;
 	BOOL bFailedRequiredDASD = FALSE;
 	HWND hwndDlg = volParams->hwndDlg;
+	unsigned __int64 FormatMountOffset;
+
+	if (volParams->hiddenVol) {
+		FormatMountOffset = 0;
+	} else {
+		FormatMountOffset = volParams->mountOffset;
+	}
 
 	FormatSectorSize = volParams->sectorSize;
 
@@ -311,6 +317,13 @@ begin_format:
 				// formatting hidden sectors
 				memset (buf, 0, sizeof (buf));
 
+				LARGE_INTEGER headerOffset;
+				headerOffset.QuadPart = FormatMountOffset;
+				if (!SetFilePointerEx(dev, headerOffset, NULL, FILE_BEGIN))
+				{
+					nStatus = ERR_OS_ERROR;
+					goto error;
+				}
 				if (!WriteFile (dev, buf, sizeof (buf), &bw, NULL))
 				{
 					nStatus = ERR_OS_ERROR;
@@ -336,7 +349,8 @@ begin_format:
 
 		dev = CreateFile (volParams->volumePath, GENERIC_READ | GENERIC_WRITE,
 			(volParams->hiddenVol || bInstantRetryOtherFilesys) ? (FILE_SHARE_READ | FILE_SHARE_WRITE) : 0,
-			NULL, (volParams->hiddenVol || bInstantRetryOtherFilesys) ? OPEN_EXISTING : CREATE_ALWAYS, 0, NULL);
+			NULL, (volParams->hiddenVol || bInstantRetryOtherFilesys) ? OPEN_EXISTING : (FormatMountOffset > 0 ? OPEN_ALWAYS : CREATE_ALWAYS),
+			0, NULL);
 
 		if (dev == INVALID_HANDLE_VALUE)
 		{
@@ -349,7 +363,8 @@ begin_format:
 		if (!volParams->hiddenVol && !bInstantRetryOtherFilesys)
 		{
 			LARGE_INTEGER volumeSize;
-			volumeSize.QuadPart = dataAreaSize + TC_VOLUME_HEADER_GROUP_SIZE;
+			LARGE_INTEGER headerOffset;
+			volumeSize.QuadPart = volParams->mountHostSize;
 
 			if (volParams->sparseFileSwitch && volParams->quickFormat)
 			{
@@ -362,10 +377,11 @@ begin_format:
 				}
 			}
 
+			headerOffset.QuadPart = FormatMountOffset;
 			// Preallocate the file
 			if (!SetFilePointerEx (dev, volumeSize, NULL, FILE_BEGIN)
 				|| !SetEndOfFile (dev)
-				|| SetFilePointer (dev, 0, NULL, FILE_BEGIN) != 0)
+				|| !SetFilePointerEx (dev, headerOffset, NULL, FILE_BEGIN))
 			{
 				nStatus = ERR_OS_ERROR;
 				goto error;
@@ -414,6 +430,9 @@ begin_format:
 
 		LARGE_INTEGER offset;
 		offset.QuadPart = TC_VOLUME_DATA_OFFSET;
+
+		offset.QuadPart += FormatMountOffset;
+
 		if (!SetFilePointerEx ((HANDLE) dev, offset, NULL, FILE_BEGIN))
 		{
 			nStatus = ERR_OS_ERROR;
@@ -456,18 +475,18 @@ begin_format:
 		// Calculate data area position of hidden volume
 		cryptoInfo->hiddenVolumeOffset = dataOffset;
 
-		// Validate the offset
-		if (dataOffset % FormatSectorSize != 0)
-		{
-			nStatus = ERR_VOL_SIZE_WRONG;
-			goto error;
-		}
-
 		volParams->quickFormat = TRUE;		// To entirely format a hidden volume would be redundant
 	}
 
+	// Validate the offset
+	if ((dataOffset + FormatMountOffset) % FormatSectorSize != 0)
+	{
+		nStatus = ERR_VOL_SIZE_WRONG;
+		goto error;
+	}
+
 	/* Data area */
-	startSector = dataOffset / FormatSectorSize;
+	startSector = (dataOffset + FormatMountOffset) / FormatSectorSize;
 
 	// Format filesystem
 
@@ -534,6 +553,7 @@ begin_format:
 
 	// Write header backup
 	offset.QuadPart = volParams->hiddenVol ? volParams->hiddenVolHostSize - TC_HIDDEN_VOLUME_HEADER_OFFSET : dataAreaSize + TC_VOLUME_HEADER_GROUP_SIZE;
+	offset.QuadPart += FormatMountOffset;
 
 	if (!SetFilePointerEx ((HANDLE) dev, offset, NULL, FILE_BEGIN))
 	{
@@ -570,7 +590,7 @@ begin_format:
 	{
 		BOOL bUpdateBackup = FALSE;
 
-		nStatus = WriteRandomDataToReservedHeaderAreas (hwndDlg, dev, cryptoInfo, dataAreaSize, FALSE, FALSE);
+		nStatus = WriteRandomDataToReservedHeaderAreas (hwndDlg, dev, cryptoInfo, dataAreaSize, FALSE, FALSE, FormatMountOffset);
 
 		if (nStatus != ERR_SUCCESS)
 			goto error;
@@ -584,6 +604,7 @@ begin_format:
 			LARGE_INTEGER hiddenOffset;
 
 			hiddenOffset.QuadPart = bUpdateBackup ? dataAreaSize + TC_VOLUME_HEADER_GROUP_SIZE + TC_HIDDEN_VOLUME_HEADER_OFFSET: TC_HIDDEN_VOLUME_HEADER_OFFSET;
+			hiddenOffset.QuadPart += FormatMountOffset;
 
 			nStatus = CreateVolumeHeaderInMemory (hwndDlg, FALSE,
 				header,
@@ -643,8 +664,10 @@ error:
 		if (!volParams->bDevice && !volParams->hiddenVol && nStatus != 0)
 		{
 			// Remove preallocated part before closing file handle if format failed
-			if (SetFilePointer (dev, 0, NULL, FILE_BEGIN) == 0)
-				SetEndOfFile (dev);
+			if (FormatMountOffset == 0) {
+				if (SetFilePointer(dev, 0, NULL, FILE_BEGIN) == 0)
+					SetEndOfFile(dev);
+			}
 		}
 
 		FlushFileBuffers (dev);
@@ -690,6 +713,7 @@ error:
 		mountOptions.PreserveTimestamp = bPreserveTimestamp;
 		mountOptions.PartitionInInactiveSysEncScope = FALSE;
 		mountOptions.UseBackupHeader = FALSE;
+		mountOptions.mountOffset = FormatMountOffset;
 
 		if (MountVolume (volParams->hwndDlg, driveNo, volParams->volumePath, volParams->password, volParams->pkcs5, volParams->pim, FALSE, FALSE, FALSE, TRUE, &mountOptions, FALSE, TRUE) < 1)
 		{

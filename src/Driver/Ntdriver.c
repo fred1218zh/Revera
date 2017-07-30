@@ -1072,8 +1072,9 @@ NTSTATUS ProcessVolumeDeviceControlIrp (PDEVICE_OBJECT DeviceObject, PEXTENSION 
 				}
 				else
 				{
-					LARGE_INTEGER offset = pVerifyInformation->StartingOffset;
+					LARGE_INTEGER offset;
 					offset.QuadPart = ullNewOffset;
+					offset.QuadPart += Extension->mountOffset;
 
 					Irp->IoStatus.Status = ZwReadFile (Extension->hDeviceFile, NULL, NULL, NULL, &ioStatus, buffer, pVerifyInformation->Length, &offset, NULL);
 					TCfree (buffer);
@@ -2425,6 +2426,8 @@ VOID VolumeThreadProc (PVOID Context)
 	else
 		Extension->Queue.SecurityClientContext = NULL;
 
+	Extension->Queue.mountOffset = Extension->mountOffset;
+
 	pThreadBlock->ntCreateStatus = EncryptedIoQueueStart (&Extension->Queue);
 
 	if (!NT_SUCCESS (pThreadBlock->ntCreateStatus))
@@ -3214,9 +3217,11 @@ NTSTATUS MountDevice (PDEVICE_OBJECT DeviceObject, MOUNT_STRUCT *mount)
 	}
 	else
 	{
-		PEXTENSION NewExtension = (PEXTENSION) NewDeviceObject->DeviceExtension;
+		PEXTENSION NewExtension = (PEXTENSION)NewDeviceObject->DeviceExtension;
 		SECURITY_SUBJECT_CONTEXT subContext;
 		PACCESS_TOKEN accessToken;
+
+		NewExtension->mountOffset = mount->mountOffset;
 
 		SeCaptureSubjectContext (&subContext);
 		SeLockSubjectContext(&subContext);

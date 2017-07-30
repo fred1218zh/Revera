@@ -2002,6 +2002,7 @@ typedef struct
 	int wipePassCount;
 	BOOL truecryptMode;
 	int* pnStatus;
+	unsigned __int64 mountOffset;
 } ChangePwdThreadParam;
 
 void CALLBACK ChangePwdWaitThreadProc(void* pArg, HWND hwndDlg)
@@ -2037,14 +2038,14 @@ void CALLBACK ChangePwdWaitThreadProc(void* pArg, HWND hwndDlg)
 	{
 		// Non-system
 
-		*pThreadParam->pnStatus = ChangePwd (szFileName, pThreadParam->oldPassword, pThreadParam->old_pkcs5, pThreadParam->old_pim, pThreadParam->truecryptMode, pThreadParam->newPassword, pThreadParam->pkcs5, pThreadParam->pim, pThreadParam->wipePassCount, hwndDlg);
+		*pThreadParam->pnStatus = ChangePwd (szFileName, pThreadParam->oldPassword, pThreadParam->old_pkcs5, pThreadParam->old_pim, pThreadParam->truecryptMode, pThreadParam->newPassword, pThreadParam->pkcs5, pThreadParam->pim, pThreadParam->wipePassCount, hwndDlg, pThreadParam->mountOffset);
 
 		if (*pThreadParam->pnStatus == ERR_OS_ERROR
 			&& GetLastError () == ERROR_ACCESS_DENIED
 			&& IsUacSupported ()
 			&& IsVolumeDeviceHosted (szFileName))
 		{
-			*pThreadParam->pnStatus = UacChangePwd (szFileName, pThreadParam->oldPassword, pThreadParam->old_pkcs5, pThreadParam->old_pim, pThreadParam->truecryptMode, pThreadParam->newPassword, pThreadParam->pkcs5, pThreadParam->pim, pThreadParam->wipePassCount, hwndDlg);
+			*pThreadParam->pnStatus = UacChangePwd (szFileName, pThreadParam->oldPassword, pThreadParam->old_pkcs5, pThreadParam->old_pim, pThreadParam->truecryptMode, pThreadParam->newPassword, pThreadParam->pkcs5, pThreadParam->pim, pThreadParam->wipePassCount, hwndDlg, pThreadParam->mountOffset);
 		}
 	}
 }
@@ -2741,6 +2742,8 @@ BOOL CALLBACK PasswordChangeDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPAR
 			changePwdParam.wipePassCount = GetWipePassCount(headerWiperMode);
 			changePwdParam.pnStatus = &nStatus;
 			changePwdParam.truecryptMode = truecryptMode;
+			changePwdParam.mountOffset = GetDlgItemInt(hwndDlg, IDC_MOUNT_OFFSET, NULL, FALSE);
+			changePwdParam.mountOffset *= 1024 * 1024;
 
 			ShowWaitDialog(hwndDlg, TRUE, ChangePwdWaitThreadProc, &changePwdParam);
 
@@ -2800,6 +2803,7 @@ BOOL CALLBACK PasswordDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 {
 	WORD lw = LOWORD (wParam);
 	static Password *szXPwd;
+	static unsigned __int64* mountOffset;
 	static int *pkcs5;
 	static int *pim;
 	static BOOL* truecryptMode;
@@ -2810,6 +2814,7 @@ BOOL CALLBACK PasswordDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 		{
 			int i, nIndex, defaultPrfIndex = 0;
 			szXPwd = ((PasswordDlgParam *) lParam) -> password;
+			mountOffset = ((PasswordDlgParam *)lParam)->mountOffset;
 			pkcs5 = ((PasswordDlgParam *) lParam) -> pkcs5;
 			pim = ((PasswordDlgParam *) lParam) -> pim;
 			truecryptMode = ((PasswordDlgParam *) lParam) -> truecryptMode;
@@ -3109,6 +3114,9 @@ BOOL CALLBACK PasswordDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 					szXPwd->Length = (unsigned __int32) strlen ((char *) szXPwd->Text);
 				else
 					return 1;
+
+				*mountOffset = GetDlgItemInt(hwndDlg, IDC_MOUNT_OFFSET, NULL, FALSE);
+				*mountOffset *= 1024 * 1024;
 
 				bCacheInDriver = IsButtonChecked (GetDlgItem (hwndDlg, IDC_CACHE));
 				*pkcs5 = (int) SendMessage (GetDlgItem (hwndDlg, IDC_PKCS5_PRF_ID), CB_GETITEMDATA, SendMessage (GetDlgItem (hwndDlg, IDC_PKCS5_PRF_ID), CB_GETCURSEL, 0, 0), 0);
@@ -4677,7 +4685,7 @@ LPARAM GetItemLong (HWND hTree, int itemNo)
 		return item.lParam;
 }
 
-static int AskVolumePassword (HWND hwndDlg, Password *password, int *pkcs5, int *pim, BOOL* truecryptMode, char *titleStringId, BOOL enableMountOptions)
+static int AskVolumePassword (HWND hwndDlg, Password *password, unsigned __int64* mountOffset, int *pkcs5, int *pim, BOOL* truecryptMode, char *titleStringId, BOOL enableMountOptions)
 {
 	INT_PTR result;
 	PasswordDlgParam dlgParam;
@@ -4686,6 +4694,7 @@ static int AskVolumePassword (HWND hwndDlg, Password *password, int *pkcs5, int 
 	PasswordDialogDisableMountOptions = !enableMountOptions;
 
 	dlgParam.password = password;
+	dlgParam.mountOffset = mountOffset;
 	dlgParam.pkcs5 = pkcs5;
 	dlgParam.pim = pim;
 	dlgParam.truecryptMode = truecryptMode;
@@ -4845,6 +4854,8 @@ static BOOL Mount (HWND hwndDlg, int nDosDriveNo, wchar_t *szFileName, int pim, 
 			Warning ("EXE_FILE_EXTENSION_MOUNT_WARNING", hwndDlg);
 	}
 
+	mountOptions.mountOffset = 0;
+
 	while (mounted == 0)
 	{
 		if (bUseCmdVolumePassword)
@@ -4861,7 +4872,7 @@ static BOOL Mount (HWND hwndDlg, int nDosDriveNo, wchar_t *szFileName, int pim, 
 			int GuiPim = EffectiveVolumePim;
 			StringCbCopyW (PasswordDlgVolume, sizeof(PasswordDlgVolume), szFileName);
 
-			if (!AskVolumePassword (hwndDlg, &VolumePassword, &GuiPkcs5, &GuiPim, &GuiTrueCryptMode, NULL, TRUE))
+			if (!AskVolumePassword (hwndDlg, &VolumePassword, &(mountOptions.mountOffset), &GuiPkcs5, &GuiPim, &GuiTrueCryptMode, NULL, TRUE))
 				goto ret;
 			else
 			{
@@ -5234,7 +5245,7 @@ static BOOL MountAllDevicesThreadCode (HWND hwndDlg, BOOL bPasswordPrompt)
 				BOOL GuiTrueCryptMode = EffectiveVolumeTrueCryptMode;
 				int GuiPim = CmdVolumePim;
 				PasswordDlgVolume[0] = '\0';
-				if (!AskVolumePassword (hwndDlg, &VolumePassword, &GuiPkcs5, &GuiPim, &GuiTrueCryptMode, NULL, TRUE))
+				if (!AskVolumePassword (hwndDlg, &VolumePassword, &(mountOptions.mountOffset), &GuiPkcs5, &GuiPim, &GuiTrueCryptMode, NULL, TRUE))
 					goto ret;
 				else
 				{
@@ -6780,7 +6791,7 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 							VolumePassword.Length = 0;
 
 							StringCbCopyW (PasswordDlgVolume, sizeof(PasswordDlgVolume),szFileName);
-							if (!AskVolumePassword (hwndDlg, &VolumePassword, &GuiPkcs5, &GuiPim, &GuiTrueCryptMode, NULL, TRUE))
+							if (!AskVolumePassword (hwndDlg, &VolumePassword, &(mountOptions.mountOffset), &GuiPkcs5, &GuiPim, &GuiTrueCryptMode, NULL, TRUE))
 								break;
 							else
 							{
@@ -10032,7 +10043,8 @@ int BackupVolumeHeader (HWND hwndDlg, BOOL bRequireConfirmation, const wchar_t *
 		{
 			int GuiPkcs5 = ((EffectiveVolumePkcs5 > 0) && (*askPkcs5 == 0))? EffectiveVolumePkcs5 : *askPkcs5;
 			int GuiPim = ((EffectiveVolumePim > 0) && (*askPim <= 0))? EffectiveVolumePim : *askPim;
-			if (!AskVolumePassword (hwndDlg, askPassword, &GuiPkcs5, &GuiPim, &VolumeTrueCryptMode, type == TC_VOLUME_TYPE_HIDDEN ? "ENTER_HIDDEN_VOL_PASSWORD" : "ENTER_NORMAL_VOL_PASSWORD", FALSE))
+			unsigned __int64 mountOffset;
+			if (!AskVolumePassword (hwndDlg, askPassword, &mountOffset, &GuiPkcs5, &GuiPim, &VolumeTrueCryptMode, type == TC_VOLUME_TYPE_HIDDEN ? "ENTER_HIDDEN_VOL_PASSWORD" : "ENTER_NORMAL_VOL_PASSWORD", FALSE))
 			{
 				nStatus = ERR_SUCCESS;
 				goto ret;
@@ -10043,6 +10055,11 @@ int BackupVolumeHeader (HWND hwndDlg, BOOL bRequireConfirmation, const wchar_t *
 				*askPim = GuiPim;
 				burn (&GuiPkcs5, sizeof (GuiPkcs5));
 				burn (&GuiPim, sizeof (GuiPim));
+			}
+			if (mountOffset != 0) {
+				MessageBoxA(hwndDlg, "Revera", "Mount Offset is not supported yet!", MB_OK);
+				nStatus = ERR_PARAMETER_INCORRECT;
+				goto error;
 			}
 
 			WaitCursor();
@@ -10319,8 +10336,9 @@ int RestoreVolumeHeader (HWND hwndDlg, const wchar_t *lpszVolume)
 		{
 			int GuiPkcs5 = ((EffectiveVolumePkcs5 > 0) && (VolumePkcs5 == 0))? EffectiveVolumePkcs5 : VolumePkcs5;
 			int GuiPim = ((EffectiveVolumePim > 0) && (VolumePim <= 0))? EffectiveVolumePim : VolumePim;
+			unsigned __int64 mountOffset;
 			StringCbCopyW (PasswordDlgVolume, sizeof(PasswordDlgVolume), lpszVolume);
-			if (!AskVolumePassword (hwndDlg, &VolumePassword, &GuiPkcs5, &GuiPim, &VolumeTrueCryptMode, NULL, FALSE))
+			if (!AskVolumePassword (hwndDlg, &VolumePassword, &mountOffset, &GuiPkcs5, &GuiPim, &VolumeTrueCryptMode, NULL, FALSE))
 			{
 				nStatus = ERR_SUCCESS;
 				goto ret;
@@ -10331,6 +10349,11 @@ int RestoreVolumeHeader (HWND hwndDlg, const wchar_t *lpszVolume)
 				VolumePim = GuiPim;
 				burn (&GuiPkcs5, sizeof (GuiPkcs5));
 				burn (&GuiPim, sizeof (GuiPim));
+			}
+			if (mountOffset != 0) {
+				MessageBoxA(hwndDlg, "Revera", "Mount Offset is not supported yet!", MB_OK);
+				nStatus = ERR_PARAMETER_INCORRECT;
+				goto error;
 			}
 
 			WaitCursor();
@@ -10530,7 +10553,8 @@ int RestoreVolumeHeader (HWND hwndDlg, const wchar_t *lpszVolume)
 		{
 			int GuiPkcs5 = ((EffectiveVolumePkcs5 > 0) && (VolumePkcs5 == 0))? EffectiveVolumePkcs5 : VolumePkcs5;
 			int GuiPim = ((EffectiveVolumePim > 0) && (VolumePim <= 0))? EffectiveVolumePim : VolumePim;
-			if (!AskVolumePassword (hwndDlg, &VolumePassword, &GuiPkcs5, &GuiPim, &VolumeTrueCryptMode, "ENTER_HEADER_BACKUP_PASSWORD", FALSE))
+			unsigned __int64 mountOffset;
+			if (!AskVolumePassword (hwndDlg, &VolumePassword, &mountOffset, &GuiPkcs5, &GuiPim, &VolumeTrueCryptMode, "ENTER_HEADER_BACKUP_PASSWORD", FALSE))
 			{
 				nStatus = ERR_SUCCESS;
 				goto ret;
@@ -10541,6 +10565,11 @@ int RestoreVolumeHeader (HWND hwndDlg, const wchar_t *lpszVolume)
 				VolumePim = GuiPim;
 				burn (&GuiPkcs5, sizeof (GuiPkcs5));
 				burn (&GuiPim, sizeof (GuiPim));
+			}
+			if (mountOffset != 0) {
+				MessageBoxA(hwndDlg, "Revera", "Mount Offset is not supported yet!", MB_OK);
+				nStatus = ERR_PARAMETER_INCORRECT;
+				goto error;
 			}
 
 			if (KeyFilesEnable && FirstKeyFile)

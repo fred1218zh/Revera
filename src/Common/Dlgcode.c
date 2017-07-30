@@ -7768,6 +7768,7 @@ int MountVolume (HWND hwndDlg,
 	mount.UseBackupHeader =  mountOptions->UseBackupHeader;
 	mount.RecoveryMode = mountOptions->RecoveryMode;
 	StringCbCopyW (mount.wszLabel, sizeof (mount.wszLabel), mountOptions->Label);
+	mount.mountOffset = mountOptions->mountOffset;
 
 retry:
 	mount.nDosDriveNo = driveNo;

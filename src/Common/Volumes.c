@@ -1250,7 +1250,7 @@ BOOL WriteEffectiveVolumeHeader (BOOL device, HANDLE fileHandle, byte *header)
 // Writes randomly generated data to unused/reserved header areas.
 // When bPrimaryOnly is TRUE, then only the primary header area (not the backup header area) is filled with random data.
 // When bBackupOnly is TRUE, only the backup header area (not the primary header area) is filled with random data.
-int WriteRandomDataToReservedHeaderAreas (HWND hwndDlg, HANDLE dev, CRYPTO_INFO *cryptoInfo, uint64 dataAreaSize, BOOL bPrimaryOnly, BOOL bBackupOnly)
+int WriteRandomDataToReservedHeaderAreas (HWND hwndDlg, HANDLE dev, CRYPTO_INFO *cryptoInfo, uint64 dataAreaSize, BOOL bPrimaryOnly, BOOL bBackupOnly, unsigned __int64 mountOffset)
 {
 	char temporaryKey[MASTER_KEYDATA_SIZE];
 	char originalK2[MASTER_KEYDATA_SIZE];
@@ -1289,6 +1289,7 @@ int WriteRandomDataToReservedHeaderAreas (HWND hwndDlg, HANDLE dev, CRYPTO_INFO 
 		}
 
 		offset.QuadPart = backupHeaders ? dataAreaSize + TC_VOLUME_HEADER_GROUP_SIZE : TC_VOLUME_HEADER_OFFSET;
+		offset.QuadPart += mountOffset;
 
 		if (!SetFilePointerEx (dev, offset, NULL, FILE_BEGIN))
 		{

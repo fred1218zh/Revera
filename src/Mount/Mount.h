@@ -53,6 +53,7 @@ typedef struct
 typedef struct
 {
 	Password *password;
+	unsigned __int64* mountOffset;
 	int* pkcs5;
 	int* pim;
 	BOOL* truecryptMode;

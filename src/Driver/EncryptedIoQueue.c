@@ -693,7 +693,10 @@ static VOID MainThreadProc (PVOID threadArg)
 				if (queue->CryptoInfo->hiddenVolume)
 					hResult = ULongLongAdd(item->OriginalOffset.QuadPart, queue->CryptoInfo->hiddenVolumeOffset, &addResult);
 				else
+				{
 					hResult = ULongLongAdd(item->OriginalOffset.QuadPart, queue->CryptoInfo->volDataAreaOffset, &addResult);
+					addResult += queue->mountOffset;
+				}
 
 				if (hResult != S_OK)
 				{

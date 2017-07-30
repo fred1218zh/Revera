@@ -95,6 +95,8 @@ typedef struct EXTENSION
 	BOOL SecurityClientContextValid;
 	SECURITY_CLIENT_CONTEXT SecurityClientContext;
 
+	unsigned __int64 mountOffset;
+
 } EXTENSION, *PEXTENSION;
 
 

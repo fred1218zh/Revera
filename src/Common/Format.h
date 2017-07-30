@@ -45,6 +45,10 @@ typedef struct
 	HWND hwndDlg;
 	BOOL bForceOperation;
 	BOOL bGuiMode;
+
+	unsigned __int64 mountOffset;
+	unsigned __int64 mountHostSize;
+
 }
 FORMAT_VOL_PARAMETERS;
 

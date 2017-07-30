@@ -175,6 +175,7 @@ typedef struct
 	ULONG MaximumTransferLength;
 	ULONG MaximumPhysicalPages;
 	ULONG AlignmentMask;
+	unsigned __int64 mountOffset;
 } MOUNT_STRUCT;
 
 typedef struct

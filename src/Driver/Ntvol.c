@@ -363,6 +363,16 @@ NTSTATUS TCOpenVolume (PDEVICE_OBJECT DeviceObject,
 	}
 
 	// Check volume size
+	if (lDiskLength.QuadPart < (__int64)(Extension->mountOffset))
+	{
+		mount->nReturnCode = ERR_VOL_SIZE_WRONG;
+		ntStatus = STATUS_SUCCESS;
+		goto error;
+	}
+
+	lDiskLength.QuadPart -= Extension->mountOffset;
+
+	// Check volume size
 	if (lDiskLength.QuadPart < TC_MIN_VOLUME_SIZE_LEGACY || lDiskLength.QuadPart > TC_MAX_VOLUME_SIZE)
 	{
 		mount->nReturnCode = ERR_VOL_SIZE_WRONG;
@@ -385,6 +395,10 @@ NTSTATUS TCOpenVolume (PDEVICE_OBJECT DeviceObject,
 		volumeType < TC_VOLUME_TYPE_COUNT;
 		volumeType++)
 	{
+		if (Extension->mountOffset != 0 && volumeType == TC_VOLUME_TYPE_HIDDEN) {
+			continue;
+		}
+
 		Dump ("Trying to open volume type %d\n", volumeType);
 
 		/* Read the volume header */
@@ -413,6 +427,8 @@ NTSTATUS TCOpenVolume (PDEVICE_OBJECT DeviceObject,
 				headerOffset.QuadPart = mount->UseBackupHeader ? lDiskLength.QuadPart - TC_HIDDEN_VOLUME_HEADER_OFFSET : TC_HIDDEN_VOLUME_HEADER_OFFSET;
 				break;
 			}
+
+			headerOffset.QuadPart += Extension->mountOffset;
 
 			Dump ("Reading volume header at %I64d\n", headerOffset.QuadPart);
 

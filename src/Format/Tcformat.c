@@ -190,6 +190,8 @@ int hash_algo = DEFAULT_HASH_ALGORITHM;	/* Which PRF to use in header key deriva
 unsigned __int64 nUIVolumeSize = 0;		/* The volume size. Important: This value is not in bytes. It has to be multiplied by nMultiplier. Do not use this value when actually creating the volume (it may chop off sector size, if it is not a multiple of 1024 bytes). */
 unsigned __int64 nVolumeSize = 0;		/* The volume size, in bytes. */
 unsigned __int64 nHiddenVolHostSize = 0;	/* Size of the hidden volume host, in bytes */
+unsigned __int64 nMountOffset = 0;
+unsigned __int64 nMountSize = 0;
 __int64 nMaximumHiddenVolSize = 0;		/* Maximum possible size of the hidden volume, in bytes */
 __int64 nbrFreeClusters = 0;
 __int64 nMultiplier = BYTES_PER_MB;		/* Size selection multiplier. */
@@ -1489,6 +1491,8 @@ static void VerifySizeAndUpdate (HWND hwndDlg, BOOL bUpdate)
 	wchar_t szTmp[50];
 	__int64 lTmp;
 	__int64 i;
+	unsigned __int64 _mountOffset;
+	unsigned __int64 _mountSize;
 	static unsigned __int64 nLastVolumeSize = 0;
 
 	GetWindowText (GetDlgItem (hwndDlg, IDC_SIZEBOX), szTmp, ARRAYSIZE (szTmp));
@@ -1547,12 +1551,31 @@ static void VerifySizeAndUpdate (HWND hwndDlg, BOOL bUpdate)
 		}
 	}
 
+	_mountOffset = GetDlgItemInt(hCurPage, IDC_MOUNT_OFFSET, NULL, FALSE);
+	_mountOffset *= 1024 * 1024;
+	_mountSize = GetDlgItemInt(hCurPage, IDC_MOUNT_SIZE, NULL, FALSE);
+	_mountSize *= 1024 * 1024;
+	if (_mountOffset + TC_MIN_VOLUME_SIZE > i * lTmp) {
+		bEnable = FALSE;
+	}
+	if (_mountSize > 0 && _mountSize < TC_MIN_VOLUME_SIZE) {
+		bEnable = FALSE;
+	}
+	if (_mountOffset + _mountSize > i * lTmp) {
+		bEnable = FALSE;
+	}
+
 	if (bUpdate)
 	{
 		nUIVolumeSize = lTmp;
 
 		if (!bDevice || (bHiddenVol && !bHiddenVolHost))	// Update only if it's not a raw device or if it's a hidden volume
 			nVolumeSize = i * lTmp;
+
+		if (!bHiddenVol && !bHiddenVolHost) {
+			nMountOffset = _mountOffset;
+			nMountSize = _mountSize;
+		}
 	}
 
 	EnableWindow (GetDlgItem (GetParent (hwndDlg), IDC_NEXT), bEnable);
@@ -2636,6 +2659,15 @@ static void __cdecl volTransformThreadFunction (void *hwndDlgArg)
 	volParams->hwndDlg = hwndDlg;
 	volParams->bForceOperation = bForceOperation;
 	volParams->bGuiMode = bGuiMode;
+	volParams->mountOffset = nMountOffset;
+	volParams->mountHostSize = nVolumeSize;
+	if (!bHidden) {
+		if (nMountSize != 0) {
+			volParams->size = nMountSize;
+		} else {
+			volParams->size = nVolumeSize - nMountOffset;
+		}
+	}
 
 	if (bInPlaceDecNonSys)
 	{
@@ -3138,7 +3170,7 @@ static void LoadPage (HWND hwndDlg, int nPageNo)
 		break;
 	}
 
-	rD.left = 162;
+	rD.left = 25;
 	rD.top = 25;
 	rD.right = 0;
 	rD.bottom = 0;
@@ -4201,7 +4233,7 @@ BOOL CALLBACK PageDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 					EnableWindow (GetDlgItem (hwndDlg, IDC_MB), TRUE);
 					EnableWindow (GetDlgItem (hwndDlg, IDC_GB), TRUE);
 					EnableWindow (GetDlgItem (hwndDlg, IDC_TB), TRUE);
-				}
+				}				
 
 				SendMessage (GetDlgItem (hwndDlg, IDC_KB), BM_SETCHECK, BST_UNCHECKED, 0);
 				SendMessage (GetDlgItem (hwndDlg, IDC_MB), BM_SETCHECK, BST_UNCHECKED, 0);
@@ -4247,7 +4279,28 @@ BOOL CALLBACK PageDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 
 				EnableWindow (GetDlgItem (GetParent (hwndDlg), IDC_PREV), TRUE);
 
-				VerifySizeAndUpdate (hwndDlg, FALSE);
+				if (bHiddenVol || bHiddenVolHost) {
+					EnableWindow(GetDlgItem(hwndDlg, IDC_MOUNT_OFFSET), FALSE);
+					EnableWindow(GetDlgItem(hwndDlg, IDC_MOUNT_SIZE), FALSE);
+					nMountOffset = 0;
+					nMountSize = 0;
+				} else {
+					EnableWindow(GetDlgItem(hwndDlg, IDC_MOUNT_OFFSET), TRUE);
+					EnableWindow(GetDlgItem(hwndDlg, IDC_MOUNT_SIZE), TRUE);
+				}
+				if (nMountOffset == 0) {
+					SetDlgItemTextA(hwndDlg, IDC_MOUNT_OFFSET, "");
+				} else {
+					SetDlgItemInt(hwndDlg, IDC_MOUNT_OFFSET, (int)(nMountOffset / 1024 / 1024), FALSE);
+				}
+				if (nMountSize == 0) {
+					SetDlgItemTextA(hwndDlg, IDC_MOUNT_SIZE, "");
+				} else {
+					SetDlgItemInt(hwndDlg, IDC_MOUNT_SIZE, (int)(nMountSize / 1024 / 1024), FALSE);
+				}
+
+				VerifySizeAndUpdate(hwndDlg, FALSE);
+
 			}
 			break;
 
@@ -7450,7 +7503,7 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 				wchar_t szFileSystemNameBuffer[256];
 
 				VerifySizeAndUpdate (hCurPage, TRUE);
-
+				
 				if (!bDevice)
 				{
 					/* Verify that the volume would not be too large for the host file system */
