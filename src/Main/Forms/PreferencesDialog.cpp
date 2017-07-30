@@ -22,7 +22,7 @@
 #include "Volume/Cipher.h"
 #include "PreferencesDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	PreferencesDialog::PreferencesDialog (wxWindow* parent)
 		: PreferencesDialogBase (parent),
@@ -135,7 +135,7 @@ namespace VeraCrypt
 
 #ifdef TC_MACOSX
 		DismountOnScreenSaverCheckBox->Show (false);
-		DismountOnLogOffCheckBox->SetLabel (_("VeraCrypt quits"));
+		DismountOnLogOffCheckBox->SetLabel (_("Revera quits"));
 		OpenExplorerWindowAfterMountCheckBox->SetLabel (_("Open Finder window for successfully mounted volume"));
 
 		MountRemovableCheckBox->Show (false);

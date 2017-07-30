@@ -1,22 +1,22 @@
 HKCR
 {
-	ForceRemove VeraCrypt.1 = s 'VeraCrypt class'
+	ForceRemove Revera.1 = s 'Revera class'
 	{
 		CLSID = s '{FE8B3B95-C80C-41f7-830F-FBA271C26F7E}'
 	}
 
-	ForceRemove VeraCrypt = s 'VeraCrypt class'
+	ForceRemove Revera = s 'Revera class'
 	{
 		CLSID = s '{FE8B3B95-C80C-41f7-830F-FBA271C26F7E}'
-		CurVer = s 'VeraCrypt.1'
+		CurVer = s 'Revera.1'
 	}
 
 	NoRemove CLSID
 	{
-		ForceRemove {FE8B3B95-C80C-41f7-830F-FBA271C26F7E} = s 'VeraCrypt class'
+		ForceRemove {FE8B3B95-C80C-41f7-830F-FBA271C26F7E} = s 'Revera class'
 		{
-			ProgID = s 'VeraCrypt.1'
-			VersionIndependentProgID = s 'VeraCrypt'
+			ProgID = s 'Revera.1'
+			VersionIndependentProgID = s 'Revera'
 			LocalServer32 = s '"%MAIN_MODULE%"'
 
 			TypeLib = s '{9ACF6176-5FC4-4690-A025-B3306A50EB6A}'
@@ -34,34 +34,34 @@ HKCR
 
 	NoRemove AppId
 	{
-		ForceRemove {FE8B3B95-C80C-41f7-830F-FBA271C26F7E} = s 'VeraCrypt class'
+		ForceRemove {FE8B3B95-C80C-41f7-830F-FBA271C26F7E} = s 'Revera class'
 		{
 			val AccessPermission = b 010004803000000040000000000000001400000002001c000100000000001400070000000101000000000005040000000102000000000005200000002002000001020000000000052000000020020000
 		}
 
-		ForceRemove VeraCrypt.exe
+		ForceRemove revera.exe
 		{
 			val AppId = s '{FE8B3B95-C80C-41f7-830F-FBA271C26F7E}'
 		}
 	}
 
-	ForceRemove VeraCryptFormat.1 = s 'VeraCryptFormat class'
+	ForceRemove ReveraFormat.1 = s 'ReveraFormat class'
 	{
 		CLSID = s '{A96D3797-9F31-49f4-A0CE-9657392CF789}'
 	}
 
-	ForceRemove VeraCryptFormat = s 'VeraCryptFormat class'
+	ForceRemove ReveraFormat = s 'ReveraFormat class'
 	{
 		CLSID = s '{A96D3797-9F31-49f4-A0CE-9657392CF789}'
-		CurVer = s 'VeraCryptFormat.1'
+		CurVer = s 'ReveraFormat.1'
 	}
 
 	NoRemove CLSID
 	{
-		ForceRemove {A96D3797-9F31-49f4-A0CE-9657392CF789} = s 'VeraCryptFormat class'
+		ForceRemove {A96D3797-9F31-49f4-A0CE-9657392CF789} = s 'ReveraFormat class'
 		{
-			ProgID = s 'VeraCryptFormat.1'
-			VersionIndependentProgID = s 'VeraCryptFormat'
+			ProgID = s 'ReveraFormat.1'
+			VersionIndependentProgID = s 'ReveraFormat'
 			LocalServer32 = s '"%FORMAT_MODULE%"'
 
 			TypeLib = s '{56327DDA-F1A7-4e13-B128-520D129BDEF6}'
@@ -79,12 +79,12 @@ HKCR
 
 	NoRemove AppId
 	{
-		ForceRemove {A96D3797-9F31-49f4-A0CE-9657392CF789} = s 'VeraCryptFormat class'
+		ForceRemove {A96D3797-9F31-49f4-A0CE-9657392CF789} = s 'ReveraFormat class'
 		{
 			val AccessPermission = b 010004803000000040000000000000001400000002001c000100000000001400070000000101000000000005040000000102000000000005200000002002000001020000000000052000000020020000
 		}
 
-		ForceRemove 'VeraCrypt Format.exe'
+		ForceRemove 'reveraf.exe'
 		{
 			val AppId = s '{A96D3797-9F31-49f4-A0CE-9657392CF789}'
 		}

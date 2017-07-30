@@ -16,7 +16,7 @@
 #include "Xml.h"
 #include "VolumeHistory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumeHistory::VolumeHistory ()
 	{

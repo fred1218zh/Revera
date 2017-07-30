@@ -17,7 +17,7 @@
 #include "Volume/Hash.h"
 #include "Common/Random.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class RandomNumberGenerator
 	{

@@ -14,7 +14,7 @@
 #include "Main/Application.h"
 #include <wx/msgqueue.h>
 
-namespace VeraCrypt
+namespace Revera
 {
 
 	DECLARE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_WAITDIALOGTHREAD_COMPLETED, -1);

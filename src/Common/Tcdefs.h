@@ -23,8 +23,8 @@
 #include <Library/BaseLib.h> 
 #include <Library/BaseMemoryLib.h>
 
-void* VeraCryptMemAlloc(IN UINTN size);
-void VeraCryptMemFree(IN VOID* ptr);
+void* ReveraMemAlloc(IN UINTN size);
+void ReveraMemFree(IN VOID* ptr);
 
 #define BOOL int
 #ifndef FALSE
@@ -52,7 +52,7 @@ extern unsigned short _rotl16(unsigned short value, unsigned char shift);
 
 #endif // defined(_UEFI)
 
-#define TC_APP_NAME						"VeraCrypt"
+#define TC_APP_NAME						"Revera"
 
 // Version displayed to user 
 #define VERSION_STRING					"17.7"
@@ -285,8 +285,8 @@ extern VOID NTAPI KeRestoreExtendedProcessorState (
 #define TCalloc malloc
 #define TCfree free
 #else
-#define TCalloc VeraCryptMemAlloc
-#define TCfree VeraCryptMemFree
+#define TCalloc ReveraMemAlloc
+#define TCfree ReveraMemFree
 #endif //!defined(_UEFI)
 
 #ifdef _WIN32
@@ -383,12 +383,12 @@ void EraseMemory (void *memory, int size);
 #define TC_MAX_PATH		260	/* Includes the null terminator */
 #endif
 
-#define TC_STR_RELEASED_BY L"Released by IDRIX on " TC_STR_RELEASE_DATE
+#define TC_STR_RELEASED_BY L"Released by SLIBIO on " TC_STR_RELEASE_DATE
 
 #define MAX_URL_LENGTH	2084 /* Internet Explorer limit. Includes the terminating null character. */
 
-#define TC_HOMEPAGE L"https://www.idrix.fr/"
-#define TC_APPLINK L"https://www.veracrypt.fr"
+#define TC_HOMEPAGE L"https://revera.slib.io/"
+#define TC_APPLINK L"https://revera.slib.io"
 
 enum
 {

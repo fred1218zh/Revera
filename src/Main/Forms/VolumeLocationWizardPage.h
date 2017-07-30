@@ -15,7 +15,7 @@
 
 #include "Forms.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumeLocationWizardPage : public VolumeLocationWizardPageBase
 	{

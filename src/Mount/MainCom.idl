@@ -15,7 +15,7 @@ import "..\Common\Password.h";
 
 [
 	uuid(9ACF6176-5FC4-4690-A025-B3306A50EB6A),
-	helpstring("VeraCrypt Main UAC Support Library"),
+	helpstring("Revera Main UAC Support Library"),
 	version(2.9)	// Update ComSetup.cpp when changing version number
 ]
 library TrueCryptMainCom
@@ -24,7 +24,7 @@ library TrueCryptMainCom
 		uuid(C786E27C-2801-482c-B45D-D4357B270A29),
 		object,
 		oleautomation,
-		helpstring("VeraCrypt Main UAC Support Interface")
+		helpstring("Revera Main UAC Support Interface")
 	]
 	interface ITrueCryptMainCom : IUnknown
 	{
@@ -55,7 +55,7 @@ library TrueCryptMainCom
 
 	[
 		uuid(FE8B3B95-C80C-41f7-830F-FBA271C26F7E),
-		helpstring("VeraCrypt Main UAC Support Coclass")
+		helpstring("Revera Main UAC Support Coclass")
 	]
 	coclass TrueCryptMainCom
 	{

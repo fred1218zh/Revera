@@ -38,7 +38,7 @@
 #include "VolumeCreationWizard.h"
 #include "VolumePropertiesDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	DEFINE_EVENT_TYPE(wxEVT_COMMAND_UPDATE_VOLUME_LIST)
 	DEFINE_EVENT_TYPE(wxEVT_COMMAND_PREF_UPDATED)
@@ -55,7 +55,7 @@ namespace VeraCrypt
 
 		SetName (Application::GetName());
 		SetTitle (Application::GetName());
-		SetIcon (Resources::GetVeraCryptIcon());
+		SetIcon (Resources::GetReveraIcon());
 
 #if defined(TC_UNIX) && !defined(TC_MACOSX)
 		try
@@ -1561,7 +1561,7 @@ namespace VeraCrypt
 		else if (show && !mTaskBarIcon->IsIconInstalled())
 		{
 #ifndef TC_MACOSX
-			mTaskBarIcon->SetIcon (Resources::GetVeraCryptIcon(), L"VeraCrypt");
+			mTaskBarIcon->SetIcon (Resources::GetReveraIcon(), L"Revera");
 #endif
 		}
 	}

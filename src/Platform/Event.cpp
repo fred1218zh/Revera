@@ -12,7 +12,7 @@
 
 #include "Event.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void Event::Connect (const EventConnectorBase &connector)
 	{

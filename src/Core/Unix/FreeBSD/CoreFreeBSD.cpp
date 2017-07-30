@@ -20,7 +20,7 @@
 #include "CoreFreeBSD.h"
 #include "Core/Unix/CoreServiceProxy.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	CoreFreeBSD::CoreFreeBSD ()
 	{

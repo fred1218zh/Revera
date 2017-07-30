@@ -16,7 +16,7 @@
 #include "Forms.h"
 #include "Common/SecurityToken.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class NewSecurityTokenKeyfileDialog : public NewSecurityTokenKeyfileDialogBase
 	{

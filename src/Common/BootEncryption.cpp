@@ -55,7 +55,7 @@ bool ZipAdd (zip_t *z, const char* name, const unsigned char* pbData, DWORD cbDa
 	return true;
 }
 
-namespace VeraCrypt
+namespace Revera
 {
 #if !defined (SETUP)
 
@@ -949,7 +949,7 @@ namespace VeraCrypt
 	DWORD BootEncryption::GetDriverServiceStartType ()
 	{
 		DWORD startType;
-		throw_sys_if (!ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", L"Start", &startType));
+		throw_sys_if (!ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\revera", L"Start", &startType));
 		return startType;
 	}
 
@@ -978,7 +978,7 @@ namespace VeraCrypt
 
 		finally_do_arg (SC_HANDLE, serviceManager, { CloseServiceHandle (finally_arg); });
 
-		SC_HANDLE service = OpenService (serviceManager, L"veracrypt", SERVICE_CHANGE_CONFIG);
+		SC_HANDLE service = OpenService (serviceManager, L"revera", SERVICE_CHANGE_CONFIG);
 		throw_sys_if (!service);
 
 		finally_do_arg (SC_HANDLE, service, { CloseServiceHandle (finally_arg); });
@@ -992,7 +992,7 @@ namespace VeraCrypt
 			wchar_t filesystem[128];
 
 			wstring path (GetWindowsDirectory());
-			path += L"\\drivers\\veracrypt.sys";
+			path += L"\\drivers\\revera.sys";
 
 			if (GetVolumePathName (path.c_str(), pathBuf, ARRAYSIZE (pathBuf))
 				&& GetVolumeInformation (pathBuf, NULL, 0, NULL, NULL, NULL, filesystem, ARRAYSIZE(filesystem))
@@ -1013,7 +1013,7 @@ namespace VeraCrypt
 			NULL, NULL, NULL, NULL, NULL));
 
 		// ChangeServiceConfig() rejects SERVICE_BOOT_START with ERROR_INVALID_PARAMETER
-		throw_sys_if (!WriteLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", L"Start", startType));
+		throw_sys_if (!WriteLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\revera", L"Start", startType));
 	}
 
 
@@ -1615,7 +1615,7 @@ namespace VeraCrypt
 				// call ReadESPFile only when needed since it requires elevation
 				if (userConfig || customUserMessage || bootLoaderVersion)
 				{
-					std::string confContent = ReadESPFile (L"\\EFI\\VeraCrypt\\DcsProp", true);
+					std::string confContent = ReadESPFile (L"\\EFI\\Revera\\DcsProp", true);
 
 					EfiBootConf conf;
 					conf.Load ((char*) confContent.c_str());
@@ -1731,7 +1731,7 @@ namespace VeraCrypt
 			if (! (userConfig & TC_BOOT_USER_CFG_FLAG_STORE_HASH))
 				hashAlg = -1;				
 
-			EfiBootInst.UpdateConfig (L"\\EFI\\VeraCrypt\\DcsProp", pim, hashAlg, ParentWindow);
+			EfiBootInst.UpdateConfig (L"\\EFI\\Revera\\DcsProp", pim, hashAlg, ParentWindow);
 		}
 	}
 
@@ -2057,7 +2057,7 @@ namespace VeraCrypt
 
 		passwordType = ReadConfigInteger (configContent, "PasswordType", 0);
 		passwordMsg = ReadConfigString (configContent, "PasswordMsg", "Enter password: ", buffer, sizeof (buffer));
-		passwordPicture = ReadConfigString (configContent, "PasswordPicture", "\\EFI\\VeraCrypt\\login.bmp", buffer, sizeof (buffer));
+		passwordPicture = ReadConfigString (configContent, "PasswordPicture", "\\EFI\\Revera\\login.bmp", buffer, sizeof (buffer));
 		//hashMsg = ReadConfigString (configContent, "HashMsg", "(0) TEST ALL (1) SHA512 (2) WHIRLPOOL (3) SHA256 (4) RIPEMD160 (5) STREEBOG\nHash: ", buffer, sizeof (buffer));
 		hashAlgo = ReadConfigInteger (configContent, "Hash", 0);
 		requestHash = ReadConfigInteger (configContent, "HashRqt", 1);
@@ -2766,21 +2766,21 @@ namespace VeraCrypt
 				// Save modules
 				bool bAlreadyExist;
 
-				EfiBootInst.MkDir(L"\\EFI\\VeraCrypt", bAlreadyExist);
-				EfiBootInst.SaveFile(L"\\EFI\\VeraCrypt\\DcsBoot.efi", dcsBootImg, sizeDcsBoot);
+				EfiBootInst.MkDir(L"\\EFI\\Revera", bAlreadyExist);
+				EfiBootInst.SaveFile(L"\\EFI\\Revera\\DcsBoot.efi", dcsBootImg, sizeDcsBoot);
 				EfiBootInst.SaveFile(Is64BitOs()? L"\\EFI\\Boot\\bootx64.efi": L"\\EFI\\Boot\\bootia32.efi", dcsBootImg, sizeDcsBoot);
-				EfiBootInst.SaveFile(L"\\EFI\\VeraCrypt\\DcsInt.dcs", dcsIntImg, sizeDcsInt);
-				EfiBootInst.SaveFile(L"\\EFI\\VeraCrypt\\DcsCfg.dcs", dcsCfgImg, sizeDcsCfg);
-				EfiBootInst.SaveFile(L"\\EFI\\VeraCrypt\\LegacySpeaker.dcs", LegacySpeakerImg, sizeLegacySpeaker);
-				EfiBootInst.SaveFile(L"\\EFI\\VeraCrypt\\DcsBml.dcs", BootMenuLockerImg, sizeBootMenuLocker);
-				EfiBootInst.SaveFile(L"\\EFI\\VeraCrypt\\DcsInfo.dcs", DcsInfoImg, sizeDcsInfo);
-				EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\PlatformInfo");
-				EfiBootInst.SetStartExec(L"VeraCrypt BootLoader (DcsBoot)", L"\\EFI\\VeraCrypt\\DcsBoot.efi");
+				EfiBootInst.SaveFile(L"\\EFI\\Revera\\DcsInt.dcs", dcsIntImg, sizeDcsInt);
+				EfiBootInst.SaveFile(L"\\EFI\\Revera\\DcsCfg.dcs", dcsCfgImg, sizeDcsCfg);
+				EfiBootInst.SaveFile(L"\\EFI\\Revera\\LegacySpeaker.dcs", LegacySpeakerImg, sizeLegacySpeaker);
+				EfiBootInst.SaveFile(L"\\EFI\\Revera\\DcsBml.dcs", BootMenuLockerImg, sizeBootMenuLocker);
+				EfiBootInst.SaveFile(L"\\EFI\\Revera\\DcsInfo.dcs", DcsInfoImg, sizeDcsInfo);
+				EfiBootInst.DelFile(L"\\EFI\\Revera\\PlatformInfo");
+				EfiBootInst.SetStartExec(L"Revera BootLoader (DcsBoot)", L"\\EFI\\Revera\\DcsBoot.efi");
 
 				// move configuration file from old location (if it exists) to new location
 				// we don't force the move operation if the new location already exists
-				EfiBootInst.RenameFile (L"\\DcsProp", L"\\EFI\\VeraCrypt\\DcsProp", FALSE);
-				EfiBootInst.RenameFile (L"\\DcsBoot", L"\\EFI\\VeraCrypt\\DcsBoot", FALSE);
+				EfiBootInst.RenameFile (L"\\DcsProp", L"\\EFI\\Revera\\DcsProp", FALSE);
+				EfiBootInst.RenameFile (L"\\DcsBoot", L"\\EFI\\Revera\\DcsBoot", FALSE);
 
 				// move the original bootloader backup from old location (if it exists) to new location
 				// we don't force the move operation if the new location already exists
@@ -2802,7 +2802,7 @@ namespace VeraCrypt
 				throw;
 			}
 
-			EfiBootInst.WriteConfig (L"\\EFI\\VeraCrypt\\DcsProp", preserveUserConfig, pim, hashAlg, NULL, ParentWindow);
+			EfiBootInst.WriteConfig (L"\\EFI\\Revera\\DcsProp", preserveUserConfig, pim, hashAlg, NULL, ParentWindow);
 		}
 		else
 		{
@@ -2859,7 +2859,7 @@ namespace VeraCrypt
 		SystemDriveConfiguration config = GetSystemDriveConfiguration();
 
 		// return true for now when EFI system encryption is used until we implement
-		// a dedicated EFI fingerprinting mechanism in VeraCrypt driver
+		// a dedicated EFI fingerprinting mechanism in Revera driver
 		if (config.SystemPartition.IsGPT)
 			return true;
 
@@ -3009,17 +3009,17 @@ namespace VeraCrypt
 
 			if (!ZipAdd (z, Is64BitOs()? "EFI/Boot/bootx64.efi": "EFI/Boot/bootia32.efi", DcsRescueImg, sizeDcsRescue))
 				throw ParameterIncorrect (SRC_POS);
-			if (!ZipAdd (z, "EFI/VeraCrypt/DcsBml.dcs", BootMenuLockerImg, sizeBootMenuLocker))
+			if (!ZipAdd (z, "EFI/Revera/DcsBml.dcs", BootMenuLockerImg, sizeBootMenuLocker))
 				throw ParameterIncorrect (SRC_POS);
-			if (!ZipAdd (z, "EFI/VeraCrypt/DcsBoot.efi", dcsBootImg, sizeDcsBoot))
+			if (!ZipAdd (z, "EFI/Revera/DcsBoot.efi", dcsBootImg, sizeDcsBoot))
 				throw ParameterIncorrect (SRC_POS);
-			if (!ZipAdd (z, "EFI/VeraCrypt/DcsCfg.dcs", dcsCfgImg, sizeDcsCfg))
+			if (!ZipAdd (z, "EFI/Revera/DcsCfg.dcs", dcsCfgImg, sizeDcsCfg))
 				throw ParameterIncorrect (SRC_POS);
-			if (!ZipAdd (z, "EFI/VeraCrypt/DcsInt.dcs", dcsIntImg, sizeDcsInt))
+			if (!ZipAdd (z, "EFI/Revera/DcsInt.dcs", dcsIntImg, sizeDcsInt))
 				throw ParameterIncorrect (SRC_POS);
-			if (!ZipAdd (z, "EFI/VeraCrypt/LegacySpeaker.dcs", LegacySpeakerImg, sizeLegacySpeaker))
+			if (!ZipAdd (z, "EFI/Revera/LegacySpeaker.dcs", LegacySpeakerImg, sizeLegacySpeaker))
 				throw ParameterIncorrect (SRC_POS);
-			if (!ZipAdd (z, "EFI/VeraCrypt/DcsInfo.dcs", DcsInfoImg, sizeDcsInfo))
+			if (!ZipAdd (z, "EFI/Revera/DcsInfo.dcs", DcsInfoImg, sizeDcsInfo))
 				throw ParameterIncorrect (SRC_POS);
 
 			Buffer volHeader(TC_BOOT_ENCRYPTION_VOLUME_HEADER_SIZE);
@@ -3040,7 +3040,7 @@ namespace VeraCrypt
 				bootDevice.Read (volHeader.Ptr (), TC_BOOT_ENCRYPTION_VOLUME_HEADER_SIZE);
 			}
 
-			if (!ZipAdd (z, "EFI/VeraCrypt/svh_bak", volHeader.Ptr (), TC_BOOT_ENCRYPTION_VOLUME_HEADER_SIZE))
+			if (!ZipAdd (z, "EFI/Revera/svh_bak", volHeader.Ptr (), TC_BOOT_ENCRYPTION_VOLUME_HEADER_SIZE))
 				throw ParameterIncorrect (SRC_POS);
 
 			// Original system loader
@@ -3078,7 +3078,7 @@ namespace VeraCrypt
 				propBuf.Resize (fileSize);
 				DWORD sizeDcsProp = propFile.Read (propBuf.Ptr (), fileSize);
 
-				if (!ZipAdd (z, "EFI/VeraCrypt/DcsProp", propBuf.Ptr (), sizeDcsProp))
+				if (!ZipAdd (z, "EFI/Revera/DcsProp", propBuf.Ptr (), sizeDcsProp))
 					throw ParameterIncorrect (SRC_POS);
 			}
 			else
@@ -3126,7 +3126,7 @@ namespace VeraCrypt
 
 			// Primary volume descriptor
 			const char* szPrimVolDesc = "\001CD001\001";
-			const char* szPrimVolLabel = "VeraCrypt Rescue Disk           ";
+			const char* szPrimVolLabel = "Revera Rescue Disk           ";
 			memcpy (image + 0x8000, szPrimVolDesc, strlen(szPrimVolDesc) + 1);
 			memcpy (image + 0x7fff + 41, szPrimVolLabel, strlen(szPrimVolLabel) + 1);
 			*(uint32 *) (image + 0x7fff + 81) = RescueIsoImageSize / 2048;
@@ -3271,23 +3271,23 @@ namespace VeraCrypt
 		{
 			const wchar_t* efi64Files[] = {
 				L"EFI/Boot/bootx64.efi",
-				L"EFI/VeraCrypt/DcsBml.dcs",
-				L"EFI/VeraCrypt/DcsBoot.efi",
-				L"EFI/VeraCrypt/DcsCfg.dcs",
-				L"EFI/VeraCrypt/DcsInt.dcs",
-				L"EFI/VeraCrypt/LegacySpeaker.dcs",
-				L"EFI/VeraCrypt/svh_bak",
+				L"EFI/Revera/DcsBml.dcs",
+				L"EFI/Revera/DcsBoot.efi",
+				L"EFI/Revera/DcsCfg.dcs",
+				L"EFI/Revera/DcsInt.dcs",
+				L"EFI/Revera/LegacySpeaker.dcs",
+				L"EFI/Revera/svh_bak",
 				L"EFI/Boot/original_bootx64.vc_backup"
 			};
 			
 			const wchar_t* efi32Files[] = {
 				L"EFI/Boot/bootia32.efi",
-				L"EFI/VeraCrypt/DcsBml.dcs",
-				L"EFI/VeraCrypt/DcsBoot.efi",
-				L"EFI/VeraCrypt/DcsCfg.dcs",
-				L"EFI/VeraCrypt/DcsInt.dcs",
-				L"EFI/VeraCrypt/LegacySpeaker.dcs",
-				L"EFI/VeraCrypt/svh_bak",
+				L"EFI/Revera/DcsBml.dcs",
+				L"EFI/Revera/DcsBoot.efi",
+				L"EFI/Revera/DcsCfg.dcs",
+				L"EFI/Revera/DcsInt.dcs",
+				L"EFI/Revera/LegacySpeaker.dcs",
+				L"EFI/Revera/svh_bak",
 				L"EFI/Boot/original_bootia32.vc_backup"
 			};
 
@@ -3462,23 +3462,23 @@ namespace VeraCrypt
 
 					const wchar_t* efi64Files[] = {
 						L"EFI/Boot/bootx64.efi",
-						L"EFI/VeraCrypt/DcsBml.dcs",
-						L"EFI/VeraCrypt/DcsBoot.efi",
-						L"EFI/VeraCrypt/DcsCfg.dcs",
-						L"EFI/VeraCrypt/DcsInt.dcs",
-						L"EFI/VeraCrypt/LegacySpeaker.dcs",
-						L"EFI/VeraCrypt/svh_bak",
+						L"EFI/Revera/DcsBml.dcs",
+						L"EFI/Revera/DcsBoot.efi",
+						L"EFI/Revera/DcsCfg.dcs",
+						L"EFI/Revera/DcsInt.dcs",
+						L"EFI/Revera/LegacySpeaker.dcs",
+						L"EFI/Revera/svh_bak",
 						L"EFI/Boot/original_bootx64.vc_backup"
 					};
 					
 					const wchar_t* efi32Files[] = {
 						L"EFI/Boot/bootia32.efi",
-						L"EFI/VeraCrypt/DcsBml.dcs",
-						L"EFI/VeraCrypt/DcsBoot.efi",
-						L"EFI/VeraCrypt/DcsCfg.dcs",
-						L"EFI/VeraCrypt/DcsInt.dcs",
-						L"EFI/VeraCrypt/LegacySpeaker.dcs",
-						L"EFI/VeraCrypt/svh_bak",
+						L"EFI/Revera/DcsBml.dcs",
+						L"EFI/Revera/DcsBoot.efi",
+						L"EFI/Revera/DcsCfg.dcs",
+						L"EFI/Revera/DcsInt.dcs",
+						L"EFI/Revera/LegacySpeaker.dcs",
+						L"EFI/Revera/svh_bak",
 						L"EFI/Boot/original_bootia32.vc_backup"
 					};
 
@@ -3673,7 +3673,7 @@ namespace VeraCrypt
 
 			EfiBootInst.ReadFile(Is64BitOs()? L"\\EFI\\Boot\\bootx64.efi": L"\\EFI\\Boot\\bootia32.efi", &bootLoaderBuf[0], (DWORD) loaderSize);
 
-			// Prevent VeraCrypt EFI loader from being backed up
+			// Prevent Revera EFI loader from being backed up
 			for (size_t i = 0; i < (size_t) loaderSize - (wcslen (VC_EFI_BOOTLOADER_NAME) * 2); ++i)
 			{
 				if (memcmp (&bootLoaderBuf[i], VC_EFI_BOOTLOADER_NAME, wcslen (VC_EFI_BOOTLOADER_NAME) * 2) == 0)
@@ -3754,16 +3754,16 @@ namespace VeraCrypt
 			EfiBootInst.DelFile(L"\\LegacySpeaker.efi");
 			EfiBootInst.DelFile(L"\\DcsBoot");
 			EfiBootInst.DelFile(L"\\DcsProp");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\DcsBoot.efi");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\DcsInt.dcs");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\DcsCfg.dcs");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\LegacySpeaker.dcs");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\DcsBml.dcs");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\DcsBoot");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\DcsInfo.dcs");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\PlatformInfo");
-			EfiBootInst.DelFile(L"\\EFI\\VeraCrypt\\DcsProp");
-			EfiBootInst.DelDir (L"\\EFI\\VeraCrypt");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\DcsBoot.efi");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\DcsInt.dcs");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\DcsCfg.dcs");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\LegacySpeaker.dcs");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\DcsBml.dcs");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\DcsBoot");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\DcsInfo.dcs");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\PlatformInfo");
+			EfiBootInst.DelFile(L"\\EFI\\Revera\\DcsProp");
+			EfiBootInst.DelDir (L"\\EFI\\Revera");
 		}
 		else
 		{
@@ -3881,7 +3881,7 @@ namespace VeraCrypt
 		{
 		case DriveFilter:
 		case VolumeFilter:
-			filter = "veracrypt";
+			filter = "revera";
 			filterReg = "UpperFilters";
 			regKey = OpenDeviceClassRegKey (deviceClassGuid);
 			throw_sys_if (regKey == INVALID_HANDLE_VALUE);
@@ -3892,7 +3892,7 @@ namespace VeraCrypt
 			if (!IsOSAtLeast (WIN_VISTA))
 				return;
 
-			filter = "veracrypt.sys";
+			filter = "revera.sys";
 			filterReg = "DumpFilters";
 			SetLastError (RegOpenKeyEx (HKEY_LOCAL_MACHINE, L"SYSTEM\\CurrentControlSet\\Control\\CrashControl", 0, KEY_READ | KEY_WRITE, &regKey));
 			throw_sys_if (GetLastError() != ERROR_SUCCESS);
@@ -4084,7 +4084,7 @@ namespace VeraCrypt
 			throw_sys_if (!service);
 
 			SERVICE_DESCRIPTION description;
-			description.lpDescription = L"Mounts VeraCrypt system favorite volumes.";
+			description.lpDescription = L"Mounts Revera system favorite volumes.";
 			ChangeServiceConfig2 (service, SERVICE_CONFIG_DESCRIPTION, &description);
 
 			CloseServiceHandle (service);
@@ -4172,9 +4172,9 @@ namespace VeraCrypt
 		else
 			configMap &= ~flag;
 #ifdef SETUP
-		WriteLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", TC_DRIVER_CONFIG_REG_VALUE_NAME, configMap);
+		WriteLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\revera", TC_DRIVER_CONFIG_REG_VALUE_NAME, configMap);
 #else
-		WriteLocalMachineRegistryDwordValue (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", TC_DRIVER_CONFIG_REG_VALUE_NAME, configMap);
+		WriteLocalMachineRegistryDwordValue (L"SYSTEM\\CurrentControlSet\\Services\\revera", TC_DRIVER_CONFIG_REG_VALUE_NAME, configMap);
 #endif
 	}
 
@@ -4799,7 +4799,7 @@ namespace VeraCrypt
 	{
 		DWORD configMap;
 
-		if (!ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", TC_DRIVER_CONFIG_REG_VALUE_NAME, &configMap))
+		if (!ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\revera", TC_DRIVER_CONFIG_REG_VALUE_NAME, &configMap))
 			configMap = 0;
 
 		return configMap;

@@ -13,7 +13,7 @@
 #include "System.h"
 #include "InfoWizardPage.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	InfoWizardPage::InfoWizardPage (wxPanel *parent, const wxString &actionButtonText, shared_ptr <Functor> actionFunctor)
 		: InfoWizardPageBase (parent)

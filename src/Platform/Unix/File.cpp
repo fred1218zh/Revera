@@ -35,7 +35,7 @@
 #include "Platform/File.h"
 #include "Platform/TextReader.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 #if 0
 #	define TC_TRACE_FILE_OPERATIONS
@@ -43,7 +43,7 @@ namespace VeraCrypt
 	static void TraceFileOperation (int fileHandle, FilePath filePath, bool write, uint64 length, int64 position = -1)
 	{
 		string path = filePath;
-		if (path.empty() || path.find ("veracrypt_aux_mnt") != string::npos)
+		if (path.empty() || path.find ("revera_aux_mnt") != string::npos)
 			return;
 
 		stringstream s;

@@ -15,7 +15,7 @@
 
 #include "CoreBase.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	extern auto_ptr <CoreBase> Core;
 	extern auto_ptr <CoreBase> CoreDirect;

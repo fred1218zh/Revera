@@ -15,7 +15,7 @@
 #include "Main/Resources.h"
 #include "WizardFrame.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	WizardFrame::WizardFrame (wxWindow* parent)
 		: WizardFrameBase (parent),
@@ -24,7 +24,7 @@ namespace VeraCrypt
 		MaxStaticTextWidth (-1),
 		WorkInProgress (false)
 	{
-		SetIcon (Resources::GetVeraCryptIcon());
+		SetIcon (Resources::GetReveraIcon());
 
 		PageTitleStaticText->SetFont (wxFont (
 #ifdef TC_WINDOWS

@@ -12,7 +12,7 @@
 #include "Common/SecurityToken.h"
 #include "WaitDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	DEFINE_EVENT_TYPE(wxEVT_COMMAND_WAITDIALOGTHREAD_COMPLETED)
 	DEFINE_EVENT_TYPE(wxEVT_COMMAND_WAITDIALOG_ADMIN_PASSWORD)

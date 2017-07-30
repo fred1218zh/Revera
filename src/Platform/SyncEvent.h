@@ -21,7 +21,7 @@
 #include "PlatformBase.h"
 #include "Mutex.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class SyncEvent
 	{

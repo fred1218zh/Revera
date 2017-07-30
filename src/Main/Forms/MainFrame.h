@@ -16,7 +16,7 @@
 #include "Forms.h"
 #include "ChangePasswordDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct FavoriteVolume;
 

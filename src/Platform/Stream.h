@@ -16,7 +16,7 @@
 #include "PlatformBase.h"
 #include "Buffer.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Stream
 	{

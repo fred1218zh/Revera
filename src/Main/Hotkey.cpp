@@ -17,7 +17,7 @@
 #include "Hotkey.h"
 #include "Xml.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	HotkeyList Hotkey::GetAvailableHotkeys ()
 	{

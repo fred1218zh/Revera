@@ -16,7 +16,7 @@
 #include "CoreService.h"
 #include "Volume/VolumePasswordCache.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	template <class T>
 	class CoreServiceProxy : public T

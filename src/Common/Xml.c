@@ -264,12 +264,12 @@ wchar_t *XmlQuoteTextW (const wchar_t *textSrc, wchar_t *textDst, int textDstMax
 #pragma warning( default : 4706 )
 int XmlWriteHeader (FILE *file)
 {
-	return fputws (L"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VeraCrypt>", file);
+	return fputws (L"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<Revera>", file);
 }
 
 
 int XmlWriteFooter (FILE *file)
 {
-	return fputws (L"\n</VeraCrypt>", file);
+	return fputws (L"\n</Revera>", file);
 }
 #endif !defined(_UEFI)

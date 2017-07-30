@@ -16,7 +16,7 @@
 #include "System.h"
 #include "Platform/Platform.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Resources
 	{
@@ -28,7 +28,7 @@ namespace VeraCrypt
 		static wxBitmap GetDriveIconMaskBitmap ();
 		static wxBitmap GetLogoBitmap ();
 		static wxBitmap GetTextualLogoBitmap ();
-		static wxIcon GetVeraCryptIcon ();
+		static wxIcon GetReveraIcon ();
 		static wxBitmap GetVolumeCreationWizardBitmap (int height = -1);
 #endif
 	};

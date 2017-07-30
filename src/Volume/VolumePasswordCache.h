@@ -16,7 +16,7 @@
 #include "Platform/Platform.h"
 #include "VolumePassword.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	typedef list < shared_ptr < VolumePassword > > CachedPasswordList;
 

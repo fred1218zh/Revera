@@ -21,7 +21,7 @@
 #include "UserPreferences.h"
 #include "UserInterfaceType.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct CommandId
 	{

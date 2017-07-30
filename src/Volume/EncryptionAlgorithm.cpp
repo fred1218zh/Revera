@@ -13,7 +13,7 @@
 #include "EncryptionAlgorithm.h"
 #include "EncryptionModeXTS.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	EncryptionAlgorithm::EncryptionAlgorithm () : Deprecated (false)
 	{

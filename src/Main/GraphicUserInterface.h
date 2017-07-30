@@ -19,7 +19,7 @@
 #include "UserInterface.h"
 #include "Forms/WaitDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class GraphicUserInterface : public UserInterface
 	{

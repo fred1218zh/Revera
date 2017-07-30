@@ -16,7 +16,7 @@
 #include "PlatformBase.h"
 #include "Memory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 
 	class ConstBufferPtr

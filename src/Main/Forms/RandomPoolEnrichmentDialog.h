@@ -16,7 +16,7 @@
 #include "Forms.h"
 #include "Main/Main.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class RandomPoolEnrichmentDialog : public RandomPoolEnrichmentDialogBase
 	{

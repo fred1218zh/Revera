@@ -14,7 +14,7 @@
 #include "CoreServiceRequest.h"
 #include "Platform/SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void CoreServiceRequest::Deserialize (shared_ptr <Stream> stream)
 	{

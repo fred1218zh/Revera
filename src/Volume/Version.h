@@ -16,7 +16,7 @@
 #include "Platform/PlatformBase.h"
 #include "Common/Tcdefs.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Version
 	{

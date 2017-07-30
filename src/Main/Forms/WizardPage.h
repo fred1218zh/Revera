@@ -15,7 +15,7 @@
 
 #include "Main/Main.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class WizardPage : public wxPanel
 	{

@@ -37,7 +37,7 @@
 
 #include "../Common/Resource.h"
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 #pragma warning( disable : 4201 )
 #pragma warning( disable : 4115 )
@@ -676,7 +676,7 @@ BOOL DoFilesInstall (HWND hwndDlg, wchar_t *szDestDir)
 		BOOL bResult, driver64 = FALSE, zipFile = FALSE;
 		wchar_t szDir[TC_MAX_PATH];
 
-		if (wcsstr (szFiles[i], L"VeraCrypt Setup") != 0)
+		if (wcsstr (szFiles[i], L"revera-setup") != 0)
 		{
 			if (bUninstall)
 				continue;	// Prevent 'access denied' error
@@ -686,12 +686,12 @@ BOOL DoFilesInstall (HWND hwndDlg, wchar_t *szDestDir)
 		}
 
 		// skip files that don't apply to the current architecture
-		if (	(Is64BitOs () && (wcscmp (szFiles[i], L"AVeraCrypt-x64.exe") == 0))
-			|| (Is64BitOs () && (wcscmp (szFiles[i], L"AVeraCryptExpander-x64.exe") == 0))
-			|| (Is64BitOs () && (wcscmp (szFiles[i], L"AVeraCrypt Format-x64.exe") == 0))
-			||	(!Is64BitOs () && (wcscmp (szFiles[i], L"AVeraCrypt-x86.exe") == 0))
-			||	(!Is64BitOs () && (wcscmp (szFiles[i], L"AVeraCryptExpander-x86.exe") == 0))
-			||	(!Is64BitOs () && (wcscmp (szFiles[i], L"AVeraCrypt Format-x86.exe") == 0))
+		if (	(Is64BitOs () && (wcscmp (szFiles[i], L"Arevera-x64.exe") == 0))
+			|| (Is64BitOs () && (wcscmp (szFiles[i], L"Areverax-x64.exe") == 0))
+			|| (Is64BitOs () && (wcscmp (szFiles[i], L"Areveraf-x64.exe") == 0))
+			||	(!Is64BitOs () && (wcscmp (szFiles[i], L"Arevera-x86.exe") == 0))
+			||	(!Is64BitOs () && (wcscmp (szFiles[i], L"Areverax-x86.exe") == 0))
+			||	(!Is64BitOs () && (wcscmp (szFiles[i], L"Areveraf-x86.exe") == 0))
 			)
 		{
 			continue;
@@ -739,9 +739,9 @@ BOOL DoFilesInstall (HWND hwndDlg, wchar_t *szDestDir)
 		{
 			SetCurrentDirectory (SetupFilesDir);
 
-			if (wcsstr (szFiles[i], L"VeraCrypt Setup") != 0)
+			if (wcsstr (szFiles[i], L"revera-setup") != 0)
 			{
-				// Copy ourselves (the distribution package) to the destination location as 'VeraCrypt Setup.exe'
+				// Copy ourselves (the distribution package) to the destination location as 'revera-setup.exe'
 
 				wchar_t mp[MAX_PATH];
 
@@ -754,45 +754,45 @@ BOOL DoFilesInstall (HWND hwndDlg, wchar_t *szDestDir)
 				curFileName [wcslen (szFiles[i]) - 1] = 0;
 
 				if (Is64BitOs ()
-					&& wcscmp (szFiles[i], L"Dveracrypt.sys") == 0)
+					&& wcscmp (szFiles[i], L"Drevera.sys") == 0)
 				{
 					StringCbCopyNW (curFileName, sizeof(curFileName), FILENAME_64BIT_DRIVER, sizeof (FILENAME_64BIT_DRIVER));
 				}
 
 				if (Is64BitOs ()
-					&& wcscmp (szFiles[i], L"AVeraCrypt.exe") == 0)
+					&& wcscmp (szFiles[i], L"Arevera.exe") == 0)
 				{
-					StringCbCopyNW (curFileName, sizeof(curFileName), L"VeraCrypt-x64.exe", sizeof (L"VeraCrypt-x64.exe"));
+					StringCbCopyNW (curFileName, sizeof(curFileName), L"revera-x64.exe", sizeof (L"revera-x64.exe"));
 				}
 
 				if (Is64BitOs ()
-					&& wcscmp (szFiles[i], L"AVeraCrypt-x86.exe") == 0)
+					&& wcscmp (szFiles[i], L"Arevera-x86.exe") == 0)
 				{
-					StringCbCopyNW (curFileName, sizeof(curFileName), L"VeraCrypt.exe", sizeof (L"VeraCrypt.exe"));
+					StringCbCopyNW (curFileName, sizeof(curFileName), L"revera.exe", sizeof (L"revera.exe"));
 				}
 
 				if (Is64BitOs ()
-					&& wcscmp (szFiles[i], L"AVeraCryptExpander.exe") == 0)
+					&& wcscmp (szFiles[i], L"Areverax.exe") == 0)
 				{
-					StringCbCopyNW (curFileName, sizeof(curFileName), L"VeraCryptExpander-x64.exe", sizeof (L"VeraCryptExpander-x64.exe"));
+					StringCbCopyNW (curFileName, sizeof(curFileName), L"reverax-x64.exe", sizeof (L"reverax-x64.exe"));
 				}
 
 				if (Is64BitOs ()
-					&& wcscmp (szFiles[i], L"AVeraCryptExpander-x86.exe") == 0)
+					&& wcscmp (szFiles[i], L"Areverax-x86.exe") == 0)
 				{
-					StringCbCopyNW (curFileName, sizeof(curFileName), L"VeraCryptExpander.exe", sizeof (L"VeraCryptExpander.exe"));
+					StringCbCopyNW (curFileName, sizeof(curFileName), L"reverax.exe", sizeof (L"reverax.exe"));
 				}
 
 				if (Is64BitOs ()
-					&& wcscmp (szFiles[i], L"AVeraCrypt Format.exe") == 0)
+					&& wcscmp (szFiles[i], L"Areveraf.exe") == 0)
 				{
-					StringCbCopyNW (curFileName, sizeof(curFileName), L"VeraCrypt Format-x64.exe", sizeof (L"VeraCrypt Format-x64.exe"));
+					StringCbCopyNW (curFileName, sizeof(curFileName), L"reveraf-x64.exe", sizeof (L"reveraf-x64.exe"));
 				}
 
 				if (Is64BitOs ()
-					&& wcscmp (szFiles[i], L"AVeraCrypt Format-x86.exe") == 0)
+					&& wcscmp (szFiles[i], L"Areveraf-x86.exe") == 0)
 				{
-					StringCbCopyNW (curFileName, sizeof(curFileName), L"VeraCrypt Format.exe", sizeof (L"VeraCrypt Format.exe"));
+					StringCbCopyNW (curFileName, sizeof(curFileName), L"reveraf.exe", sizeof (L"reveraf.exe"));
 				}
 
 				if (!bDevm)
@@ -864,7 +864,7 @@ BOOL DoFilesInstall (HWND hwndDlg, wchar_t *szDestDir)
 						EnableWow64FsRedirection (TRUE);
 				}
 
-				if (bResult && wcscmp (szFiles[i], L"AVeraCrypt.exe") == 0)
+				if (bResult && wcscmp (szFiles[i], L"Arevera.exe") == 0)
 				{
 					if (Is64BitOs ())
 						EnableWow64FsRedirection (FALSE);
@@ -936,7 +936,7 @@ BOOL DoFilesInstall (HWND hwndDlg, wchar_t *szDestDir)
 			if (driver64)
 				EnableWow64FsRedirection (TRUE);
 
-			if (bResult && wcscmp (szFiles[i], L"AVeraCrypt.exe") == 0)
+			if (bResult && wcscmp (szFiles[i], L"Arevera.exe") == 0)
 			{
 				if (Is64BitOs ())
 					EnableWow64FsRedirection (FALSE);
@@ -1025,7 +1025,7 @@ err:
 		SetCurrentDirectory (szDestDir);
 
 		// remove PDF from previous version if any
-		h = FindFirstFile (L"VeraCrypt User Guide*.pdf", &f);
+		h = FindFirstFile (L"User Guide*.pdf", &f);
 
 		if (h != INVALID_HANDLE_VALUE)
 		{
@@ -1069,7 +1069,7 @@ BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 
 	if (SystemEncryptionUpdate)
 	{
-		if (RegCreateKeyEx (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\VeraCrypt",
+		if (RegCreateKeyEx (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Revera",
 			0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE | KEY_WOW64_32KEY, NULL, &hkey, &dw) == ERROR_SUCCESS)
 		{
 			StringCbCopyW (szTmp, sizeof(szTmp), _T(VERSION_STRING));
@@ -1097,14 +1097,14 @@ BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 	if (bInstallType)
 	{
 
-		key = L"Software\\Classes\\VeraCryptVolume";
+		key = L"Software\\Classes\\ReveraVolume";
 		RegMessage (hwndDlg, key);
 		if (RegCreateKeyEx (HKEY_LOCAL_MACHINE,
 				    key,
 				    0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hkey, &dw) != ERROR_SUCCESS)
 			goto error;
 
-		StringCbCopyW (szTmp, sizeof(szTmp), L"VeraCrypt Volume");
+		StringCbCopyW (szTmp, sizeof(szTmp), L"Revera Volume");
 		if (RegSetValueEx (hkey, L"", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 			goto error;
 
@@ -1115,28 +1115,28 @@ BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 		RegCloseKey (hkey);
 		hkey = 0;
 
-		key = L"Software\\Classes\\VeraCryptVolume\\DefaultIcon";
+		key = L"Software\\Classes\\ReveraVolume\\DefaultIcon";
 		RegMessage (hwndDlg, key);
 		if (RegCreateKeyEx (HKEY_LOCAL_MACHINE,
 				    key,
 				    0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hkey, &dw) != ERROR_SUCCESS)
 			goto error;
 
-		StringCbPrintfW (szTmp, sizeof(szTmp), L"%sVeraCrypt.exe,1", szDir);
+		StringCbPrintfW (szTmp, sizeof(szTmp), L"%srevera.exe,1", szDir);
 		if (RegSetValueEx (hkey, L"", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 			goto error;
 
 		RegCloseKey (hkey);
 		hkey = 0;
 
-		key = L"Software\\Classes\\VeraCryptVolume\\Shell\\open\\command";
+		key = L"Software\\Classes\\ReveraVolume\\Shell\\open\\command";
 		RegMessage (hwndDlg, key);
 		if (RegCreateKeyEx (HKEY_LOCAL_MACHINE,
 				    key,
 				    0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hkey, &dw) != ERROR_SUCCESS)
 			goto error;
 
-		StringCbPrintfW (szTmp, sizeof(szTmp), L"\"%sVeraCrypt.exe\" /v \"%%1\"", szDir );
+		StringCbPrintfW (szTmp, sizeof(szTmp), L"\"%srevera.exe\" /v \"%%1\"", szDir );
 		if (RegSetValueEx (hkey, L"", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 			goto error;
 
@@ -1148,7 +1148,7 @@ BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 		wchar_t typeClass[256];
 		DWORD typeClassSize = sizeof (typeClass);
 
-		if (ReadLocalMachineRegistryString (key, L"", typeClass, &typeClassSize) && typeClassSize > 0 && wcscmp (typeClass, L"VeraCryptVolume") == 0)
+		if (ReadLocalMachineRegistryString (key, L"", typeClass, &typeClassSize) && typeClassSize > 0 && wcscmp (typeClass, L"ReveraVolume") == 0)
 			typeClassChanged = FALSE;
 
 		RegMessage (hwndDlg, key);
@@ -1157,7 +1157,7 @@ BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 				    0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hkey, &dw) != ERROR_SUCCESS)
 			goto error;
 
-		StringCbCopyW (szTmp, sizeof(szTmp), L"VeraCryptVolume");
+		StringCbCopyW (szTmp, sizeof(szTmp), L"ReveraVolume");
 		if (RegSetValueEx (hkey, L"", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 			goto error;
 
@@ -1168,7 +1168,7 @@ BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 			SHChangeNotify (SHCNE_ASSOCCHANGED, SHCNF_IDLIST, NULL, NULL);
 	}
 
-	key = L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\VeraCrypt";
+	key = L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Revera";
 	RegMessage (hwndDlg, key);
 	if (RegCreateKeyEx (HKEY_LOCAL_MACHINE,
 		key,
@@ -1176,15 +1176,15 @@ BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 		goto error;
 
 	/* IMPORTANT: IF YOU CHANGE THIS IN ANY WAY, REVISE AND UPDATE SetInstallationPath() ACCORDINGLY! */
-	StringCbPrintfW (szTmp, sizeof(szTmp), L"\"%sVeraCrypt Setup.exe\" /u", szDir);
+	StringCbPrintfW (szTmp, sizeof(szTmp), L"\"%srevera-setup.exe\" /u", szDir);
 	if (RegSetValueEx (hkey, L"UninstallString", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 		goto error;
 
-	StringCbPrintfW (szTmp, sizeof(szTmp), L"\"%sVeraCrypt Setup.exe\" /c", szDir);
+	StringCbPrintfW (szTmp, sizeof(szTmp), L"\"%srevera-setup.exe\" /c", szDir);
 	if (RegSetValueEx (hkey, L"ModifyPath", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 		goto error;
 
-	StringCbPrintfW (szTmp, sizeof(szTmp), L"\"%sVeraCrypt Setup.exe\"", szDir);
+	StringCbPrintfW (szTmp, sizeof(szTmp), L"\"%srevera-setup.exe\"", szDir);
 	if (RegSetValueEx (hkey, L"DisplayIcon", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 		goto error;
 
@@ -1192,11 +1192,11 @@ BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 	if (RegSetValueEx (hkey, L"DisplayVersion", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 		goto error;
 
-	StringCbCopyW (szTmp, sizeof(szTmp), L"VeraCrypt");
+	StringCbCopyW (szTmp, sizeof(szTmp), L"Revera");
 	if (RegSetValueEx (hkey, L"DisplayName", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 		goto error;
 
-	StringCbCopyW (szTmp, sizeof(szTmp), L"IDRIX");
+	StringCbCopyW (szTmp, sizeof(szTmp), L"SLIBIO");
 	if (RegSetValueEx (hkey, L"Publisher", 0, REG_SZ, (BYTE *) szTmp, (wcslen (szTmp) + 1) * sizeof (wchar_t)) != ERROR_SUCCESS)
 		goto error;
 
@@ -1238,7 +1238,7 @@ BOOL DoApplicationDataUninstall (HWND hwndDlg)
 	StatusMessage (hwndDlg, "REMOVING_APPDATA");
 
 	SHGetFolderPath (NULL, CSIDL_APPDATA, NULL, 0, path);
-	StringCbCatW (path, sizeof(path), L"\\VeraCrypt\\");
+	StringCbCatW (path, sizeof(path), L"\\Revera\\");
 
 	// Delete favorite volumes file
 	StringCbPrintfW (path2, sizeof(path2), L"%s%s", path, TC_APPD_FILENAME_FAVORITE_VOLUMES);
@@ -1266,7 +1266,7 @@ BOOL DoApplicationDataUninstall (HWND hwndDlg)
 	StatDeleteFile (path2, FALSE);
 
 	SHGetFolderPath (NULL, CSIDL_APPDATA, NULL, 0, path);
-	StringCbCatW (path, sizeof(path), L"\\VeraCrypt");
+	StringCbCatW (path, sizeof(path), L"\\Revera");
 	RemoveMessage (hwndDlg, path);
 	if (!StatRemoveDirectory (path))
 	{
@@ -1274,17 +1274,17 @@ BOOL DoApplicationDataUninstall (HWND hwndDlg)
 		bOK = FALSE;
 	}
 
-	// remove VeraCrypt under common appdata
+	// remove Revera under common appdata
 	if (SUCCEEDED (SHGetFolderPath (NULL, CSIDL_COMMON_APPDATA | CSIDL_FLAG_CREATE, NULL, 0, path)))
 	{
-		StringCbCatW (path, sizeof(path), L"\\VeraCrypt");
+		StringCbCatW (path, sizeof(path), L"\\Revera");
 
 		// Delete original bootloader
 		StringCbPrintfW (path2, sizeof(path2), L"%s\\%s", path, TC_SYS_BOOT_LOADER_BACKUP_NAME);
 		RemoveMessage (hwndDlg, path2);
 		StatDeleteFile (path2, FALSE);
 
-		// remove VeraCrypt folder
+		// remove Revera folder
 		RemoveMessage (hwndDlg, path);
 		StatRemoveDirectory (path);
 	}
@@ -1316,43 +1316,43 @@ BOOL DoRegUninstall (HWND hwndDlg, BOOL bRemoveDeprecated)
 
 	if (RegDeleteKeyExWPtr)
 	{
-		RegDeleteKeyExWPtr (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\VeraCrypt", KEY_WOW64_32KEY, 0);
-		RegDeleteKeyExWPtr (HKEY_CURRENT_USER, L"Software\\VeraCrypt", KEY_WOW64_32KEY, 0);
+		RegDeleteKeyExWPtr (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Revera", KEY_WOW64_32KEY, 0);
+		RegDeleteKeyExWPtr (HKEY_CURRENT_USER, L"Software\\Revera", KEY_WOW64_32KEY, 0);
 	}
 	else
 	{
-		RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\VeraCrypt");
-		RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\VeraCrypt");
+		RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Revera");
+		RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Revera");
 	}
-	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\VeraCryptVolume\\Shell\\open\\command");
-	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\VeraCryptVolume\\Shell\\open");
-	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\VeraCryptVolume\\Shell");
-	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\VeraCryptVolume\\DefaultIcon");
-	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\VeraCryptVolume");
+	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\ReveraVolume\\Shell\\open\\command");
+	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\ReveraVolume\\Shell\\open");
+	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\ReveraVolume\\Shell");
+	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\ReveraVolume\\DefaultIcon");
+	RegDeleteKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\ReveraVolume");
 
 	if (!bRemoveDeprecated)
 	{
 		HKEY hKey;
 		GetStartupRegKeyName (regk, sizeof(regk));
-		DeleteRegistryValue (regk, L"VeraCrypt");
+		DeleteRegistryValue (regk, L"Revera");
 
 		DeleteRegistryKey (HKEY_LOCAL_MACHINE, L"Software\\Classes\\.hc");
 
 		// enable the SE_TAKE_OWNERSHIP_NAME privilege for this operation
 		SetPrivilege (SE_TAKE_OWNERSHIP_NAME, TRUE);
 
-		// clean MuiCache list from VeraCrypt entries
-		SearchAndDeleteRegistrySubString (HKEY_CLASSES_ROOT, L"Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache", L"VeraCrypt", FALSE, NULL);
+		// clean MuiCache list from Revera entries
+		SearchAndDeleteRegistrySubString (HKEY_CLASSES_ROOT, L"Local Settings\\Software\\Microsoft\\Windows\\Shell\\MuiCache", L"Revera", FALSE, NULL);
 
-		// clean other VeraCrypt entries from all users
+		// clean other Revera entries from all users
 		SearchAndDeleteRegistrySubString (HKEY_USERS, L"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.hc", NULL, TRUE, NULL);
-		SearchAndDeleteRegistrySubString (HKEY_USERS, L"Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility Assistant\\Persisted", L"VeraCrypt", TRUE, NULL);
-		SearchAndDeleteRegistrySubString (HKEY_USERS, L"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartPage\\NewShortcuts", L"VeraCrypt", TRUE, NULL);
+		SearchAndDeleteRegistrySubString (HKEY_USERS, L"Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility Assistant\\Persisted", L"Revera", TRUE, NULL);
+		SearchAndDeleteRegistrySubString (HKEY_USERS, L"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartPage\\NewShortcuts", L"Revera", TRUE, NULL);
 
 		if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"SYSTEM", 0, KEY_ALL_ACCESS | WRITE_DAC | WRITE_OWNER, &hKey) == ERROR_SUCCESS)
 		{
-			SearchAndDeleteRegistrySubString (hKey, L"Enum\\Root\\LEGACY_VERACRYPT", NULL, TRUE, L"ControlSet");
-			SearchAndDeleteRegistrySubString (hKey, L"services\\veracrypt", NULL, TRUE, L"ControlSet");
+			SearchAndDeleteRegistrySubString (hKey, L"Enum\\Root\\LEGACY_REVERA", NULL, TRUE, L"ControlSet");
+			SearchAndDeleteRegistrySubString (hKey, L"services\\Revera", NULL, TRUE, L"ControlSet");
 			RegCloseKey(hKey);
 		}
 
@@ -1389,7 +1389,7 @@ retry:
 	if (hService == NULL)
 		goto error;
 
-	if (wcscmp (L"veracrypt", lpszService) == 0)
+	if (wcscmp (L"revera", lpszService) == 0)
 	{
 		try
 		{
@@ -1450,7 +1450,7 @@ retry:
 
 try_delete:
 
-	if (wcscmp (L"veracrypt", lpszService) == 0)
+	if (wcscmp (L"revera", lpszService) == 0)
 		StatusMessage (hwndDlg, "REMOVING_DRIVER");
 	else
 		StatusMessageParam (hwndDlg, "REMOVING", lpszService);
@@ -1664,8 +1664,8 @@ BOOL DoDriverUnload (HWND hwndDlg)
 	else
 	{
 		// Note that the driver may have already been unloaded during this session (e.g. retry after an error, etc.) so it is not
-		// guaranteed that the user is installing VeraCrypt for the first time now (we also cannot know if the user has already
-		// installed and used VeraCrypt on another system before).
+		// guaranteed that the user is installing Revera for the first time now (we also cannot know if the user has already
+		// installed and used Revera on another system before).
 		bPossiblyFirstTimeInstall = TRUE;
 	}
 
@@ -1729,7 +1729,7 @@ BOOL DoShortcutsUninstall (HWND hwndDlg, wchar_t *szDestDir)
 	if (bSlash == FALSE)
 		StringCbCatW (szLinkDir, sizeof(szLinkDir), L"\\");
 
-	StringCbCatW (szLinkDir, sizeof(szLinkDir), L"VeraCrypt");
+	StringCbCatW (szLinkDir, sizeof(szLinkDir), L"Revera");
 
 	// Global start menu
 	{
@@ -1737,7 +1737,7 @@ BOOL DoShortcutsUninstall (HWND hwndDlg, wchar_t *szDestDir)
 		wchar_t path[TC_MAX_PATH];
 
 		SHGetSpecialFolderPath (hwndDlg, path, CSIDL_COMMON_PROGRAMS, 0);
-		StringCbCatW (path, sizeof(path), L"\\VeraCrypt");
+		StringCbCatW (path, sizeof(path), L"\\Revera");
 
 		if (_wstat (path, &st) == 0)
 		{
@@ -1747,27 +1747,27 @@ BOOL DoShortcutsUninstall (HWND hwndDlg, wchar_t *szDestDir)
 	}
 
 	// Start menu entries
-	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCrypt.lnk");
+	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera.lnk");
 	RemoveMessage (hwndDlg, szTmp2);
 	if (StatDeleteFile (szTmp2, FALSE) == FALSE)
 		goto error;
 
-	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCryptExpander.lnk");
+	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera Expander.lnk");
 	RemoveMessage (hwndDlg, szTmp2);
 	if (StatDeleteFile (szTmp2, FALSE) == FALSE)
 		goto error;
 
-	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCrypt Website.url");
+	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera Website.url");
 	RemoveMessage (hwndDlg, szTmp2);
 	if (StatDeleteFile (szTmp2, FALSE) == FALSE)
 		goto error;
 
-	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Uninstall VeraCrypt.lnk");
+	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Uninstall Revera.lnk");
 	RemoveMessage (hwndDlg, szTmp2);
 	if (StatDeleteFile (szTmp2, FALSE) == FALSE)
 		goto error;
 
-	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCrypt User's Guide.lnk");
+	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera User's Guide.lnk");
 	StatDeleteFile (szTmp2, FALSE);
 
 	// Start menu group
@@ -1782,7 +1782,7 @@ BOOL DoShortcutsUninstall (HWND hwndDlg, wchar_t *szDestDir)
 	else
 		SHGetSpecialFolderPath (hwndDlg, szLinkDir, CSIDL_DESKTOPDIRECTORY, 0);
 
-	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCrypt.lnk");
+	StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera.lnk");
 
 	RemoveMessage (hwndDlg, szTmp2);
 	if (StatDeleteFile (szTmp2, FALSE) == FALSE)
@@ -1820,7 +1820,7 @@ BOOL DoShortcutsInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bProgGroup, BOOL
 	if (bSlash == FALSE)
 		StringCbCatW (szLinkDir, sizeof(szLinkDir), L"\\");
 
-	StringCbCatW (szLinkDir, sizeof(szLinkDir), L"VeraCrypt");
+	StringCbCatW (szLinkDir, sizeof(szLinkDir), L"Revera");
 
 	StringCbCopyW (szDir, sizeof(szDir), szDestDir);
 	x = wcslen (szDestDir);
@@ -1849,21 +1849,21 @@ BOOL DoShortcutsInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bProgGroup, BOOL
 			}
 		}
 
-		StringCbPrintfW (szTmp, sizeof(szTmp), L"%s%s", szDir, L"VeraCrypt.exe");
-		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCrypt.lnk");
+		StringCbPrintfW (szTmp, sizeof(szTmp), L"%s%s", szDir, L"Revera.exe");
+		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera.lnk");
 
 		IconMessage (hwndDlg, szTmp2);
 		if (CreateLink (szTmp, L"", szTmp2, NULL, -1) != S_OK)
 			goto error;
 
-		StringCbPrintfW (szTmp, sizeof(szTmp), L"%s%s", szDir, L"VeraCryptExpander.exe");
-		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCryptExpander.lnk");
+		StringCbPrintfW (szTmp, sizeof(szTmp), L"%s%s", szDir, L"Reverax.exe");
+		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera Expander.lnk");
 
 		IconMessage (hwndDlg, szTmp2);
 		if (CreateLink (szTmp, L"", szTmp2, NULL, -1) != S_OK)
 			goto error;
 
-		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCrypt Website.url");
+		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera Website.url");
 		IconMessage (hwndDlg, szTmp2);
 		f = _wfopen (szTmp2, L"w");
 		if (f)
@@ -1876,8 +1876,8 @@ BOOL DoShortcutsInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bProgGroup, BOOL
 		else
 			goto error;
 
-		StringCbPrintfW (szTmp, sizeof(szTmp), L"%s%s", szDir, L"VeraCrypt Setup.exe");
-		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Uninstall VeraCrypt.lnk");
+		StringCbPrintfW (szTmp, sizeof(szTmp), L"%s%s", szDir, L"revera-setup.exe");
+		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Uninstall Revera.lnk");
 		if (GetSystemDirectory (szTmp3, ARRAYSIZE(szTmp3)))
 		{
 			StringCbCatW (szTmp3, sizeof(szTmp3), L"\\control.exe");
@@ -1889,7 +1889,7 @@ BOOL DoShortcutsInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bProgGroup, BOOL
 		if (CreateLink (szTmp3, L"appwiz.cpl", szTmp2, szTmp, 0) != S_OK)
 			goto error;
 
-		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCrypt User's Guide.lnk");
+		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera User's Guide.lnk");
 		StatDeleteFile (szTmp2, FALSE);
 	}
 
@@ -1910,8 +1910,8 @@ BOOL DoShortcutsInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bProgGroup, BOOL
 		else
 			SHGetSpecialFolderPath (hwndDlg, szLinkDir, CSIDL_DESKTOPDIRECTORY, 0);
 
-		StringCbPrintfW (szTmp, sizeof(szTmp), L"%s%s", szDir, L"VeraCrypt.exe");
-		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\VeraCrypt.lnk");
+		StringCbPrintfW (szTmp, sizeof(szTmp), L"%s%s", szDir, L"Revera.exe");
+		StringCbPrintfW (szTmp2, sizeof(szTmp2), L"%s%s", szLinkDir, L"\\Revera.lnk");
 
 		IconMessage (hwndDlg, szTmp2);
 
@@ -1986,7 +1986,7 @@ static void SetSystemRestorePoint (HWND hwndDlg, BOOL finalize)
 		RestPtInfo.dwEventType = BEGIN_SYSTEM_CHANGE;
 		RestPtInfo.dwRestorePtType = bUninstall ? APPLICATION_UNINSTALL : APPLICATION_INSTALL | DEVICE_DRIVER_INSTALL;
 		RestPtInfo.llSequenceNumber = 0;
-		StringCbCopyW (RestPtInfo.szDescription, sizeof(RestPtInfo.szDescription), bUninstall ? L"VeraCrypt uninstallation" : L"VeraCrypt installation");
+		StringCbCopyW (RestPtInfo.szDescription, sizeof(RestPtInfo.szDescription), bUninstall ? L"Revera uninstallation" : L"Revera installation");
 
 		if(!_SRSetRestorePoint (&RestPtInfo, &SMgrStatus))
 		{
@@ -2032,7 +2032,7 @@ void DoUninstall (void *arg)
 		if (!Rollback && bSystemRestore && !bTempSkipSysRestore)
 			SetSystemRestorePoint (hwndDlg, FALSE);
 
-		if (DoServiceUninstall (hwndDlg, L"veracrypt") == FALSE)
+		if (DoServiceUninstall (hwndDlg, L"revera") == FALSE)
 		{
 			bOK = FALSE;
 		}
@@ -2058,10 +2058,10 @@ void DoUninstall (void *arg)
 			FILE *f;
 
 			// Deprecated service
-			DoServiceUninstall (hwndDlg, L"VeraCryptService");
+			DoServiceUninstall (hwndDlg, L"ReveraService");
 
 			GetTempPath (ARRAYSIZE (temp), temp);
-			StringCbPrintfW (UninstallBatch, sizeof (UninstallBatch), L"%sVeraCrypt-Uninstall.bat", temp);
+			StringCbPrintfW (UninstallBatch, sizeof (UninstallBatch), L"%sRevera-Uninstall.bat", temp);
 
 			UninstallBatch [ARRAYSIZE(UninstallBatch)-1] = 0;
 
@@ -2076,8 +2076,8 @@ void DoUninstall (void *arg)
 					L"if exist \"%s%s\" goto loop\n"
 					L"rmdir \"%s\"\n"
 					L"del \"%s\"",
-					InstallationPath, L"VeraCrypt Setup.exe",
-					InstallationPath, L"VeraCrypt Setup.exe",
+					InstallationPath, L"revera-setup.exe",
+					InstallationPath, L"revera-setup.exe",
 					InstallationPath,
 					UninstallBatch
 					);
@@ -2184,7 +2184,7 @@ void DoInstall (void *arg)
 	UpdateProgressBarProc(50);
 
 	// Remove deprecated
-	DoServiceUninstall (hwndDlg, L"VeraCryptService");
+	DoServiceUninstall (hwndDlg, L"ReveraService");
 
 	UpdateProgressBarProc(55);
 
@@ -2194,10 +2194,10 @@ void DoInstall (void *arg)
 	UpdateProgressBarProc(61);
 
 	GetWindowsDirectory (path, ARRAYSIZE (path));
-	StringCbCatW (path, sizeof (path), L"\\VeraCrypt Setup.exe");
+	StringCbCatW (path, sizeof (path), L"\\revera-setup.exe");
 	StatDeleteFile (path, FALSE);
 
-	if (UpdateProgressBarProc(63) && UnloadDriver && DoServiceUninstall (hwndDlg, L"veracrypt") == FALSE)
+	if (UpdateProgressBarProc(63) && UnloadDriver && DoServiceUninstall (hwndDlg, L"revera") == FALSE)
 	{
 		bOK = FALSE;
 	}
@@ -2319,12 +2319,12 @@ void SetInstallationPath (HWND hwndDlg)
 
 	memset (InstallationPath, 0, sizeof (InstallationPath));
 
-	// Determine if VeraCrypt is already installed and try to determine its "Program Files" location
-	if (RegOpenKeyEx (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\VeraCrypt", 0, KEY_READ | KEY_WOW64_32KEY, &hkey) == ERROR_SUCCESS)
+	// Determine if Revera is already installed and try to determine its "Program Files" location
+	if (RegOpenKeyEx (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Revera", 0, KEY_READ | KEY_WOW64_32KEY, &hkey) == ERROR_SUCCESS)
 	{
-		/* Default 'UninstallString' registry strings written by VeraCrypt:
+		/* Default 'UninstallString' registry strings written by Revera:
 		------------------------------------------------------------------------------------
-		5.0+	"C:\Program Files\VeraCrypt\VeraCrypt Setup.exe" /u
+		5.0+	"C:\Program Files\Revera\revera-setup.exe" /u
 		*/
 
 		wchar_t rv[MAX_PATH*4];
@@ -2333,7 +2333,7 @@ void SetInstallationPath (HWND hwndDlg)
 		{
 			size_t len = 0;
 
-			// Cut and paste the location (path) where VeraCrypt is installed to InstallationPath
+			// Cut and paste the location (path) where Revera is installed to InstallationPath
 			if (rv[0] == L'"')
 			{
 				len = wcsrchr (rv, L'/') - rv - 2;
@@ -2356,11 +2356,11 @@ void SetInstallationPath (HWND hwndDlg)
 	{
 		wchar_t mp[MAX_PATH];
 
-		// Determine whether we were launched from the folder where VeraCrypt is installed
+		// Determine whether we were launched from the folder where Revera is installed
 		GetModuleFileName (NULL, mp, ARRAYSIZE (mp));
 		if (wcsncmp (InstallationPath, mp, min (wcslen(InstallationPath), wcslen(mp))) == 0)
 		{
-			// We were launched from the folder where VeraCrypt is installed
+			// We were launched from the folder where Revera is installed
 
 			if (!IsNonInstallMode() && !bDevm)
 				bChangeMode = TRUE;
@@ -2368,7 +2368,7 @@ void SetInstallationPath (HWND hwndDlg)
 	}
 	else
 	{
-		/* VeraCrypt is not installed or it wasn't possible to determine where it is installed. */
+		/* Revera is not installed or it wasn't possible to determine where it is installed. */
 
 		// Default "Program Files" path.
 		SHGetSpecialFolderLocation (hwndDlg, CSIDL_PROGRAM_FILES, &itemList);
@@ -2387,7 +2387,7 @@ void SetInstallationPath (HWND hwndDlg)
 			}
 		}
 
-		StringCbCatW (path, sizeof(path), L"\\VeraCrypt\\");
+		StringCbCatW (path, sizeof(path), L"\\Revera\\");
 		StringCbCopyW (InstallationPath, sizeof(InstallationPath), path);
 	}
 
@@ -2501,7 +2501,7 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 
 	SelfExtractStartupInit();
 
-	lpszTitle = L"VeraCrypt Setup";
+	lpszTitle = L"Revera Setup";
 
 	/* Call InitApp to initialize the common code */
 	InitApp (hInstance, NULL);
@@ -2574,14 +2574,14 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 			}
 			else if (!bDevm)
 			{
-				MessageBox (NULL, L"Error: This installer file does not contain any compressed files.\n\nTo create a self-extracting installation package (with embedded compressed files), run:\n\"VeraCrypt Setup.exe\" /p", L"VeraCrypt", MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
+				MessageBox (NULL, L"Error: This installer file does not contain any compressed files.\n\nTo create a self-extracting installation package (with embedded compressed files), run:\n\"revera-setup.exe\" /p", L"Revera", MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
 				FinalizeApp ();
 				exit (1);
 			}
 
 			if (bChangeMode)
 			{
-				/* VeraCrypt is already installed on this system and we were launched from the Program Files folder */
+				/* Revera is already installed on this system and we were launched from the Program Files folder */
 
 				char *tmpStr[] = {0, "SELECT_AN_ACTION", "REPAIR_REINSTALL", "UNINSTALL", "EXIT", 0};
 

@@ -16,7 +16,7 @@
 #include "System.h"
 #include "Main.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class LanguageStrings
 	{

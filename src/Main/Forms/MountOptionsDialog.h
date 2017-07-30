@@ -17,7 +17,7 @@
 #include "Main/Main.h"
 #include "VolumePasswordPanel.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class MountOptionsDialog : public MountOptionsDialogBase
 	{

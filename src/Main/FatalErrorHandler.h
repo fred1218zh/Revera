@@ -15,7 +15,7 @@
 
 #include "System.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class FatalErrorHandler
 	{

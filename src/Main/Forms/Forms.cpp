@@ -10,7 +10,7 @@
 #include "Forms.h"
 
 ///////////////////////////////////////////////////////////////////////////
-using namespace VeraCrypt;
+using namespace Revera;
 
 MainFrameBase::MainFrameBase( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
@@ -172,7 +172,7 @@ MainFrameBase::MainFrameBase( wxWindow* parent, wxWindowID id, const wxString& t
 	HelpMenu->AppendSeparator();
 
 	wxMenuItem* WebsiteMenuItem;
-	WebsiteMenuItem = new wxMenuItem( HelpMenu, wxID_ANY, wxString( _("VeraCrypt Website") ) , wxEmptyString, wxITEM_NORMAL );
+	WebsiteMenuItem = new wxMenuItem( HelpMenu, wxID_ANY, wxString( _("Revera Website") ) , wxEmptyString, wxITEM_NORMAL );
 	HelpMenu->Append( WebsiteMenuItem );
 
 	wxMenuItem* DownloadsMenuItem;
@@ -1841,7 +1841,7 @@ PreferencesDialogBase::PreferencesDialogBase( wxWindow* parent, wxWindowID id, c
 	wxStaticBoxSizer* sbSizer14;
 	sbSizer14 = new wxStaticBoxSizer( new wxStaticBox( SecurityPage, wxID_ANY, _("Password Cache") ), wxVERTICAL );
 
-	WipeCacheOnCloseCheckBox = new wxCheckBox( SecurityPage, wxID_ANY, _("Wipe after VeraCrypt window has been closed"), wxDefaultPosition, wxDefaultSize, 0 );
+	WipeCacheOnCloseCheckBox = new wxCheckBox( SecurityPage, wxID_ANY, _("Wipe after Revera window has been closed"), wxDefaultPosition, wxDefaultSize, 0 );
 	sbSizer14->Add( WipeCacheOnCloseCheckBox, 0, wxALL, 5 );
 
 	WipeCacheOnAutoDismountCheckBox = new wxCheckBox( SecurityPage, wxID_ANY, _("Wipe after volume has been auto-dismounted"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -1937,7 +1937,7 @@ PreferencesDialogBase::PreferencesDialogBase( wxWindow* parent, wxWindowID id, c
 	bSizer62 = new wxBoxSizer( wxVERTICAL );
 
 	wxStaticBoxSizer* sbSizer18;
-	sbSizer18 = new wxStaticBoxSizer( new wxStaticBox( BackgroundTaskPanel, wxID_ANY, _("VeraCrypt Background Task") ), wxVERTICAL );
+	sbSizer18 = new wxStaticBoxSizer( new wxStaticBox( BackgroundTaskPanel, wxID_ANY, _("Revera Background Task") ), wxVERTICAL );
 
 	BackgroundTaskEnabledCheckBox = new wxCheckBox( BackgroundTaskPanel, wxID_ANY, _("Enabled"), wxDefaultPosition, wxDefaultSize, 0 );
 	sbSizer18->Add( BackgroundTaskEnabledCheckBox, 0, wxALL, 5 );
@@ -1980,13 +1980,13 @@ PreferencesDialogBase::PreferencesDialogBase( wxWindow* parent, wxWindowID id, c
 
 	LogOnSizer = new wxStaticBoxSizer( new wxStaticBox( SystemIntegrationPage, wxID_ANY, _("Actions to Perform when User Logs On") ), wxVERTICAL );
 
-	StartOnLogonCheckBox = new wxCheckBox( SystemIntegrationPage, wxID_ANY, _("Start VeraCrypt Background Task"), wxDefaultPosition, wxDefaultSize, 0 );
+	StartOnLogonCheckBox = new wxCheckBox( SystemIntegrationPage, wxID_ANY, _("Start Revera Background Task"), wxDefaultPosition, wxDefaultSize, 0 );
 	LogOnSizer->Add( StartOnLogonCheckBox, 0, wxALL, 5 );
 
 	MountFavoritesOnLogonCheckBox = new wxCheckBox( SystemIntegrationPage, wxID_ANY, _("Mount favorite volumes"), wxDefaultPosition, wxDefaultSize, 0 );
 	LogOnSizer->Add( MountFavoritesOnLogonCheckBox, 0, wxALL, 5 );
 
-	MountDevicesOnLogonCheckBox = new wxCheckBox( SystemIntegrationPage, wxID_ANY, _("Mount all device-hosted VeraCrypt volumes"), wxDefaultPosition, wxDefaultSize, 0 );
+	MountDevicesOnLogonCheckBox = new wxCheckBox( SystemIntegrationPage, wxID_ANY, _("Mount all device-hosted Revera volumes"), wxDefaultPosition, wxDefaultSize, 0 );
 	LogOnSizer->Add( MountDevicesOnLogonCheckBox, 0, wxALL, 5 );
 
 

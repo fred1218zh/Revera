@@ -15,7 +15,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "VolumePropertiesDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumePropertiesDialog::VolumePropertiesDialog (wxWindow* parent, const VolumeInfo &volumeInfo)
 		: VolumePropertiesDialogBase (parent)
@@ -76,7 +76,7 @@ namespace VeraCrypt
 		AppendToList ("BACKUP_HEADER", LangString[volumeInfo.MinRequiredProgramVersion >= 0x10b ? "UISTR_YES" : "UISTR_NO"]);
 
 #ifdef TC_LINUX
-		if (string (volumeInfo.VirtualDevice).find ("/dev/mapper/veracrypt") != 0)
+		if (string (volumeInfo.VirtualDevice).find ("/dev/mapper/revera") != 0)
 		{
 #endif
 		AppendToList ("TOTAL_DATA_READ", Gui->SizeToString (volumeInfo.TotalDataRead));

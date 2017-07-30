@@ -85,15 +85,15 @@ show_message()
 			else
 				if [ $XTERM -eq 1 ]
 				then
-					xterm -T 'VeraCrypt Setup' -e sh -c "echo $*; read A"
+					xterm -T 'Revera Setup' -e sh -c "echo $*; read A"
 				else
 					if [ $GTERM -eq 1 ]
 					then
-						gnome-terminal --title='VeraCrypt Setup' -e "sh -c \"echo $*; read A\""
+						gnome-terminal --title='Revera Setup' -e "sh -c \"echo $*; read A\""
 					else
 						if [ $KTERM -eq 1 ]
 						then
-							konsole --title 'VeraCrypt Setup' --caption 'VeraCrypt Setup' -e sh -c "echo $*; read A"
+							konsole --title 'Revera Setup' --caption 'Revera Setup' -e sh -c "echo $*; read A"
 						fi
 					fi
 				fi
@@ -846,10 +846,10 @@ if [ $XMESSAGE -eq 1 ]
 then
 
 	cat <<_END | xmessage -center -file - -buttons "Exit:1,Extract .$PACKAGE_TYPE Package File:20,Install VeraCrypt:10" -default 'Install VeraCrypt'
-VeraCrypt $VERSION Setup
+Revera $VERSION Setup
 ====================
- VeraCrypt is a free disk encryption software brought to you by IDRIX
- (http://www.idrix.fr) and that is based on TrueCrypt.
+ VeraCrypt is a free disk encryption software brought to you by SLIBIO
+ (http://revera.slib.io) and that is based on TrueCrypt.
  It is a software system for establishing and maintaining an
  on-the-fly-encrypted volume (data storage device). On-the-fly encryption
  means that data are automatically encrypted or decrypted right before they
@@ -923,8 +923,8 @@ else
 	unset SUDO
 fi
 
-[ -n "$SUDO" -a $GUI -eq 1 ] && which gksudo >/dev/null 2>/dev/null && SUDO="gksudo -D 'VeraCrypt Setup' --"
-[ -n "$SUDO" -a $GUI -eq 1 ] && which kdesudo >/dev/null 2>/dev/null && SUDO="kdesudo -d --comment 'VeraCrypt Setup' --"
+[ -n "$SUDO" -a $GUI -eq 1 ] && which gksudo >/dev/null 2>/dev/null && SUDO="gksudo -D 'Revera Setup' --"
+[ -n "$SUDO" -a $GUI -eq 1 ] && which kdesudo >/dev/null 2>/dev/null && SUDO="kdesudo -d --comment 'Revera Setup' --"
 
 
 # License agreement
@@ -1065,15 +1065,15 @@ then
 	then
 		if [ $XTERM -eq 1 ]
 		then
-			exec xterm -T 'VeraCrypt Setup' -e sh -c "echo Installing package...; $SUDO $PACKAGE_INSTALLER $PACKAGE_INSTALLER_OPTS $PACKAGE; rm -f $PACKAGE; echo; echo Press Enter to exit...; read A"
+			exec xterm -T 'Revera Setup' -e sh -c "echo Installing package...; $SUDO $PACKAGE_INSTALLER $PACKAGE_INSTALLER_OPTS $PACKAGE; rm -f $PACKAGE; echo; echo Press Enter to exit...; read A"
 		else
 			if [ $GTERM -eq 1 ]
 			then
-				exec gnome-terminal --title='VeraCrypt Setup' -e "sh -c \"echo Installing package...; $SUDO $PACKAGE_INSTALLER $PACKAGE_INSTALLER_OPTS $PACKAGE; rm -f $PACKAGE; echo; echo Press Enter to exit...; read A\""
+				exec gnome-terminal --title='Revera Setup' -e "sh -c \"echo Installing package...; $SUDO $PACKAGE_INSTALLER $PACKAGE_INSTALLER_OPTS $PACKAGE; rm -f $PACKAGE; echo; echo Press Enter to exit...; read A\""
 			else
 				if [ $KTERM -eq 1 ]
 				then
-					exec konsole --title 'VeraCrypt Setup' --caption 'VeraCrypt Setup' -e sh -c "echo Installing package...; $SUDO $PACKAGE_INSTALLER $PACKAGE_INSTALLER_OPTS $PACKAGE; rm -f $PACKAGE; echo; echo Press Enter to exit...; read A"
+					exec konsole --title 'Revera Setup' --caption 'Revera Setup' -e sh -c "echo Installing package...; $SUDO $PACKAGE_INSTALLER $PACKAGE_INSTALLER_OPTS $PACKAGE; rm -f $PACKAGE; echo; echo Press Enter to exit...; read A"
 				fi
 			fi
 		fi

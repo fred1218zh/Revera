@@ -18,7 +18,7 @@
 #include "Mutex.h"
 #include "SharedPtr.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct EventArgs
 	{

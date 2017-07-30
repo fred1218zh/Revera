@@ -16,7 +16,7 @@
 #include "System.h"
 #include "Core/Unix/CoreUnix.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class CoreFreeBSD : public CoreUnix
 	{

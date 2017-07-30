@@ -15,7 +15,7 @@
 #include "FavoriteVolume.h"
 #include "Xml.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	FavoriteVolumeList FavoriteVolume::LoadList ()
 	{

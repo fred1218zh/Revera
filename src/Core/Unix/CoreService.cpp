@@ -24,7 +24,7 @@
 #include "CoreServiceRequest.h"
 #include "CoreServiceResponse.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	template <class T>
 	auto_ptr <T> CoreService::GetResponse ()
@@ -361,7 +361,7 @@ namespace VeraCrypt
 
 					string appPath = request.ApplicationExecutablePath;
 					if (appPath.empty())
-						appPath = "veracrypt";
+						appPath = "revera";
 
 					const char *args[] = { "sudo", "-S", "-p", "", appPath.c_str(), TC_CORE_SERVICE_CMDLINE_OPTION, nullptr };
 					execvp (args[0], ((char* const*) args));

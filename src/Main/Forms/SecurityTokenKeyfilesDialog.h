@@ -17,7 +17,7 @@
 #include "Common/SecurityToken.h"
 #include "Main/Main.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class SecurityTokenKeyfilesDialog : public SecurityTokenKeyfilesDialogBase
 	{

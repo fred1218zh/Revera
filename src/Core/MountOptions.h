@@ -19,7 +19,7 @@
 #include "Volume/VolumeSlot.h"
 #include "Volume/VolumePassword.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct MountOptions : public Serializable
 	{

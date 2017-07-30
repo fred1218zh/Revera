@@ -14,7 +14,7 @@
 #include <sys/time.h>
 #include <time.h>
 
-namespace VeraCrypt
+namespace Revera
 {
 	uint64 Time::GetCurrent ()
 	{

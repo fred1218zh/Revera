@@ -14,7 +14,7 @@
 #include "Platform/SyncEvent.h"
 #include "Platform/SystemException.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	SyncEvent::SyncEvent ()
 	{

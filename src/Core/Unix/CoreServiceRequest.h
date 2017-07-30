@@ -16,7 +16,7 @@
 #include "Platform/Serializable.h"
 #include "Core/Core.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct CoreServiceRequest : public Serializable
 	{

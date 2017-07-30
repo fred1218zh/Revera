@@ -31,7 +31,7 @@ typedef NTSTATUS (WINAPI *NtQuerySystemInformationFn)(
 
 using namespace std;
 
-namespace VeraCrypt
+namespace Revera
 {
 	class File
 	{

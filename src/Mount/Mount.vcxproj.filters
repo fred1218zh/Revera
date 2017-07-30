@@ -252,10 +252,10 @@
     <None Include="System_drive_icon_mask_96dpi.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Common\VeraCrypt_mounted.ico">
+    <None Include="..\Common\Revera_mounted.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Common\VeraCrypt_volume.ico">
+    <None Include="..\Common\Revera_volume.ico">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\Boot\Windows\Release_Serpent\BootLoader.com.gz">
@@ -324,7 +324,7 @@
     <None Include="..\Common\Textual_logo_background.bmp">
       <Filter>Resource Files\Common</Filter>
     </None>
-    <None Include="..\Common\VeraCrypt.ico">
+    <None Include="..\Common\Revera.ico">
       <Filter>Resource Files\Common</Filter>
     </None>
     <None Include="..\Boot\Windows\Release_Camellia\BootSector.bin">

@@ -9,7 +9,7 @@
 SCRIPTPATH=$(cd "$(dirname "$0")"; pwd)
 # source directory which contains the Makefile
 SOURCEPATH=$(cd "$(dirname "$SCRIPTPATH/../.")"; pwd)
-# directory where the VeraCrypt project has been checked out
+# directory where the Revera project has been checked out
 PARENTDIR=$(cd "$(dirname "$SCRIPTPATH/../../../.")"; pwd)
 
 # the sources of wxWidgets 3.0.3 must be extracted to the parent directory
@@ -26,7 +26,7 @@ echo "Using MacOSX SDK $VC_OSX_TARGET"
 
 cd $SOURCEPATH
 
-echo "Building VeraCrypt"
+echo "Building Revera"
 make WXSTATIC=1 wxbuild && make WXSTATIC=1 clean && make WXSTATIC=1 && make WXSTATIC=1 package
 
 # Uncomment below and comment line above to reuse existing wxWidgets build

@@ -25,7 +25,7 @@
 #include <ApplicationServices/ApplicationServices.h>
 #endif
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 int main (int argc, char **argv)
 {

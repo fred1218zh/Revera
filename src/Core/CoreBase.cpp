@@ -16,7 +16,7 @@
 #include "RandomNumberGenerator.h"
 #include "Volume/Volume.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	CoreBase::CoreBase ()
 		: DeviceChangeInProgress (false)

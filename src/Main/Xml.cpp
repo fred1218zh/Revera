@@ -15,7 +15,7 @@
 #include "Platform/FileStream.h"
 #include "Xml.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	XmlParser::XmlParser (const FilePath &fileName)
 	{
@@ -97,7 +97,7 @@ namespace VeraCrypt
 		TextOutStream.reset (new wxTextOutputStream (*MemOutStream));
 		OutFile.Open (fileName, File::CreateWrite);
 
-		*TextOutStream << L"<?xml version=\"1.0\" encoding=\"utf-8\"?>" << endl << L"<VeraCrypt>" << endl;
+		*TextOutStream << L"<?xml version=\"1.0\" encoding=\"utf-8\"?>" << endl << L"<Revera>" << endl;
 		CurrentIndentLevel = 0;
 	}
 
@@ -105,7 +105,7 @@ namespace VeraCrypt
 	{
 		if (MemOutStream.get())
 		{
-			*TextOutStream << L"</VeraCrypt>" << endl;
+			*TextOutStream << L"</Revera>" << endl;
 
 			wxStreamBuffer *buf = MemOutStream->GetOutputStreamBuffer();
 			OutFile.Write (ConstBufferPtr (reinterpret_cast <byte *> (buf->GetBufferStart()), buf->GetBufferSize()));

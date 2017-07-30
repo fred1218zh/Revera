@@ -20,7 +20,7 @@
 #endif
 #include "TextUserInterface.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	namespace
 	{

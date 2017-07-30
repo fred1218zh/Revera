@@ -22,7 +22,7 @@
 #include "Driver/Fuse/FuseService.h"
 #include "Volume/VolumePasswordCache.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	CoreUnix::CoreUnix ()
 	{
@@ -234,17 +234,17 @@ namespace VeraCrypt
 
 	string CoreUnix::GetDefaultMountPointPrefix () const
 	{
-		const char *envPrefix = getenv ("VERACRYPT_MOUNT_PREFIX");
+		const char *envPrefix = getenv ("REVERA_MOUNT_PREFIX");
 		if (envPrefix && !string (envPrefix).empty())
 			return envPrefix;
 
 		if (FilesystemPath ("/media").IsDirectory())
-			return "/media/veracrypt";
+			return "/media/revera";
 
 		if (FilesystemPath ("/mnt").IsDirectory())
-			return "/mnt/veracrypt";
+			return "/mnt/revera";
 
-		return GetTempDirectory() + "/veracrypt_mnt";
+		return GetTempDirectory() + "/revera_mnt";
 	}
 
 	uint32 CoreUnix::GetDeviceSectorSize (const DevicePath &devicePath) const

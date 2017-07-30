@@ -16,7 +16,7 @@
 #include "WizardFrame.h"
 #include "Core/VolumeCreator.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumeCreationWizard : public WizardFrame
 	{

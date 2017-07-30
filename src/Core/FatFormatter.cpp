@@ -17,7 +17,7 @@
 #include "FatFormatter.h"
 #include "RandomNumberGenerator.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct fatparams
 	{

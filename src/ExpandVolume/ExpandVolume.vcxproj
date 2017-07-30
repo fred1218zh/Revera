@@ -83,10 +83,10 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VeraCryptExpander</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">VeraCryptExpander</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VeraCryptExpander</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VeraCryptExpander</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">reverax</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">reverax</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">reverax</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">reverax</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <CustomBuildStep>
@@ -121,7 +121,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\Crypto\Debug\crypto.lib;..\Common\Debug\Zip.lib;mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCryptExpander.exe</OutputFile>
+      <OutputFile>$(OutDir)reverax.exe</OutputFile>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -133,11 +133,11 @@
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
     <Manifest>
-      <AdditionalManifestFiles>VeraCryptExpander.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <AdditionalManifestFiles>reverax.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PostBuildEvent>
       <Command>md "..\Debug\Setup Files" 2&gt;NUL:
-copy Debug\VeraCryptExpander.exe "..\Debug\Setup Files" &gt;NUL:
+copy Debug\reverax.exe "..\Debug\Setup Files" &gt;NUL:
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -175,7 +175,7 @@ copy Debug\VeraCryptExpander.exe "..\Debug\Setup Files" &gt;NUL:
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\Crypto\x64\Debug\crypto.lib;..\Common\x64\Debug\Zip.lib;mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCryptExpander.exe</OutputFile>
+      <OutputFile>$(OutDir)reverax.exe</OutputFile>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -187,11 +187,11 @@ copy Debug\VeraCryptExpander.exe "..\Debug\Setup Files" &gt;NUL:
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
     <Manifest>
-      <AdditionalManifestFiles>VeraCryptExpander.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <AdditionalManifestFiles>reverax.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PostBuildEvent>
       <Command>md "..\Debug\Setup Files" 2&gt;NUL:
-copy $(TargetPath) "..\Debug\Setup Files\VeraCryptExpander-x64.exe" &gt;NUL:
+copy $(TargetPath) "..\Debug\Setup Files\reverax-x64.exe" &gt;NUL:
 </Command>
     </PostBuildEvent>
     <ResourceCompile>
@@ -222,7 +222,7 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCryptExpander-x64.exe" &gt;NUL:
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\Crypto\Release\crypto.lib;..\Common\Release\Zip.lib;mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCryptExpander.exe</OutputFile>
+      <OutputFile>$(OutDir)reverax.exe</OutputFile>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -236,10 +236,10 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCryptExpander-x64.exe" &gt;NUL:
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
     <Manifest>
-      <AdditionalManifestFiles>VeraCryptExpander.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <AdditionalManifestFiles>reverax.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PostBuildEvent>
-      <Command>copy Release\VeraCryptExpander.exe "..\Release\Setup Files\"</Command>
+      <Command>copy Release\reverax.exe "..\Release\Setup Files\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -267,7 +267,7 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCryptExpander-x64.exe" &gt;NUL:
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\Crypto\x64\Release\crypto.lib;..\Common\x64\Release\Zip.lib;mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCryptExpander.exe</OutputFile>
+      <OutputFile>$(OutDir)reverax.exe</OutputFile>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -281,10 +281,10 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCryptExpander-x64.exe" &gt;NUL:
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
     <Manifest>
-      <AdditionalManifestFiles>VeraCryptExpander.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
+      <AdditionalManifestFiles>reverax.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PostBuildEvent>
-      <Command>copy $(TargetPath) "..\Release\Setup Files\VeraCryptExpander-x64.exe"</Command>
+      <Command>copy $(TargetPath) "..\Release\Setup Files\reverax-x64.exe"</Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -435,13 +435,13 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCryptExpander-x64.exe" &gt;NUL:
     <None Include="..\Common\Textual_logo_288dpi.bmp" />
     <None Include="..\Common\Textual_logo_96dpi.bmp" />
     <None Include="..\Common\Textual_logo_background.bmp" />
-    <None Include="..\Common\VeraCrypt.ico" />
-    <None Include="..\Common\VeraCrypt_mounted.ico" />
-    <None Include="..\Common\VeraCrypt_Volume.ico" />
+    <None Include="..\Common\Revera.ico" />
+    <None Include="..\Common\Revera_mounted.ico" />
+    <None Include="..\Common\Revera_Volume.ico" />
     <None Include="..\Common\Language.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="VeraCryptExpander.manifest" />
+    <Manifest Include="reverax.manifest" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

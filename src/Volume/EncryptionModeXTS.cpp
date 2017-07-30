@@ -13,7 +13,7 @@
 #include "EncryptionModeXTS.h"
 #include "Common/Crypto.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void EncryptionModeXTS::Encrypt (byte *data, uint64 length) const
 	{

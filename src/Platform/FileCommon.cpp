@@ -18,7 +18,7 @@
 #include <utime.h>
 #endif
 
-namespace VeraCrypt
+namespace Revera
 {
 	File::~File ()
 	{

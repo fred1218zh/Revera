@@ -26,7 +26,7 @@
 
 // For specifications of the volume header see Common/Volumes.c
 
-namespace VeraCrypt
+namespace Revera
 {
 	typedef uint64 VolumeTime;
 

@@ -25,7 +25,7 @@
 
 using namespace std;
 
-namespace VeraCrypt
+namespace Revera
 {
 	vector <FavoriteVolume> FavoriteVolumes;
 	vector <FavoriteVolume> SystemFavoriteVolumes;

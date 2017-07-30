@@ -21,7 +21,7 @@
 #include "StringConverter.h"
 #include "SystemException.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void StringConverter::Erase (string &str)
 	{

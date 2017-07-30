@@ -35,7 +35,7 @@
 #include "Forms/RandomPoolEnrichmentDialog.h"
 #include "Forms/SecurityTokenKeyfilesDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	GraphicUserInterface::GraphicUserInterface () :
 		ActiveFrame (nullptr),
@@ -909,7 +909,7 @@ namespace VeraCrypt
 					if (write (showFifo, buf, 1) == 1)
 					{
 						close (showFifo);
-						Gui->ShowInfo (_("VeraCrypt is already running."));
+						Gui->ShowInfo (_("Revera is already running."));
 						Application::SetExitCode (0);
 						return false;
 					}
@@ -923,7 +923,7 @@ namespace VeraCrypt
 #endif
 				}
 
-				// This is a false positive as VeraCrypt is not running (pipe not available)
+				// This is a false positive as Revera is not running (pipe not available)
 				// we continue running after cleaning the lock file
 				// and creating a new instance of the checker
 				wxString lockFileName = wxGetHomeDir();
@@ -941,7 +941,7 @@ namespace VeraCrypt
 
 				wxLog::FlushActive();
 				Application::SetExitCode (1);
-				Gui->ShowInfo (_("VeraCrypt is already running."));
+				Gui->ShowInfo (_("Revera is already running."));
 				return false;
 #endif
 			}

@@ -16,7 +16,7 @@
 #include "Keyfile.h"
 #include "VolumeException.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void Keyfile::Apply (const BufferPtr &pool) const
 	{

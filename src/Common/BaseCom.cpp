@@ -19,7 +19,7 @@
 #include "Dlgcode.h"
 #include "Registry.h"
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 HRESULT CreateElevatedComObject (HWND hwnd, REFGUID guid, REFIID iid, void **ppv)
 {

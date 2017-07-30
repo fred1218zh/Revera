@@ -17,7 +17,7 @@
 #include "Crypto/config.h"
 
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Cipher;
 	typedef vector < shared_ptr <Cipher> > CipherList;

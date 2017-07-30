@@ -15,7 +15,7 @@
 #include "UserPreferences.h"
 #include "Xml.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void UserPreferences::SetValue (const wxString &cfgText, bool &cfgVar)
 	{

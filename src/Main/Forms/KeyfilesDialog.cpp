@@ -14,7 +14,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "KeyfilesDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	KeyfilesDialog::KeyfilesDialog (wxWindow* parent, shared_ptr <KeyfileList> keyfiles)
 		: KeyfilesDialogBase (parent), Keyfiles (keyfiles)

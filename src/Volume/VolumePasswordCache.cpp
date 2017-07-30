@@ -12,7 +12,7 @@
 
 #include "VolumePasswordCache.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	CachedPasswordList VolumePasswordCache::GetPasswords ()
 	{

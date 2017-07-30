@@ -32,7 +32,7 @@
 
 #include <Strsafe.h>
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 #define stat _stat
 #define S_IFDIR _S_IFDIR

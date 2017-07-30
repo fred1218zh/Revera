@@ -16,7 +16,7 @@
 #include "ChangePasswordDialog.h"
 #include "WaitDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	ChangePasswordDialog::ChangePasswordDialog (wxWindow* parent, shared_ptr <VolumePath> volumePath, Mode::Enum mode, shared_ptr <VolumePassword> password, shared_ptr <KeyfileList> keyfiles, shared_ptr <VolumePassword> newPassword, shared_ptr <KeyfileList> newKeyfiles)
 		: ChangePasswordDialogBase (parent), DialogMode (mode), Path (volumePath)

@@ -18,7 +18,7 @@
 #include "SharedPtr.h"
 #include "StringConverter.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct FilesystemPathType
 	{

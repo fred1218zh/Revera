@@ -1,5 +1,6 @@
+#!/bin/sh
 #
-# Copyright (c) 2013-2017 IDRIX
+# Copyright (c) 2013-2016 IDRIX
 # Governed by the Apache License 2.0 the full text of which is contained
 # in the file License.txt included in VeraCrypt binary and source
 # code distribution packages.
@@ -11,12 +12,12 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 # source directory which contains the Makefile
 SOURCEPATH=$(readlink -f "$SCRIPTPATH/..")
-# directory where the VeraCrypt has been checked out
+# directory where the Revera has been checked out
 PARENTDIR=$(readlink -f "$SCRIPTPATH/../../..")
 
 # Make sure only root can run our script
 if [ "$(id -u)" != "0" ]; then
-   echo "VeraCrypt must be built by root" 1>&2
+   echo "Revera must be built by root" 1>&2
    exit 1
 fi
 
@@ -26,22 +27,22 @@ echo "Using wxWidgets sources in $WX_ROOT"
 
 cd $SOURCEPATH
 
-echo "Building GUI version of VeraCrypt"
+echo "Building GUI version of Revera"
 
 # this will be the temporary wxWidgets directory
 export WX_BUILD_DIR=$PARENTDIR/wxBuildGui
 
-make WXSTATIC=1 wxbuild && make WXSTATIC=1 clean && make WXSTATIC=1 && make WXSTATIC=1 package
+gmake WXSTATIC=1 wxbuild && gmake WXSTATIC=1 clean && gmake WXSTATIC=1 && gmake WXSTATIC=1 package
 
 # Uncomment below and comment line above to reuse existing wxWidgets build
-# make WXSTATIC=1 clean && make WXSTATIC=1 && make WXSTATIC=1 package
+#gmake WXSTATIC=1 clean && gmake WXSTATIC=1 && gmake WXSTATIC=1 package
 
-echo "Building console version of VeraCrypt"
+echo "Building console version of Revera"
 
 # this will be the temporary wxWidgets directory
 export WX_BUILD_DIR=$PARENTDIR/wxBuildConsole
 
-make WXSTATIC=1 NOGUI=1 wxbuild && make WXSTATIC=1 NOGUI=1 clean && make WXSTATIC=1 NOGUI=1 && make WXSTATIC=1 NOGUI=1 package
+gmake WXSTATIC=1 NOGUI=1 wxbuild && gmake WXSTATIC=1 NOGUI=1 clean && gmake WXSTATIC=1 NOGUI=1 && gmake WXSTATIC=1 NOGUI=1 package
 
 # Uncomment below and comment line above to reuse existing wxWidgets build
-# make WXSTATIC=1 NOGUI=1 clean && make WXSTATIC=1 NOGUI=1 && make WXSTATIC=1 NOGUI=1 package
+#gmake WXSTATIC=1 NOGUI=1 clean && gmake WXSTATIC=1 NOGUI=1 && gmake WXSTATIC=1 NOGUI=1 package

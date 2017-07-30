@@ -17,7 +17,7 @@
 #include "Platform/Buffer.h"
 #include "Platform/Functor.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct ProcessExecFunctor
 	{

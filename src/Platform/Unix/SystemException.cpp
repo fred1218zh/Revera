@@ -16,7 +16,7 @@
 #include "Platform/SystemException.h"
 #include "Platform/StringConverter.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	SystemException::SystemException ()
 		: ErrorCode (errno)

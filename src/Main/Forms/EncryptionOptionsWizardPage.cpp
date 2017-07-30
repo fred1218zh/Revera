@@ -18,7 +18,7 @@
 #include "EncryptionOptionsWizardPage.h"
 #include "EncryptionTestDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	EncryptionOptionsWizardPage::EncryptionOptionsWizardPage (wxPanel* parent)
 		: EncryptionOptionsWizardPageBase (parent)

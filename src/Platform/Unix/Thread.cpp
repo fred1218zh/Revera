@@ -16,7 +16,7 @@
 #include "Platform/Thread.h"
 #include "Platform/SystemLog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void Thread::Join () const
 	{

@@ -13,7 +13,7 @@
 #include "CoreServiceResponse.h"
 #include "Platform/SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	// CheckFilesystemResponse
 	void CheckFilesystemResponse::Deserialize (shared_ptr <Stream> stream)

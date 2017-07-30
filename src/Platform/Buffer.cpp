@@ -13,7 +13,7 @@
 #include "Buffer.h"
 #include "Exception.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	Buffer::Buffer () : DataPtr (nullptr), DataSize (0), DataAlignment (0)
 	{

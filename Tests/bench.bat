@@ -18,7 +18,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount SHA-512 container (Normal)
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.sha512.hc /hash sha512 /l %mydriveletter% /password test /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.sha512.hc /hash sha512 /l %mydriveletter% /password test /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -36,7 +36,7 @@ if %ss% lss 10 set ss=0%ss%
 if %cc% lss 10 set cc=0%cc%
 echo SHA-512 (Normal) = %hh%:%mm%:%ss%,%cc%
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 rem Get start time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -44,7 +44,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount SHA-512 container (Hidden)
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.sha512.hc /hash sha512 /l %mydriveletter% /password testhidden /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.sha512.hc /hash sha512 /l %mydriveletter% /password testhidden /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -63,7 +63,7 @@ if %cc% lss 10 set cc=0%cc%
 echo SHA-512 (Hidden) = %hh%:%mm%:%ss%,%cc%
 echo.
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 :whirlpool
 
@@ -75,7 +75,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount Whirlpool container (Normal).
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.whirlpool.hc /hash whirlpool /l %mydriveletter% /password test /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.whirlpool.hc /hash whirlpool /l %mydriveletter% /password test /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -93,7 +93,7 @@ if %ss% lss 10 set ss=0%ss%
 if %cc% lss 10 set cc=0%cc%
 echo Whirlpool (Normal) = %hh%:%mm%:%ss%,%cc%
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 rem Get start time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -101,7 +101,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount Whirlpool container (Hidden).
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.whirlpool.hc /hash whirlpool /l %mydriveletter% /password testhidden /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.whirlpool.hc /hash whirlpool /l %mydriveletter% /password testhidden /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -120,7 +120,7 @@ if %cc% lss 10 set cc=0%cc%
 echo Whirlpool (Hidden) = %hh%:%mm%:%ss%,%cc%
 echo.
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 :sha256
 
@@ -132,7 +132,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount SHA-256 container (Normal)
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.sha256.hc /hash sha256 /l %mydriveletter% /password test /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.sha256.hc /hash sha256 /l %mydriveletter% /password test /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -150,7 +150,7 @@ if %ss% lss 10 set ss=0%ss%
 if %cc% lss 10 set cc=0%cc%
 echo SHA-256 (Normal) = %hh%:%mm%:%ss%,%cc%
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 rem Get start time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -158,7 +158,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount SHA-256 container (Hidden)
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.sha256.hc /hash sha256 /l %mydriveletter% /password testhidden /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.sha256.hc /hash sha256 /l %mydriveletter% /password testhidden /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -177,7 +177,7 @@ if %cc% lss 10 set cc=0%cc%
 echo SHA-256 (Hidden) = %hh%:%mm%:%ss%,%cc%
 echo.
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 :ripemd160
 
@@ -189,7 +189,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount RIPEMD-160 container (Normal)
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.ripemd160.hc /hash ripemd160 /l %mydriveletter% /password test /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.ripemd160.hc /hash ripemd160 /l %mydriveletter% /password test /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -207,7 +207,7 @@ if %ss% lss 10 set ss=0%ss%
 if %cc% lss 10 set cc=0%cc%
 echo RIPEMD-160 (Normal) = %hh%:%mm%:%ss%,%cc%
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 rem Get start time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -215,7 +215,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount RIPEMD-160 container (Hidden)
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.ripemd160.hc /hash ripemd160 /l %mydriveletter% /password testhidden /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.ripemd160.hc /hash ripemd160 /l %mydriveletter% /password testhidden /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -234,7 +234,7 @@ if %cc% lss 10 set cc=0%cc%
 echo RIPEMD-160 (Hidden) = %hh%:%mm%:%ss%,%cc%
 echo.
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 :streebog
 
@@ -246,7 +246,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount Streebog container (Normal)
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.streebog.hc /hash streebog /l %mydriveletter% /password test /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.streebog.hc /hash streebog /l %mydriveletter% /password test /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -264,7 +264,7 @@ if %ss% lss 10 set ss=0%ss%
 if %cc% lss 10 set cc=0%cc%
 echo Streebog (Normal) = %hh%:%mm%:%ss%,%cc%
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 rem Get start time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -272,7 +272,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Mount Streebog container (Hidden)
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume test.streebog.hc /hash streebog /l %mydriveletter% /password testhidden /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume test.streebog.hc /hash streebog /l %mydriveletter% /password testhidden /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
@@ -291,7 +291,7 @@ if %cc% lss 10 set cc=0%cc%
 echo Streebog (Hidden) = %hh%:%mm%:%ss%,%cc%
 echo.
 
-"c:\Program Files\VeraCrypt\veracrypt.exe" /dismount %mydriveletter% /silent /q
+"c:\Program Files\Revera\revera.exe" /dismount %mydriveletter% /silent /q
 
 :autodetect
 
@@ -305,7 +305,7 @@ for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 )
 
 rem Try to mount with a wrong password and PRF autodetection
-"c:\Program Files\VeraCrypt\veracrypt.exe" /volume %testvolume% /l %mydriveletter% /password wrongpassword /q /silent /m ro
+"c:\Program Files\Revera\revera.exe" /volume %testvolume% /l %mydriveletter% /password wrongpassword /q /silent /m ro
 
 rem Get end time:
 for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (

@@ -14,7 +14,7 @@
 #include "Platform/Mutex.h"
 #include "Platform/SystemException.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	Mutex::Mutex ()
 	{

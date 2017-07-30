@@ -14,7 +14,7 @@
 #include "Pipe.h"
 #include "Platform/SystemException.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	Pipe::Pipe ()
 	{

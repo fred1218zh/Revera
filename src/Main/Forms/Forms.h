@@ -45,7 +45,7 @@ class WizardPage;
 
 ///////////////////////////////////////////////////////////////////////////
 
-namespace VeraCrypt
+namespace Revera
 {
 	///////////////////////////////////////////////////////////////////////////////
 	/// Class MainFrameBase
@@ -149,7 +149,7 @@ namespace VeraCrypt
 
 		public:
 
-			MainFrameBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("VeraCrypt"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxSYSTEM_MENU|wxTAB_TRAVERSAL );
+			MainFrameBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Revera"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxSYSTEM_MENU|wxTAB_TRAVERSAL );
 
 			~MainFrameBase();
 
@@ -240,7 +240,7 @@ namespace VeraCrypt
 
 		public:
 
-			BenchmarkDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("VeraCrypt - Encryption Algorithm Benchmark"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+			BenchmarkDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Revera - Encryption Algorithm Benchmark"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
 			~BenchmarkDialogBase();
 
 	};
@@ -331,7 +331,7 @@ namespace VeraCrypt
 
 		public:
 
-			EncryptionTestDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("VeraCrypt - Test Vectors"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+			EncryptionTestDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Revera - Test Vectors"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
 			~EncryptionTestDialogBase();
 
 	};
@@ -451,7 +451,7 @@ namespace VeraCrypt
 
 		public:
 
-			LegalNoticesDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("VeraCrypt - Legal Notices"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+			LegalNoticesDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Revera - Legal Notices"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
 			~LegalNoticesDialogBase();
 
 	};
@@ -502,7 +502,7 @@ namespace VeraCrypt
 
 		public:
 
-			MountOptionsDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Enter VeraCrypt Volume Password"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+			MountOptionsDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Enter Revera Volume Password"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 			~MountOptionsDialogBase();
 
 	};
@@ -652,7 +652,7 @@ namespace VeraCrypt
 
 		public:
 
-			RandomPoolEnrichmentDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("VeraCrypt - Random Pool Enrichment"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+			RandomPoolEnrichmentDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Revera - Random Pool Enrichment"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
 			~RandomPoolEnrichmentDialogBase();
 
 	};
@@ -1087,11 +1087,11 @@ namespace VeraCrypt
 
 		public:
 
-			WaitDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("VeraCrypt"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION );
+			WaitDialogBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Revera"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION );
 			~WaitDialogBase();
 
 	};
 
-} // namespace VeraCrypt
+} // namespace Revera
 
 #endif //__FORMS_H__

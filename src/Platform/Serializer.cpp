@@ -15,7 +15,7 @@
 #include "Memory.h"
 #include "Serializer.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	template <typename T>
 	T Serializer::Deserialize ()

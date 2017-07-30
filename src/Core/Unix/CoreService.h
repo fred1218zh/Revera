@@ -18,7 +18,7 @@
 #include "Platform/Unix/Pipe.h"
 #include "Core/Core.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	// This service facilitates process forking and elevation of user privileges
 	class CoreService

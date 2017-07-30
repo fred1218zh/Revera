@@ -19,7 +19,7 @@
 #include "RandomNumberGenerator.h"
 #include "Volume/Crc32.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void RandomNumberGenerator::AddSystemDataToPool (bool fast)
 	{

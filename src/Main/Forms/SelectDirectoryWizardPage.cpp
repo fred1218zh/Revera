@@ -14,7 +14,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "SelectDirectoryWizardPage.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	bool SelectDirectoryWizardPage::IsValid ()
 	{

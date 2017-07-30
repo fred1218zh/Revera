@@ -75,7 +75,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\Debug\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCrypt.exe"
+				OutputFile="$(OutDir)/revera.exe"
 				LinkIncremental="2"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -108,7 +108,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy Debug\VeraCrypt.exe &quot;..\Debug\Setup Files&quot; &gt;NUL:&#x0D;&#x0A;"
+				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy Debug\revera.exe &quot;..\Debug\Setup Files&quot; &gt;NUL:&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -168,7 +168,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\x64\Debug\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCrypt.exe"
+				OutputFile="$(OutDir)/revera.exe"
 				LinkIncremental="2"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -201,7 +201,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy $(TargetPath) &quot;..\Debug\Setup Files\VeraCrypt-x64.exe&quot; &gt;NUL:&#x0D;&#x0A;"
+				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy $(TargetPath) &quot;..\Debug\Setup Files\revera-x64.exe&quot; &gt;NUL:&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -257,7 +257,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\Release\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCrypt.exe"
+				OutputFile="$(OutDir)/revera.exe"
 				LinkIncremental="1"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -292,7 +292,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy Release\VeraCrypt.exe &quot;..\Release\Setup Files&quot;"
+				CommandLine="copy Release\revera.exe &quot;..\Release\Setup Files&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -349,7 +349,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\x64\Release\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCrypt.exe"
+				OutputFile="$(OutDir)/revera.exe"
 				LinkIncremental="1"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -384,7 +384,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy $(TargetPath) &quot;..\Release\Setup Files\VeraCrypt-x64.exe&quot;"
+				CommandLine="copy $(TargetPath) &quot;..\Release\Setup Files\revera-x64.exe&quot;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -849,11 +849,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt_mounted.ico"
+				RelativePath="..\Common\Revera_mounted.ico"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt_volume.ico"
+				RelativePath="..\Common\Revera_volume.ico"
 				>
 			</File>
 			<Filter
@@ -984,7 +984,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\Common\VeraCrypt.ico"
+					RelativePath="..\Common\Revera.ico"
 					>
 				</File>
 			</Filter>

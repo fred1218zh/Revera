@@ -16,7 +16,7 @@
 #include "Platform/Platform.h"
 #include "Common/Crypto.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class EncryptionTest
 	{

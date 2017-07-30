@@ -15,7 +15,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "Main/Resources.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	LegalNoticesDialog::LegalNoticesDialog (wxWindow* parent) : LegalNoticesDialogBase (parent)
 	{

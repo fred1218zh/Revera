@@ -13,7 +13,7 @@
 #include "Exception.h"
 #include "SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void Exception::Deserialize (shared_ptr <Stream> stream)
 	{

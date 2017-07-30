@@ -25,7 +25,7 @@ start:
 	dw main, 0
 
 loader_name_msg:
-	db ' VeraCrypt Boot Loader', 13, 10, 0
+	db ' Revera Boot Loader', 13, 10, 0
 
 main:
 	cli

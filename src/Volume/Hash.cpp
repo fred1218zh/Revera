@@ -17,7 +17,7 @@
 #include "Crypto/Whirlpool.h"
 #include "Crypto/Streebog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	HashList Hash::GetAvailableAlgorithms ()
 	{

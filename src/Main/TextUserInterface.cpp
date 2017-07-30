@@ -25,7 +25,7 @@
 #include "Application.h"
 #include "TextUserInterface.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	TextUserInterface::TextUserInterface ()
 	{

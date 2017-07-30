@@ -15,7 +15,7 @@
 
 #include <Tcdefs.h>
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct FavoriteVolume
 	{

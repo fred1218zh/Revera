@@ -14,7 +14,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "VolumePasswordWizardPage.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumePasswordWizardPage::VolumePasswordWizardPage (wxPanel* parent, shared_ptr <VolumePassword> password, shared_ptr <KeyfileList> keyfiles, bool enableConfirmation)
 		: VolumePasswordWizardPageBase (parent), ConfirmationMode (enableConfirmation)

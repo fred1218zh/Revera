@@ -82,23 +82,23 @@
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
-    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo ------ Building veracrypt.sys: Debug x86 ------
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo ------ Building revera.sys: Debug x86 ------
 cmd.exe /c BuildDriver.cmd -build -debug -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"
 if errorlevel 1 exit %errorlevel%
 echo.
-echo ------ Building veracrypt.sys: Debug x64 ------
+echo ------ Building revera.sys: Debug x64 ------
 BuildDriver.cmd -build -debug -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo ------ Rebuilding veracrypt.sys: Debug x86 ------
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo ------ Rebuilding revera.sys: Debug x86 ------
 cmd.exe /c BuildDriver.cmd -rebuild -debug -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"
 if errorlevel 1 exit %errorlevel%
 echo.
-echo ------ Rebuilding veracrypt.sys: Debug x64 ------
+echo ------ Rebuilding revera.sys: Debug x64 ------
 BuildDriver.cmd -rebuild -debug -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo ------ Cleaning veracrypt.sys: Debug x86 ------
+    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo ------ Cleaning revera.sys: Debug x86 ------
 cmd.exe /c BuildDriver.cmd -clean -debug -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"
 if errorlevel 1 exit %errorlevel%
 echo.
-echo ------ Cleaning veracrypt.sys: Debug x64 ------
+echo ------ Cleaning revera.sys: Debug x64 ------
 BuildDriver.cmd -clean -debug -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeCleanCommandLine>
     <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
     <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">DEBUG;_DEBUG;TC_WINDOWS_DRIVER;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
@@ -108,23 +108,23 @@ BuildDriver.cmd -clean -debug -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypt
     <NMakeForcedUsingAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
-    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo ------ Building veracrypt.sys: Release x86 ------
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo ------ Building revera.sys: Release x86 ------
 cmd.exe /c BuildDriver.cmd -build -release -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"
 if errorlevel 1 exit %errorlevel%
 echo.
-echo ------ Building veracrypt.sys: Release x64 ------
+echo ------ Building revera.sys: Release x64 ------
 BuildDriver.cmd -build -release -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo ------ Rebuilding veracrypt.sys: Release x86 ------
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo ------ Rebuilding revera.sys: Release x86 ------
 cmd.exe /c BuildDriver.cmd -rebuild -release -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"
 if errorlevel 1 exit %errorlevel%
 echo.
-echo ------ Rebuilding veracrypt.sys: Release x64 ------
+echo ------ Rebuilding revera.sys: Release x64 ------
 BuildDriver.cmd -rebuild -release -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo ------ Cleaning veracrypt.sys: Release x86 ------
+    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo ------ Cleaning revera.sys: Release x86 ------
 cmd.exe /c BuildDriver.cmd -clean -release -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"
 if errorlevel 1 exit %errorlevel%
 echo.
-echo ------ Cleaning veracrypt.sys: Release x64 ------
+echo ------ Cleaning revera.sys: Release x64 ------
 BuildDriver.cmd -clean -release -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeCleanCommandLine>
     <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
     <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">TC_WINDOWS_DRIVER;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
@@ -145,16 +145,16 @@ BuildDriver.cmd -clean -release -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Cry
     <NMakeForcedUsingAssemblies Condition="'$(Configuration)|$(Platform)'=='Release x86|Win32'">$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">$(Configuration)\</IntDir>
-    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">if exist $(SolutionDir)\Mount\Debug\VeraCrypt.exe ( copy $(SolutionDir)\Mount\Debug\VeraCrypt.exe $(ProjectDir)\obj_driver_debug\i386\VeraCrypt.exe &gt;NUL:
-) else ( copy $(SolutionDir)\Mount\Release\VeraCrypt.exe $(ProjectDir)\obj_driver_debug\i386\VeraCrypt.exe &gt;NUL: )
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">if exist $(SolutionDir)\Mount\Debug\revera.exe ( copy $(SolutionDir)\Mount\Debug\revera.exe $(ProjectDir)\obj_driver_debug\i386\revera.exe &gt;NUL:
+) else ( copy $(SolutionDir)\Mount\Release\revera.exe $(ProjectDir)\obj_driver_debug\i386\revera.exe &gt;NUL: )
 
 BuildDriver.cmd -build -debug -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">if exist $(SolutionDir)\Mount\Debug\VeraCrypt.exe ( copy $(SolutionDir)\Mount\Debug\VeraCrypt.exe $(ProjectDir)\obj_driver_debug\i386\VeraCrypt.exe &gt;NUL:
-) else ( copy $(SolutionDir)\Mount\Release\VeraCrypt.exe $(ProjectDir)\obj_driver_debug\i386\VeraCrypt.exe &gt;NUL: )
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">if exist $(SolutionDir)\Mount\Debug\revera.exe ( copy $(SolutionDir)\Mount\Debug\revera.exe $(ProjectDir)\obj_driver_debug\i386\revera.exe &gt;NUL:
+) else ( copy $(SolutionDir)\Mount\Release\revera.exe $(ProjectDir)\obj_driver_debug\i386\revera.exe &gt;NUL: )
 
 BuildDriver.cmd -rebuild -debug -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">BuildDriver.cmd -clean -debug -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeCleanCommandLine>
-    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">$(ProjectDir)\obj_driver_debug\i386\VeraCrypt.exe</NMakeOutput>
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">$(ProjectDir)\obj_driver_debug\i386\revera.exe</NMakeOutput>
     <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">DEBUG;_DEBUG;TC_WINDOWS_DRIVER;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeIncludeSearchPath Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">$(ProjectDir);$(SolutionDir);$(SolutionDir)\Common;$(SolutionDir)\Crypto;$(WINDDK_ROOT)\inc\ddk;$(WINDDK_ROOT)\inc\api;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes Condition="'$(Configuration)|$(Platform)'=='Debug x86|Win32'">$(NMakeForcedIncludes)</NMakeForcedIncludes>
@@ -173,16 +173,16 @@ BuildDriver.cmd -rebuild -debug -x86 "$(SolutionDir)\Common" "$(SolutionDir)\Cry
     <NMakeForcedUsingAssemblies Condition="'$(Configuration)|$(Platform)'=='Release x64|Win32'">$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">$(Configuration)\</IntDir>
-    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">if exist $(SolutionDir)\Mount\Debug\VeraCrypt.exe ( copy $(SolutionDir)\Mount\Debug\VeraCrypt.exe $(ProjectDir)\obj_driver_debug\amd64\VeraCrypt.exe &gt;NUL:
-) else ( copy $(SolutionDir)\Mount\Release\VeraCrypt.exe $(ProjectDir)\obj_driver_debug\amd64\VeraCrypt.exe &gt;NUL: )
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">if exist $(SolutionDir)\Mount\Debug\revera.exe ( copy $(SolutionDir)\Mount\Debug\revera.exe $(ProjectDir)\obj_driver_debug\amd64\revera.exe &gt;NUL:
+) else ( copy $(SolutionDir)\Mount\Release\revera.exe $(ProjectDir)\obj_driver_debug\amd64\revera.exe &gt;NUL: )
 
 BuildDriver.cmd -build -debug -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">if exist $(SolutionDir)\Mount\Debug\VeraCrypt.exe ( copy $(SolutionDir)\Mount\Debug\VeraCrypt.exe $(ProjectDir)\obj_driver_debug\amd64\VeraCrypt.exe &gt;NUL:
-) else ( copy $(SolutionDir)\Mount\Release\VeraCrypt.exe $(ProjectDir)\obj_driver_debug\amd64\VeraCrypt.exe &gt;NUL: )
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">if exist $(SolutionDir)\Mount\Debug\revera.exe ( copy $(SolutionDir)\Mount\Debug\revera.exe $(ProjectDir)\obj_driver_debug\amd64\revera.exe &gt;NUL:
+) else ( copy $(SolutionDir)\Mount\Release\revera.exe $(ProjectDir)\obj_driver_debug\amd64\revera.exe &gt;NUL: )
 
 BuildDriver.cmd -rebuild -debug -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeReBuildCommandLine>
     <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">BuildDriver.cmd -clean -debug -x64 "$(SolutionDir)\Common" "$(SolutionDir)\Crypto" "$(ProjectDir)"</NMakeCleanCommandLine>
-    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">$(ProjectDir)\obj_driver_debug\amd64\VeraCrypt.exe</NMakeOutput>
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">$(ProjectDir)\obj_driver_debug\amd64\revera.exe</NMakeOutput>
     <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">DEBUG;_DEBUG;TC_WINDOWS_DRIVER;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeIncludeSearchPath Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">$(ProjectDir);$(SolutionDir);$(SolutionDir)\Common;$(SolutionDir)\Crypto;$(WINDDK_ROOT)\inc\ddk;$(WINDDK_ROOT)\inc\api;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes Condition="'$(Configuration)|$(Platform)'=='Debug x64|Win32'">$(NMakeForcedIncludes)</NMakeForcedIncludes>

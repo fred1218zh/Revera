@@ -16,7 +16,7 @@
 #include "Platform/Platform.h"
 #include "Platform/Serializable.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumePassword : public Serializable
 	{

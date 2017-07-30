@@ -23,7 +23,7 @@
 #include "UserInterfaceException.h"
 #include "UserInterfaceType.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class UserInterface : public wxApp
 	{

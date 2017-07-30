@@ -16,7 +16,7 @@
 #include "System.h"
 #include "Main.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct FavoriteVolume;
 	typedef list < shared_ptr <FavoriteVolume> > FavoriteVolumeList;

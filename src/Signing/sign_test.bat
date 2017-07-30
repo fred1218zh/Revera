@@ -15,10 +15,10 @@ call "..\..\doc\chm\create_chm.bat"
 cd %SIGNINGPATH%
 
 rem sign using SHA-1
-signtool sign /v /a /f %PFXNAME% /p %PFXPASSWORD% /ac %PFXCA% /fd sha1 /t http://timestamp.verisign.com/scripts/timestamp.dll "..\Release\Setup Files\veracrypt.sys" "..\Release\Setup Files\veracrypt-x64.sys" "..\Release\Setup Files\VeraCrypt.exe" "..\Release\Setup Files\VeraCrypt Format.exe" "..\Release\Setup Files\VeraCryptExpander.exe" "..\Release\Setup Files\VeraCrypt-x64.exe" "..\Release\Setup Files\VeraCrypt Format-x64.exe" "..\Release\Setup Files\VeraCryptExpander-x64.exe"
+signtool sign /v /a /f %PFXNAME% /p %PFXPASSWORD% /ac %PFXCA% /fd sha1 /t http://timestamp.verisign.com/scripts/timestamp.dll "..\Release\Setup Files\revera.sys" "..\Release\Setup Files\revera-x64.sys" "..\Release\Setup Files\revera.exe" "..\Release\Setup Files\reveraf.exe" "..\Release\Setup Files\reverax.exe" "..\Release\Setup Files\revera-x64.exe" "..\Release\Setup Files\reveraf-x64.exe" "..\Release\Setup Files\reverax-x64.exe"
 
 rem sign using SHA-256
-signtool sign /v /a /f %SHA256PFXNAME% /p %SHA256PFXPASSWORD% /ac %SHA256PFXCA% /as /fd sha256 /tr http://timestamp.globalsign.com/?signature=sha2 /td SHA256 "..\Release\Setup Files\veracrypt.sys" "..\Release\Setup Files\veracrypt-x64.sys" "..\Release\Setup Files\VeraCrypt.exe" "..\Release\Setup Files\VeraCrypt Format.exe" "..\Release\Setup Files\VeraCryptExpander.exe" "..\Release\Setup Files\VeraCrypt-x64.exe" "..\Release\Setup Files\VeraCrypt Format-x64.exe" "..\Release\Setup Files\VeraCryptExpander-x64.exe"
+signtool sign /v /a /f %SHA256PFXNAME% /p %SHA256PFXPASSWORD% /ac %SHA256PFXCA% /as /fd sha256 /tr http://timestamp.globalsign.com/?signature=sha2 /td SHA256 "..\Release\Setup Files\revera.sys" "..\Release\Setup Files\revera-x64.sys" "..\Release\Setup Files\revera.exe" "..\Release\Setup Files\reveraf.exe" "..\Release\Setup Files\reverax.exe" "..\Release\Setup Files\revera-x64.exe" "..\Release\Setup Files\reveraf-x64.exe" "..\Release\Setup Files\reverax-x64.exe"
 
 cd "..\Release\Setup Files\"
 
@@ -37,18 +37,18 @@ rmdir /S /Q docs
 mkdir docs\html\en
 mkdir docs\EFI-DCS
 copy /V /Y ..\..\..\doc\html\* docs\html\en\.
-copy "..\..\..\doc\chm\VeraCrypt User Guide.chm" docs\.
+copy "..\..\..\doc\chm\User Guide.chm" docs\.
 copy "..\..\..\doc\EFI-DCS\*.pdf" docs\EFI-DCS\.
 
 del docs.zip
 7z a -y docs.zip docs
 
-"VeraCrypt Setup.exe" /p
+"revera-setup.exe" /p
 
 del LICENSE
 del License.txt
 del NOTICE
-del "VeraCrypt User Guide.chm"
+del "User Guide.chm"
 
 del Languages.zip
 del docs.zip
@@ -58,9 +58,9 @@ rmdir /S /Q docs
 cd %SIGNINGPATH%
 
 rem sign using SHA-1
-signtool sign /v /a /f %PFXNAME% /p %PFXPASSWORD% /ac %PFXCA% /fd sha1 /t http://timestamp.verisign.com/scripts/timestamp.dll "..\Release\Setup Files\VeraCrypt Setup 1.21.exe"
+signtool sign /v /a /f %PFXNAME% /p %PFXPASSWORD% /ac %PFXCA% /fd sha1 /t http://timestamp.verisign.com/scripts/timestamp.dll "..\Release\Setup Files\revera-setup.exe"
 
 rem sign using SHA-256
-signtool sign /v /a /f %SHA256PFXNAME% /p %SHA256PFXPASSWORD% /ac %SHA256PFXCA% /as /fd sha256 /tr http://timestamp.globalsign.com/?signature=sha2 /td SHA256 "..\Release\Setup Files\VeraCrypt Setup 1.21.exe"
+signtool sign /v /a /f %SHA256PFXNAME% /p %SHA256PFXPASSWORD% /ac %SHA256PFXCA% /as /fd sha256 /tr http://timestamp.globalsign.com/?signature=sha2 /td SHA256 "..\Release\Setup Files\revera-setup.exe"
 
 pause

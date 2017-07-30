@@ -16,7 +16,7 @@
 #include "PlatformBase.h"
 #include "Thread.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class PlatformTest
 	{

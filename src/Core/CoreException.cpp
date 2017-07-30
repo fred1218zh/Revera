@@ -13,7 +13,7 @@
 #include "CoreException.h"
 #include "Platform/SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void ElevationFailed::Deserialize (shared_ptr <Stream> stream)
 	{

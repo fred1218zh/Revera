@@ -58,7 +58,7 @@
 typedef BOOL (WINAPI *WTSREGISTERSESSIONNOTIFICATION)(HWND, DWORD);
 typedef BOOL (WINAPI *WTSUNREGISTERSESSIONNOTIFICATION)(HWND);
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 enum timer_ids
 {
@@ -262,18 +262,18 @@ static bool validateDcsPropXml(const char* xmlData)
 
 				if(pXMLDom->loadXML(xmlData) == VARIANT_TRUE && pXMLDom->hasChildNodes())
 				{
-					MSXML2::IXMLDOMNodePtr veracryptNode, configurationNode, configNode;
+					MSXML2::IXMLDOMNodePtr reveraNode, configurationNode, configNode;
 					std::vector<MSXML2::IXMLDOMNodePtr> nodes = GetReadChildNodes (pXMLDom->GetchildNodes());
 					size_t nodesCount = nodes.size();
 					if (nodesCount == 1 
-						&& ((veracryptNode = nodes[0])->GetnodeType() == NODE_ELEMENT)
-						&& veracryptNode->GetnodeName().GetBSTR()
-						&& (0 == strcmp ((const char*) veracryptNode->GetnodeName(), "VeraCrypt")) 
-						&& veracryptNode->hasChildNodes()
+						&& ((reveraNode = nodes[0])->GetnodeType() == NODE_ELEMENT)
+						&& reveraNode->GetnodeName().GetBSTR()
+						&& (0 == strcmp ((const char*) reveraNode->GetnodeName(), "Revera")) 
+						&& reveraNode->hasChildNodes()
 						
 						)
 					{
-						nodes = GetReadChildNodes (veracryptNode->GetchildNodes());
+						nodes = GetReadChildNodes (reveraNode->GetchildNodes());
 						nodesCount = nodes.size();
 						if ((nodesCount == 1)
 							&& ((configurationNode = nodes[0])->GetnodeType() == NODE_ELEMENT)
@@ -971,7 +971,7 @@ void SaveSettings (HWND hwndDlg)
 	WaitCursor ();
 
 	// Check first if modifications ocurred before writing to the settings and history files
-	// This avoids leaking information about VeraCrypt usage when user only mount volumes without changing setttings or history
+	// This avoids leaking information about Revera usage when user only mount volumes without changing setttings or history
 	BOOL bSettingsChanged = FALSE;
 	BOOL bHistoryChanged = FALSE;
 
@@ -1474,10 +1474,10 @@ static void LaunchVolCreationWizard (HWND hwndDlg, const wchar_t *arg, BOOL bEle
 		wchar_t* suffix = NULL;
 		ZeroMemory (&si, sizeof (si));
 
-		StringCbCopyW (formatExeName, sizeof (formatExeName), L"\\VeraCrypt Format");
+		StringCbCopyW (formatExeName, sizeof (formatExeName), L"\\reveraf");
 
-		// check if there is a suffix in VeraCrypt file name
-		// in order to use the same for "VeraCrypt Format"
+		// check if there is a suffix in Revera file name
+		// in order to use the same for "reveraf"
 		suffix = wcsrchr (tmp + 1, L'-');
 		if (suffix)
 		{
@@ -1533,10 +1533,10 @@ static void LaunchVolExpander (HWND hwndDlg)
 		wchar_t expanderExeName[64];
 		wchar_t* suffix = NULL;
 
-		StringCbCopyW (expanderExeName, sizeof (expanderExeName), L"\\VeraCryptExpander");
+		StringCbCopyW (expanderExeName, sizeof (expanderExeName), L"\\reverax");
 
-		// check if there is a suffix in VeraCrypt file name
-		// in order to use the same for "VeraCrypt Format"
+		// check if there is a suffix in Revera file name
+		// in order to use the same for "reveraf"
 		suffix = wcsrchr (tmp + 1, L'-');
 		if (suffix)
 		{
@@ -4395,7 +4395,7 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 
 			WaitCursor ();
 
-			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt", dstDir);
+			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera", dstDir);
 			if (!CreateDirectoryW (dstPath, NULL))
 			{
 				handleWin32Error (hwndDlg, SRC_POS);
@@ -4404,10 +4404,10 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 
 			// Main app 32-bit
 			if (Is64BitOs () && !IsNonInstallMode ())
-				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCrypt-x86.exe", appDir);
+				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\revera-x86.exe", appDir);
 			else
-				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCrypt.exe", appDir);
-			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\VeraCrypt.exe", dstDir);
+				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\revera.exe", appDir);
+			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\revera.exe", dstDir);
 			if (!TCCopyFile (srcPath, dstPath))
 			{
 				handleWin32Error (hwndDlg, SRC_POS);
@@ -4416,10 +4416,10 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 
 			// Main app 64-bit
 			if (Is64BitOs () && !IsNonInstallMode ())
-				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCrypt.exe", appDir);
+				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\revera.exe", appDir);
 			else
-				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCrypt-x64.exe", appDir);
-			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\VeraCrypt-x64.exe", dstDir);
+				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\revera-x64.exe", appDir);
+			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\revera-x64.exe", dstDir);
 			if (!TCCopyFile (srcPath, dstPath))
 			{
 				handleWin32Error (hwndDlg, SRC_POS);
@@ -4431,10 +4431,10 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 			{
 				// Wizard 32-bit
 				if (Is64BitOs () && !IsNonInstallMode ())
-					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCrypt Format-x86.exe", appDir);
+					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\reveraf-x86.exe", appDir);
 				else
-					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCrypt Format.exe", appDir);
-				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\VeraCrypt Format.exe", dstDir);
+					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\reveraf.exe", appDir);
+				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\reveraf.exe", dstDir);
 				if (!TCCopyFile (srcPath, dstPath))
 				{
 					handleWin32Error (hwndDlg, SRC_POS);
@@ -4443,10 +4443,10 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 
 				// Wizard 64-bit
 				if (Is64BitOs () && !IsNonInstallMode ())
-					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCrypt Format.exe", appDir);
+					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\reveraf.exe", appDir);
 				else
-					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCrypt Format-x64.exe", appDir);
-				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\VeraCrypt Format-x64.exe", dstDir);
+					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\reveraf-x64.exe", appDir);
+				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\reveraf-x64.exe", dstDir);
 				if (!TCCopyFile (srcPath, dstPath))
 				{
 					handleWin32Error (hwndDlg, SRC_POS);
@@ -4459,10 +4459,10 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 			{
 				// Expander 32-bit
 				if (Is64BitOs () && !IsNonInstallMode ())
-					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCryptExpander-x86.exe", appDir);
+					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\reverax-x86.exe", appDir);
 				else
-					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCryptExpander.exe", appDir);
-				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\VeraCryptExpander.exe", dstDir);
+					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\reverax.exe", appDir);
+				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\reverax.exe", dstDir);
 				if (!TCCopyFile (srcPath, dstPath))
 				{
 					handleWin32Error (hwndDlg, SRC_POS);
@@ -4471,10 +4471,10 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 
 				// Expander 64-bit
 				if (Is64BitOs () && !IsNonInstallMode ())
-					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCryptExpander.exe", appDir);
+					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\reverax.exe", appDir);
 				else
-					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\VeraCryptExpander-x64.exe", appDir);
-				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\VeraCryptExpander-x64.exe", dstDir);
+					StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\reverax-x64.exe", appDir);
+				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\reverax-x64.exe", dstDir);
 				if (!TCCopyFile (srcPath, dstPath))
 				{
 					handleWin32Error (hwndDlg, SRC_POS);
@@ -4483,8 +4483,8 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 			}
 
 			// Driver
-			StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\veracrypt.sys", appDir);
-			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\veracrypt.sys", dstDir);
+			StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\revera.sys", appDir);
+			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\revera.sys", dstDir);
 			if (!TCCopyFile (srcPath, dstPath))
 			{
 				handleWin32Error (hwndDlg, SRC_POS);
@@ -4492,8 +4492,8 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 			}
 
 			// Driver x64
-			StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\veracrypt-x64.sys", appDir);
-			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\veracrypt-x64.sys", dstDir);
+			StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\revera-x64.sys", appDir);
+			StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\revera-x64.sys", dstDir);
 			if (!TCCopyFile (srcPath, dstPath))
 			{
 				handleWin32Error (hwndDlg, SRC_POS);
@@ -4503,14 +4503,14 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 			if (strcmp (GetPreferredLangId (), "en") != 0)
 			{
 				// Language pack
-				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\Languages", dstDir);
+				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\Languages", dstDir);
 				if (!CreateDirectoryW (dstPath, NULL))
 				{
 					handleWin32Error (hwndDlg, SRC_POS);
 					goto stop;
 				}
 				StringCbPrintfW (srcPath, sizeof(srcPath), L"%s\\Languages\\Language.%hs.xml", appDir, GetPreferredLangId ());
-				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\VeraCrypt\\Languages\\Language.%hs.xml", dstDir, GetPreferredLangId ());
+				StringCbPrintfW (dstPath, sizeof(dstPath), L"%s\\revera\\Languages\\Language.%hs.xml", dstDir, GetPreferredLangId ());
 				TCCopyFile (srcPath, dstPath);
 			}
 
@@ -4531,18 +4531,18 @@ BOOL CALLBACK TravelerDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lPa
 					goto stop;
 				}
 
-				StringCbPrintfW (autoMount, sizeof(autoMount), L"VeraCrypt\\VeraCrypt.exe /q background%s%s%s%s /m rm /v %s",
+				StringCbPrintfW (autoMount, sizeof(autoMount), L"revera\\revera.exe /q background%s%s%s%s /m rm /v %s",
 					drive > 0 ? driveLetter : L"",
 					bExplore ? L" /e" : L"",
 					bCacheInDriver ? (bIncludePimInCache? L" /c p" : L" /c y") : L"",
 					bMountReadOnly ? L" /m ro" : L"",
 					volName);
 
-				fwprintf (af, L"[autorun]\nlabel=%s\nicon=VeraCrypt\\VeraCrypt.exe\n", GetString ("TC_TRAVELER_DISK"));
+				fwprintf (af, L"[autorun]\nlabel=%s\nicon=revera\\revera.exe\n", GetString ("TC_TRAVELER_DISK"));
 				fwprintf (af, L"action=%s\n", bAutoMount ? GetString ("MOUNT_TC_VOLUME") : GetString ("IDC_PREF_LOGON_START"));
-				fwprintf (af, L"open=%s\n", bAutoMount ? autoMount : L"VeraCrypt\\VeraCrypt.exe");
-				fwprintf (af, L"shell\\start=%s\nshell\\start\\command=VeraCrypt\\VeraCrypt.exe\n", GetString ("IDC_PREF_LOGON_START"));
-				fwprintf (af, L"shell\\dismount=%s\nshell\\dismount\\command=VeraCrypt\\VeraCrypt.exe /q /d\n", GetString ("DISMOUNT_ALL_TC_VOLUMES"));
+				fwprintf (af, L"open=%s\n", bAutoMount ? autoMount : L"revera\\revera.exe");
+				fwprintf (af, L"shell\\start=%s\nshell\\start\\command=revera\\revera.exe\n", GetString ("IDC_PREF_LOGON_START"));
+				fwprintf (af, L"shell\\dismount=%s\nshell\\dismount\\command=revera\\revera.exe /q /d\n", GetString ("DISMOUNT_ALL_TC_VOLUMES"));
 
 				CheckFileStreamWriteErrors (hwndDlg, af, dstPath);
 				fclose (af);
@@ -6640,7 +6640,7 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 			else
 				StringCbCopyW (szRescueDiskExtension, sizeof (szRescueDiskExtension), L"iso");
 			
-			StringCbCopyW (szDefaultRescueDiskName, sizeof (szDefaultRescueDiskName), L"VeraCrypt Rescue Disk.");		
+			StringCbCopyW (szDefaultRescueDiskName, sizeof (szDefaultRescueDiskName), L"Revera Rescue Disk.");		
 			StringCbCatW  (szDefaultRescueDiskName, sizeof (szDefaultRescueDiskName), szRescueDiskExtension);
 
 			if (UsePreferences)
@@ -7475,7 +7475,7 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 	case TC_APPMSG_SYSENC_CONFIG_UPDATE:
 		LoadSysEncSettings ();
 
-		// The wizard added VeraCrypt.exe to the system startup sequence or performed other operations that
+		// The wizard added revera.exe to the system startup sequence or performed other operations that
 		// require us to update our cached settings.
 		LoadSettings (hwndDlg);
 
@@ -7680,7 +7680,7 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 		if ((lw == IDOK || lw == IDM_MOUNT_VOLUME || lw == IDM_MOUNT_VOLUME_OPTIONS || lw == IDC_MOUNTALL || lw == IDM_MOUNTALL)
 			&& LOWORD (GetSelectedLong (GetDlgItem (hwndDlg, IDC_DRIVELIST))) == 0xffff)
 		{
-			MessageBoxW (hwndDlg, GetString ("SELECT_FREE_DRIVE"), L"VeraCrypt", MB_ICONEXCLAMATION);
+			MessageBoxW (hwndDlg, GetString ("SELECT_FREE_DRIVE"), L"Revera", MB_ICONEXCLAMATION);
 			return 1;
 		}
 
@@ -9276,7 +9276,7 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 	RegisterRedTick(hInstance);
 
 	/* Allocate, dup, then store away the application title */
-	lpszTitle = L"VeraCrypt";
+	lpszTitle = L"Revera";
 
 	status = DriverAttach ();
 	if (status != 0)
@@ -9309,7 +9309,7 @@ BOOL TaskBarIconAdd (HWND hwnd)
 	// Only one icon may be created
 	if (TaskBarIconMutex != NULL) return TRUE;
 
-	TaskBarIconMutex = CreateMutex (NULL, TRUE, L"VeraCryptTaskBarIcon");
+	TaskBarIconMutex = CreateMutex (NULL, TRUE, L"ReveraTaskBarIcon");
 	if (TaskBarIconMutex == NULL || GetLastError () == ERROR_ALREADY_EXISTS)
 	{
 		if (TaskBarIconMutex != NULL)
@@ -9333,7 +9333,7 @@ BOOL TaskBarIconAdd (HWND hwnd)
 		| LR_SHARED
 		| (nCurrentOS != WIN_2000 ? LR_DEFAULTCOLOR : LR_VGACOLOR)); // Windows 2000 cannot display more than 16 fixed colors in notification tray
 
-	StringCbCopyW (tnid.szTip, sizeof(tnid.szTip), L"VeraCrypt");
+	StringCbCopyW (tnid.szTip, sizeof(tnid.szTip), L"Revera");
 
 	return Shell_NotifyIconW (NIM_ADD, &tnid);
 }
@@ -10826,7 +10826,7 @@ static BOOL CALLBACK PerformanceSettingsDlgProc (HWND hwndDlg, UINT msg, WPARAM 
 
 					if (ReadEncryptionThreadPoolFreeCpuCountLimit() != cpuFreeCount)
 					{
-						BootEncObj->WriteLocalMachineRegistryDwordValue (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", TC_ENCRYPTION_FREE_CPU_COUNT_REG_VALUE_NAME, cpuFreeCount);
+						BootEncObj->WriteLocalMachineRegistryDwordValue (L"SYSTEM\\CurrentControlSet\\Services\\revera", TC_ENCRYPTION_FREE_CPU_COUNT_REG_VALUE_NAME, cpuFreeCount);
 						Warning ("SETTING_REQUIRES_REBOOT", hwndDlg);
 					}
 
@@ -11152,7 +11152,7 @@ static BOOL CALLBACK BootLoaderPreferencesDlgProc (HWND hwndDlg, UINT msg, WPARA
 					// read PlatformInfo file if it exists
 					try
 					{
-						platforminfo = ReadESPFile (L"\\EFI\\VeraCrypt\\PlatformInfo", true);						
+						platforminfo = ReadESPFile (L"\\EFI\\Revera\\PlatformInfo", true);						
 					}
 					catch (Exception &)	{}
 
@@ -11202,13 +11202,13 @@ static BOOL CALLBACK BootLoaderPreferencesDlgProc (HWND hwndDlg, UINT msg, WPARA
 			{
 				try
 				{
-					std::string dcsprop = ReadESPFile (L"\\EFI\\VeraCrypt\\DcsProp", true);
+					std::string dcsprop = ReadESPFile (L"\\EFI\\Revera\\DcsProp", true);
 
 					while (TextEditDialogBox(FALSE, hwndDlg, GetString ("BOOT_LOADER_CONFIGURATION_FILE"), dcsprop) == IDOK)
 					{
 						if (validateDcsPropXml (dcsprop.c_str()))
 						{
-							WriteESPFile (L"\\EFI\\VeraCrypt\\DcsProp", (LPBYTE) dcsprop.c_str(), (DWORD) dcsprop.size(), true);
+							WriteESPFile (L"\\EFI\\Revera\\DcsProp", (LPBYTE) dcsprop.c_str(), (DWORD) dcsprop.size(), true);
 							break;
 						}
 						else

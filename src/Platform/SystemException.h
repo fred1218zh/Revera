@@ -16,7 +16,7 @@
 #include "PlatformBase.h"
 #include "Exception.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class SystemException : public Exception
 	{

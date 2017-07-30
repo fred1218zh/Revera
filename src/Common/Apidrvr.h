@@ -26,7 +26,7 @@
 
 #define TC_IOCTL(CODE) (CTL_CODE (FILE_DEVICE_UNKNOWN, 0x800 + (CODE), METHOD_BUFFERED, FILE_ANY_ACCESS))
 
-// IOCTL interface to \\device\veracrypt
+// IOCTL interface to \\device\revera
 
 // Gets version of driver
 // OUT struct - LONG
@@ -36,7 +36,7 @@
 // OUT struct - int16
 #define TC_IOCTL_GET_BOOT_LOADER_VERSION				TC_IOCTL (2)
 
-// Mount volume to \\Device\VeraCryptVolume"X"
+// Mount volume to \\Device\ReveraVolume"X"
 // IN OUT - MOUNT_STRUCT
 #define TC_IOCTL_MOUNT_VOLUME							TC_IOCTL (3)
 
@@ -390,18 +390,18 @@ typedef struct
 
 #define DRIVER_STR WIDE
 
-#define TC_UNIQUE_ID_PREFIX "VeraCryptVolume"
-#define TC_MOUNT_PREFIX L"\\Device\\VeraCryptVolume"
+#define TC_UNIQUE_ID_PREFIX "ReveraVolume"
+#define TC_MOUNT_PREFIX L"\\Device\\ReveraVolume"
 
-#define NT_MOUNT_PREFIX DRIVER_STR("\\Device\\VeraCryptVolume")
-#define NT_ROOT_PREFIX DRIVER_STR("\\Device\\VeraCrypt")
+#define NT_MOUNT_PREFIX DRIVER_STR("\\Device\\ReveraVolume")
+#define NT_ROOT_PREFIX DRIVER_STR("\\Device\\Revera")
 #define DOS_MOUNT_PREFIX_DEFAULT DRIVER_STR("\\DosDevices\\")
 #define DOS_MOUNT_PREFIX_GLOBAL DRIVER_STR("\\GLOBAL??\\") // Use Global MS-DOS device names for sanity checks on drive letters
-#define DOS_ROOT_PREFIX DRIVER_STR("\\DosDevices\\VeraCrypt")
-#define WIN32_ROOT_PREFIX DRIVER_STR("\\\\.\\VeraCrypt")
+#define DOS_ROOT_PREFIX DRIVER_STR("\\DosDevices\\Revera")
+#define WIN32_ROOT_PREFIX DRIVER_STR("\\\\.\\Revera")
 
-#define TC_DRIVER_CONFIG_REG_VALUE_NAME DRIVER_STR("VeraCryptConfig")
-#define TC_ENCRYPTION_FREE_CPU_COUNT_REG_VALUE_NAME DRIVER_STR("VeraCryptEncryptionFreeCpuCount")
+#define TC_DRIVER_CONFIG_REG_VALUE_NAME DRIVER_STR("ReveraConfig")
+#define TC_ENCRYPTION_FREE_CPU_COUNT_REG_VALUE_NAME DRIVER_STR("ReveraEncryptionFreeCpuCount")
 
 // WARNING: Modifying the following values can introduce incompatibility with previous versions.
 #define TC_DRIVER_CONFIG_CACHE_BOOT_PASSWORD						0x1

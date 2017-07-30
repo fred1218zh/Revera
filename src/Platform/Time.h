@@ -15,7 +15,7 @@
 
 #include "PlatformBase.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Time
 	{

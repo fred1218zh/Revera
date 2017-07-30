@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-namespace VeraCrypt
+namespace Revera
 {
 	void FilesystemPath::Delete () const
 	{

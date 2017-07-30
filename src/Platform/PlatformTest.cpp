@@ -24,7 +24,7 @@
 #include "Thread.h"
 #include "Common/Tcdefs.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	// make_shared_auto, File, Stream, MemoryStream, Endian, Serializer, Serializable
 	void PlatformTest::SerializerTest ()
@@ -37,7 +37,7 @@ namespace VeraCrypt
 
 		try
 		{
-			file->Open ("veracrypt-serializer-test.tmp", File::CreateReadWrite);
+			file->Open ("revera-serializer-test.tmp", File::CreateReadWrite);
 			stream = shared_ptr <Stream> (new FileStream (file));
 		}
 		catch (...) { }

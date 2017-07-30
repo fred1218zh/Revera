@@ -18,7 +18,7 @@
 #include "Volume/Volume.h"
 #include "Volume/VolumeSlot.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumeInfo;
 	typedef list < shared_ptr <VolumeInfo> > VolumeInfoList;

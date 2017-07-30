@@ -14,7 +14,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "VolumeSizeWizardPage.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumeSizeWizardPage::VolumeSizeWizardPage (wxPanel* parent, const VolumePath &volumePath, uint32 sectorSize, const wxString &freeSpaceText)
 		: VolumeSizeWizardPageBase (parent),

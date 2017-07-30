@@ -31,7 +31,7 @@
 
 #------ Build configuration ------
 
-export APPNAME := veracrypt
+export APPNAME := revera
 export BASE_DIR := $(CURDIR)
 export BUILD_INC := $(BASE_DIR)/Build/Include
 
@@ -219,7 +219,7 @@ endif
 ifeq "$(shell uname -s)" "Darwin"
 
 	PLATFORM := MacOSX
-	APPNAME := VeraCrypt
+	APPNAME := Revera
 
 	export VC_OSX_TARGET ?= 10.7
 

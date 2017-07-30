@@ -16,7 +16,7 @@
 #include "Platform/PlatformBase.h"
 #include "Platform/StringConverter.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class SystemLog
 	{

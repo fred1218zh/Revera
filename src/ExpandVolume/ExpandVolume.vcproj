@@ -76,7 +76,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\Debug\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptExpander.exe"
+				OutputFile="$(OutDir)/reverax.exe"
 				LinkIncremental="2"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -93,7 +93,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				AdditionalManifestFiles="VeraCryptExpander.manifest"
+				AdditionalManifestFiles="reverax.manifest"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -109,7 +109,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy Debug\VeraCryptExpander.exe &quot;..\Debug\Setup Files&quot; &gt;NUL:&#x0D;&#x0A;"
+				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy Debug\reverax.exe &quot;..\Debug\Setup Files&quot; &gt;NUL:&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -170,7 +170,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\x64\Debug\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptExpander.exe"
+				OutputFile="$(OutDir)/reverax.exe"
 				LinkIncremental="2"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -187,7 +187,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				AdditionalManifestFiles="VeraCryptExpander.manifest"
+				AdditionalManifestFiles="reverax.manifest"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -203,7 +203,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy $(TargetPath) &quot;..\Debug\Setup Files\VeraCryptExpander-x64.exe&quot; &gt;NUL:&#x0D;&#x0A;"
+				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy $(TargetPath) &quot;..\Debug\Setup Files\reverax-x64.exe&quot; &gt;NUL:&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -259,7 +259,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\Release\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptExpander.exe"
+				OutputFile="$(OutDir)/reverax.exe"
 				LinkIncremental="1"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -278,7 +278,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				AdditionalManifestFiles="VeraCryptExpander.manifest"
+				AdditionalManifestFiles="reverax.manifest"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -294,7 +294,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy Release\VeraCryptExpander.exe &quot;..\Release\Setup Files\&quot;"
+				CommandLine="copy Release\reverax.exe &quot;..\Release\Setup Files\&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -351,7 +351,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\x64\Release\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptExpander.exe"
+				OutputFile="$(OutDir)/reverax.exe"
 				LinkIncremental="1"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -370,7 +370,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				AdditionalManifestFiles="VeraCryptExpander.manifest"
+				AdditionalManifestFiles="reverax.manifest"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -386,7 +386,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy $(TargetPath) &quot;..\Release\Setup Files\VeraCryptExpander-x64.exe&quot;"
+				CommandLine="copy $(TargetPath) &quot;..\Release\Setup Files\reverax-x64.exe&quot;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -911,19 +911,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt.ico"
+				RelativePath="..\Common\Revera.ico"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt_mounted.ico"
+				RelativePath="..\Common\Revera_mounted.ico"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt_Volume.ico"
+				RelativePath="..\Common\Revera_Volume.ico"
 				>
 			</File>
 			<File
-				RelativePath=".\VeraCryptExpander.manifest"
+				RelativePath=".\reverax.manifest"
 				>
 			</File>
 			<Filter

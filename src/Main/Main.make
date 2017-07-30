@@ -70,7 +70,7 @@ RESOURCES += ../License.txt.h
 RESOURCES += ../Common/Language.xml.h
 ifndef TC_NO_GUI
 RESOURCES += ../Common/Textual_logo_96dpi.bmp.h
-RESOURCES += ../Format/VeraCrypt_Wizard.bmp.h
+RESOURCES += ../Format/Revera_Wizard.bmp.h
 RESOURCES += ../Mount/Drive_icon_96dpi.bmp.h
 RESOURCES += ../Mount/Drive_icon_mask_96dpi.bmp.h
 RESOURCES += ../Mount/Logo_96dpi.bmp.h
@@ -127,8 +127,8 @@ INSTALLER_TYPE := gui
 PACKAGE_NAME := $(APPNAME)_$(TC_VERSION)_$(PLATFORM_ARCH).tar.gz
 endif
 
-INTERNAL_INSTALLER_NAME := veracrypt_install_$(INSTALLER_TYPE)_$(CPU_ARCH).sh
-INSTALLER_NAME := veracrypt-$(TC_VERSION)-setup-$(INSTALLER_TYPE)-$(CPU_ARCH)
+INTERNAL_INSTALLER_NAME := revera_install_$(INSTALLER_TYPE)_$(CPU_ARCH).sh
+INSTALLER_NAME := revera-$(TC_VERSION)-setup-$(INSTALLER_TYPE)-$(CPU_ARCH)
 
 endif
 #-----------------------------------
@@ -146,8 +146,8 @@ INSTALLER_TYPE := gui
 PACKAGE_NAME := $(APPNAME)_$(TC_VERSION)_$(SYSTEMNAME)_$(PLATFORM_ARCH).tar.gz
 endif
 
-INTERNAL_INSTALLER_NAME := veracrypt_install_f$(SYSTEMNAME)_$(INSTALLER_TYPE)_$(CPU_ARCH).sh
-INSTALLER_NAME := veracrypt-$(TC_VERSION)-$(SYSTEMNAME)-setup-$(INSTALLER_TYPE)-$(CPU_ARCH)
+INTERNAL_INSTALLER_NAME := revera_install_f$(SYSTEMNAME)_$(INSTALLER_TYPE)_$(CPU_ARCH).sh
+INSTALLER_NAME := revera-$(TC_VERSION)-$(SYSTEMNAME)-setup-$(INSTALLER_TYPE)-$(CPU_ARCH)
 
 endif
 #-----------------------------------
@@ -192,8 +192,8 @@ else
 endif
 endif
 
-	cp $(PWD)/Resources/Icons/VeraCrypt.icns $(APPNAME).app/Contents/Resources
-	cp $(PWD)/Resources/Icons/VeraCrypt_Volume.icns $(APPNAME).app/Contents/Resources
+	cp $(PWD)/Resources/Icons/Revera.icns $(APPNAME).app/Contents/Resources
+	cp $(PWD)/Resources/Icons/Revera_Volume.icns $(APPNAME).app/Contents/Resources
 	cp $(PWD)/../doc/html/* $(APPNAME).app/Contents/Resources/doc/HTML
 
 	echo -n APPLTRUE >$(APPNAME).app/Contents/PkgInfo
@@ -204,19 +204,19 @@ install: prepare
 	cp -R $(APPNAME).app /Applications/.
 
 package: prepare
-	/usr/local/bin/packagesbuild $(PWD)/Setup/MacOSX/veracrypt.pkgproj
-	productsign --sign "Developer ID Installer: Mounir IDRASSI" --timestamp "$(PWD)/Setup/MacOSX/VeraCrypt $(TC_VERSION).pkg" $(PWD)/Setup/MacOSX/VeraCrypt_$(TC_VERSION).pkg
+	/usr/local/bin/packagesbuild $(PWD)/Setup/MacOSX/revera.pkgproj
+	productsign --sign "Developer ID Installer: Mounir IDRASSI" --timestamp "$(PWD)/Setup/MacOSX/Revera $(TC_VERSION).pkg" $(PWD)/Setup/MacOSX/Revera_$(TC_VERSION).pkg
 	rm -f $(APPNAME)_$(TC_VERSION).dmg
 	rm -f "$(PWD)/Setup/MacOSX/template.dmg"
-	rm -fr "$(PWD)/Setup/MacOSX/VeraCrypt_dmg"
-	mkdir -p "$(PWD)/Setup/MacOSX/VeraCrypt_dmg"
+	rm -fr "$(PWD)/Setup/MacOSX/Revera_dmg"
+	mkdir -p "$(PWD)/Setup/MacOSX/Revera_dmg"
 	bunzip2 -k -f "$(PWD)/Setup/MacOSX/template.dmg.bz2"
-	hdiutil attach "$(PWD)/Setup/MacOSX/template.dmg" -noautoopen -quiet -mountpoint "$(PWD)/Setup/MacOSX/VeraCrypt_dmg"
-	cp "$(PWD)/Setup/MacOSX/VeraCrypt_$(TC_VERSION).pkg" "$(PWD)/Setup/MacOSX/VeraCrypt_dmg/VeraCrypt_Installer.pkg"
-	hdiutil detach "$(PWD)/Setup/MacOSX/VeraCrypt_dmg" -quiet -force
+	hdiutil attach "$(PWD)/Setup/MacOSX/template.dmg" -noautoopen -quiet -mountpoint "$(PWD)/Setup/MacOSX/Revera_dmg"
+	cp "$(PWD)/Setup/MacOSX/Revera_$(TC_VERSION).pkg" "$(PWD)/Setup/MacOSX/Revera_dmg/Revera_Installer.pkg"
+	hdiutil detach "$(PWD)/Setup/MacOSX/Revera_dmg" -quiet -force
 	hdiutil convert "$(PWD)/Setup/MacOSX/template.dmg" -quiet -format UDZO -imagekey zlib-level=9 -o $(APPNAME)_$(TC_VERSION).dmg
 	rm -f "$(PWD)/Setup/MacOSX/template.dmg"
-	rm -fr "$(PWD)/Setup/MacOSX/VeraCrypt_dmg"
+	rm -fr "$(PWD)/Setup/MacOSX/Revera_dmg"
 endif
 
 
@@ -235,7 +235,7 @@ prepare: $(APPNAME)
 ifndef TC_NO_GUI
 	mkdir -p $(PWD)/Setup/Linux/usr/share/applications
 	mkdir -p $(PWD)/Setup/Linux/usr/share/pixmaps
-	cp $(PWD)/Resources/Icons/VeraCrypt-256x256.xpm $(PWD)/Setup/Linux/usr/share/pixmaps/$(APPNAME).xpm
+	cp $(PWD)/Resources/Icons/Revera-256x256.xpm $(PWD)/Setup/Linux/usr/share/pixmaps/$(APPNAME).xpm
 	cp $(PWD)/Setup/Linux/$(APPNAME).desktop $(PWD)/Setup/Linux/usr/share/applications/$(APPNAME).desktop
 endif
 
@@ -255,14 +255,14 @@ package: prepare
 	@echo "PACKAGE_START=1107" >> $(INTERNAL_INSTALLER_NAME)
 	@echo "INSTALLER_TYPE=$(INSTALLER_TYPE)" >> $(INTERNAL_INSTALLER_NAME)
 
-	@cat $(PWD)/Setup/Linux/veracrypt_install_template.sh >> $(INTERNAL_INSTALLER_NAME)
+	@cat $(PWD)/Setup/Linux/revera_install_template.sh >> $(INTERNAL_INSTALLER_NAME)
 	@cat $(PWD)/Setup/Linux/$(PACKAGE_NAME) >> $(INTERNAL_INSTALLER_NAME)
 	chmod +x $(INTERNAL_INSTALLER_NAME)
 
 	rm -fr $(PWD)/Setup/Linux/packaging
 	mkdir -p $(PWD)/Setup/Linux/packaging
 	cp $(INTERNAL_INSTALLER_NAME) $(PWD)/Setup/Linux/packaging/.
-	makeself $(PWD)/Setup/Linux/packaging $(PWD)/Setup/Linux/$(INSTALLER_NAME) "VeraCrypt $(TC_VERSION) Installer" ./$(INTERNAL_INSTALLER_NAME)
+	makeself $(PWD)/Setup/Linux/packaging $(PWD)/Setup/Linux/$(INSTALLER_NAME) "Revera $(TC_VERSION) Installer" ./$(INTERNAL_INSTALLER_NAME)
 
 endif
 
@@ -282,7 +282,7 @@ prepare: $(APPNAME)
 ifndef TC_NO_GUI
 	mkdir -p $(PWD)/Setup/FreeBSD/usr/share/applications
 	mkdir -p $(PWD)/Setup/FreeBSD/usr/share/pixmaps
-	cp $(PWD)/Resources/Icons/VeraCrypt-256x256.xpm $(PWD)/Setup/FreeBSD/usr/share/pixmaps/$(APPNAME).xpm
+	cp $(PWD)/Resources/Icons/revera-256x256.xpm $(PWD)/Setup/FreeBSD/usr/share/pixmaps/$(APPNAME).xpm
 	cp $(PWD)/Setup/Linux/$(APPNAME).desktop $(PWD)/Setup/FreeBSD/usr/share/applications/$(APPNAME).desktop
 endif
 	chown -R root:wheel $(PWD)/Setup/FreeBSD/usr
@@ -304,14 +304,14 @@ package: prepare
 	@echo "PACKAGE_START=1107" >> $(INTERNAL_INSTALLER_NAME)
 	@echo "INSTALLER_TYPE=$(INSTALLER_TYPE)" >> $(INTERNAL_INSTALLER_NAME)
 
-	@cat $(PWD)/Setup/FreeBSD/veracrypt_install_template.sh >> $(INTERNAL_INSTALLER_NAME)
+	@cat $(PWD)/Setup/FreeBSD/revera_install_template.sh >> $(INTERNAL_INSTALLER_NAME)
 	@cat $(PWD)/Setup/FreeBSD/$(PACKAGE_NAME) >> $(INTERNAL_INSTALLER_NAME)
 	chmod +x $(INTERNAL_INSTALLER_NAME)
 
 	rm -fr $(PWD)/Setup/FreeBSD/packaging
 	mkdir -p $(PWD)/Setup/FreeBSD/packaging
 	cp $(INTERNAL_INSTALLER_NAME) $(PWD)/Setup/FreeBSD/packaging/.
-	makeself $(PWD)/Setup/FreeBSD/packaging $(PWD)/Setup/FreeBSD/$(INSTALLER_NAME) "VeraCrypt $(TC_VERSION) $(SYSTEMNAME) Installer" ./$(INTERNAL_INSTALLER_NAME)
+	makeself $(PWD)/Setup/FreeBSD/packaging $(PWD)/Setup/FreeBSD/$(INSTALLER_NAME) "Revera $(TC_VERSION) $(SYSTEMNAME) Installer" ./$(INTERNAL_INSTALLER_NAME)
 
 endif
 

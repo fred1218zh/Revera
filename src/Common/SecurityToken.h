@@ -53,7 +53,7 @@
 #define TC_SECURITY_TOKEN_KEYFILE_URL_SLOT L"slot"
 #define TC_SECURITY_TOKEN_KEYFILE_URL_FILE L"file"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct SecurityTokenInfo
 	{

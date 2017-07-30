@@ -13,7 +13,7 @@
 #include "VolumeException.h"
 #include "Platform/SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	// Do not inline the constructors to ensure this module is not optimized away
 	VolumeException::VolumeException ()

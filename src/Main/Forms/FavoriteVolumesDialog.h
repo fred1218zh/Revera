@@ -17,7 +17,7 @@
 #include "Main/Main.h"
 #include "Main/FavoriteVolume.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class FavoriteVolumesDialog : public FavoriteVolumesDialogBase
 	{

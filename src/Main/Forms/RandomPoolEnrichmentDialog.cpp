@@ -15,7 +15,7 @@
 #include "Volume/Hash.h"
 #include "RandomPoolEnrichmentDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	RandomPoolEnrichmentDialog::RandomPoolEnrichmentDialog (wxWindow* parent) : RandomPoolEnrichmentDialogBase (parent)
 	{

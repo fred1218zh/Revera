@@ -14,7 +14,7 @@
 #include "Platform/SystemInfo.h"
 #include <sys/utsname.h>
 
-namespace VeraCrypt
+namespace Revera
 {
 	wstring SystemInfo::GetPlatformName ()
 	{

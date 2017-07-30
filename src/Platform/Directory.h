@@ -16,7 +16,7 @@
 #include "PlatformBase.h"
 #include "FilesystemPath.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Directory
 	{

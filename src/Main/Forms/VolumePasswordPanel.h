@@ -17,7 +17,7 @@
 #include "Platform/Functor.h"
 #include "Main/Main.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumePasswordPanel : public VolumePasswordPanelBase
 	{

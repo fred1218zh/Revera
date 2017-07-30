@@ -52,13 +52,13 @@
 
 #include "ExpandVolume.h"
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 const wchar_t szExpandVolumeInfo[] =
-L":: VeraCrypt Expander ::\n\nExpand a VeraCrypt volume on the fly without reformatting\n\n\n\
+L":: Revera Expander ::\n\nExpand a Revera volume on the fly without reformatting\n\n\n\
 All kind of volumes (container files, disks and partitions) formatted with \
 NTFS are supported. The only condition is that there must be enough free \
-space on the host drive or host device of the VeraCrypt volume.\n\n\
+space on the host drive or host device of the Revera volume.\n\n\
 Do not use this software to expand an outer volume containing a hidden \
 volume, because this destroys the hidden volume!\n\
 ";
@@ -79,7 +79,7 @@ enum hidden_os_read_only_notif_mode
 #define TIMER_INTERVAL_MAIN					500
 #define TIMER_INTERVAL_KEYB_LAYOUT_GUARD	10
 
-namespace VeraCryptExpander
+namespace ReveraExpander
 {
 
 BOOL bExplore = FALSE;				/* Display explorer window after mount */
@@ -108,7 +108,7 @@ BOOL bAutoMountFavorites = FALSE;
 BOOL bPlaySoundOnHotkeyMountDismount = TRUE;
 BOOL bDisplayMsgBoxOnHotkeyDismount = FALSE;
 BOOL bHibernationPreventionNotified = FALSE;	/* TRUE if the user has been notified that hibernation was prevented (system encryption) during the session. */
-BOOL bHiddenSysLeakProtNotifiedDuringSession = FALSE;	/* TRUE if the user has been notified during the session that unencrypted filesystems and non-hidden VeraCrypt volumes are mounted as read-only under hidden OS. */
+BOOL bHiddenSysLeakProtNotifiedDuringSession = FALSE;	/* TRUE if the user has been notified during the session that unencrypted filesystems and non-hidden Revera volumes are mounted as read-only under hidden OS. */
 BOOL CloseSecurityTokenSessionsAfterMount = FALSE;
 
 BOOL MultipleMountOperationInProgress = FALSE;
@@ -841,7 +841,7 @@ static BOOL SelectContainer (HWND hwndDlg)
 		return FALSE;
 
 	AddComboItem (GetDlgItem (hwndDlg, IDC_VOLUME), szFileName, bHistory);
-	VeraCryptExpander::EnableDisableButtons (hwndDlg);
+	ReveraExpander::EnableDisableButtons (hwndDlg);
 	SetFocus (GetDlgItem (hwndDlg, IDC_DRIVELIST));
 	return TRUE;
 }
@@ -855,7 +855,7 @@ static BOOL SelectPartition (HWND hwndDlg)
 	if (nResult == IDOK)
 	{
 		AddComboItem (GetDlgItem (hwndDlg, IDC_VOLUME), szFileName, bHistory);
-		VeraCryptExpander::EnableDisableButtons (hwndDlg);
+		ReveraExpander::EnableDisableButtons (hwndDlg);
 		SetFocus (GetDlgItem (hwndDlg, IDC_DRIVELIST));
 		return TRUE;
 	}
@@ -889,7 +889,7 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 			if (UsePreferences)
 			{
 				// General preferences
-				VeraCryptExpander::LoadSettings (hwndDlg);
+				ReveraExpander::LoadSettings (hwndDlg);
 
 				// Keyfiles
 				LoadDefaultKeyFilesParam ();
@@ -917,7 +917,7 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 		return 0;
 
 	case WM_ENDSESSION:
-		VeraCryptExpander::EndMainDlg (hwndDlg);
+		ReveraExpander::EndMainDlg (hwndDlg);
 		localcleanup ();
 		return 0;
 
@@ -925,13 +925,13 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 
 		if (lw == IDCANCEL || lw == IDC_EXIT)
 		{
-			VeraCryptExpander::EndMainDlg (hwndDlg);
+			ReveraExpander::EndMainDlg (hwndDlg);
 			return 1;
 		}
 
 		if ( lw == IDOK )
 		{
-			if (!VeraCryptExpander::VolumeSelected(hwndDlg))
+			if (!ReveraExpander::VolumeSelected(hwndDlg))
 			{
 				Warning ("NO_VOLUME_SELECTED", hwndDlg);
 			}
@@ -975,7 +975,7 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 		return 0;
 
 	case WM_CLOSE:
-		VeraCryptExpander::EndMainDlg (hwndDlg);
+		ReveraExpander::EndMainDlg (hwndDlg);
 		return 1;
 
 	default:
@@ -991,19 +991,19 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpszCommandLine, int nCmdShow)
 {
 	int status;
-	atexit (VeraCryptExpander::localcleanup);
+	atexit (ReveraExpander::localcleanup);
 	SetProcessShutdownParameters (0x100, 0);
 
-	VirtualLock (&VeraCryptExpander::VolumePassword, sizeof (VeraCryptExpander::VolumePassword));
-	VirtualLock (&VeraCryptExpander::CmdVolumePassword, sizeof (VeraCryptExpander::CmdVolumePassword));
-	VirtualLock (&VeraCryptExpander::mountOptions, sizeof (VeraCryptExpander::mountOptions));
-	VirtualLock (&VeraCryptExpander::defaultMountOptions, sizeof (VeraCryptExpander::defaultMountOptions));
-	VirtualLock (&VeraCryptExpander::szFileName, sizeof(VeraCryptExpander::szFileName));
+	VirtualLock (&ReveraExpander::VolumePassword, sizeof (ReveraExpander::VolumePassword));
+	VirtualLock (&ReveraExpander::CmdVolumePassword, sizeof (ReveraExpander::CmdVolumePassword));
+	VirtualLock (&ReveraExpander::mountOptions, sizeof (ReveraExpander::mountOptions));
+	VirtualLock (&ReveraExpander::defaultMountOptions, sizeof (ReveraExpander::defaultMountOptions));
+	VirtualLock (&ReveraExpander::szFileName, sizeof(ReveraExpander::szFileName));
 
 	InitApp (hInstance, lpszCommandLine);
 
 	/* application title */
-	lpszTitle = L"VeraCrypt Expander";
+	lpszTitle = L"Revera Expander";
 
 	DetectX86Features ();
 
@@ -1019,7 +1019,7 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 	}
 
 	/* Create the main dialog box */
-	DialogBoxParamW (hInstance, MAKEINTRESOURCEW (IDD_MOUNT_DLG), NULL, (DLGPROC) VeraCryptExpander::MainDialogProc,
+	DialogBoxParamW (hInstance, MAKEINTRESOURCEW (IDD_MOUNT_DLG), NULL, (DLGPROC) ReveraExpander::MainDialogProc,
 			(LPARAM) lpszCommandLine);
 
 	/* Terminate */

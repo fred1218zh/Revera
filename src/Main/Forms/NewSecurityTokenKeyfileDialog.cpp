@@ -14,7 +14,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "NewSecurityTokenKeyfileDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	NewSecurityTokenKeyfileDialog::NewSecurityTokenKeyfileDialog (wxWindow* parent, const wstring &keyfileName) : NewSecurityTokenKeyfileDialogBase (parent)
 	{

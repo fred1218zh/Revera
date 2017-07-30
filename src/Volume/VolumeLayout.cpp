@@ -15,7 +15,7 @@
 #include "VolumeLayout.h"
 #include "Boot/Windows/BootCommon.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumeLayout::VolumeLayout ()
 	{

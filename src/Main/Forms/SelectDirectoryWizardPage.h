@@ -15,7 +15,7 @@
 
 #include "Forms.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class SelectDirectoryWizardPage : public SelectDirectoryWizardPageBase
 	{

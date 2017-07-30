@@ -14,7 +14,7 @@
 #include "VolumeInfo.h"
 #include "Platform/SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void VolumeInfo::Deserialize (shared_ptr <Stream> stream)
 	{

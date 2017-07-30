@@ -16,7 +16,7 @@
 #include "PlatformBase.h"
 #include "Mutex.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	template <class T>
 	class SharedVal

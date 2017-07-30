@@ -16,7 +16,7 @@
 #include "Platform/Platform.h"
 #include "Platform/Serializable.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct HostDevice;
 	typedef list < shared_ptr <HostDevice> > HostDeviceList;

@@ -17,7 +17,7 @@
 #include "Hash.h"
 #include "VolumePassword.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Pkcs5Kdf;
 	typedef list < shared_ptr <Pkcs5Kdf> > Pkcs5KdfList;

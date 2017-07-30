@@ -288,13 +288,13 @@ void DeleteRegistryValue (wchar_t *subKey, wchar_t *name)
 void GetStartupRegKeyName (wchar_t *regk, size_t cbRegk)
 {
 	// The string is split in order to prevent some antivirus packages from falsely reporting
-	// VeraCrypt.exe to contain a possible Trojan horse because of this string (heuristic scan).
+	// revera.exe to contain a possible Trojan horse because of this string (heuristic scan).
 	StringCbPrintfW (regk, cbRegk,L"%s%s", L"Software\\Microsoft\\Windows\\Curren", L"tVersion\\Run");
 }
 
 void GetRestorePointRegKeyName (wchar_t *regk, size_t cbRegk)
 {
 	// The string is split in order to prevent some antivirus packages from falsely reporting
-	// VeraCrypt.exe to contain a possible Trojan horse because of this string (heuristic scan).
+	// revera.exe to contain a possible Trojan horse because of this string (heuristic scan).
 	StringCbPrintfW (regk, cbRegk,L"%s%s%s%s", L"Software\\Microsoft\\Windows", L" NT\\Curren", L"tVersion\\Sy", L"stemRestore");
 }

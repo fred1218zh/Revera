@@ -56,7 +56,7 @@ const wchar_t * szFileSystemStr[4] = {L"RAW",L"FAT",L"NTFS",L"EXFAT"};
 BOOL CALLBACK ExpandVolSizeDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam);
 BOOL CALLBACK ExpandVolProgressDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam);
 
-namespace VeraCryptExpander
+namespace ReveraExpander
 {
 /* defined in WinMain.c, referenced by ExpandVolumeWizard() */
 int ExtcvAskVolumePassword (HWND hwndDlg, const wchar_t* fileName, Password *password, int *pkcs5, int *pim, BOOL* truecryptMode, char *titleStringId, BOOL enableMountOptions);
@@ -171,13 +171,13 @@ BOOL CALLBACK ExpandVolSizeDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARA
 			// set help text
 			if (pVolExpandParam->bIsDevice)
 			{
-				StringCbPrintfW (szTemp,sizeof(szTemp),L"This is a device-based VeraCrypt volume.\n\nThe new volume size will be choosen automatically as the size of the host device.");
+				StringCbPrintfW (szTemp,sizeof(szTemp),L"This is a device-based Revera volume.\n\nThe new volume size will be choosen automatically as the size of the host device.");
 				if (pVolExpandParam->bIsLegacy)
 					StringCbCatW(szTemp,sizeof(szTemp),L" Note: filling the new space with random data is not supported for legacy volumes.");
 			}
 			else
 			{
-				StringCbPrintfW (szTemp, sizeof(szTemp),L"Please specify the new size of the VeraCrypt volume (must be at least %I64u KB larger than the current size).",TC_MINVAL_FS_EXPAND/1024);
+				StringCbPrintfW (szTemp, sizeof(szTemp),L"Please specify the new size of the Revera volume (must be at least %I64u KB larger than the current size).",TC_MINVAL_FS_EXPAND/1024);
 			}
 			SetWindowText (GetDlgItem (hwndDlg, IDC_BOX_HELP), szTemp);
 
@@ -494,7 +494,7 @@ void ExpandVolumeWizard (HWND hwndDlg, wchar_t *lpszVolume)
 	{
 	case 1:
 	case 2:
-		MessageBoxW (hwndDlg, L"A VeraCrypt system volume can't be expanded.", lpszTitle, MB_OK|MB_ICONEXCLAMATION);
+		MessageBoxW (hwndDlg, L"A Revera system volume can't be expanded.", lpszTitle, MB_OK|MB_ICONEXCLAMATION);
 		goto ret;
 	}
 
@@ -550,7 +550,7 @@ void ExpandVolumeWizard (HWND hwndDlg, wchar_t *lpszVolume)
 		OpenVolumeContext expandVol;
 		BOOL truecryptMode = FALSE;
 
-		if (!VeraCryptExpander::ExtcvAskVolumePassword (hwndDlg, lpszVolume, &VolumePassword, &VolumePkcs5, &VolumePim, &truecryptMode, "ENTER_NORMAL_VOL_PASSWORD", FALSE))
+		if (!ReveraExpander::ExtcvAskVolumePassword (hwndDlg, lpszVolume, &VolumePassword, &VolumePkcs5, &VolumePim, &truecryptMode, "ENTER_NORMAL_VOL_PASSWORD", FALSE))
 		{
 			goto ret;
 		}
@@ -649,7 +649,7 @@ void ExpandVolumeWizard (HWND hwndDlg, wchar_t *lpszVolume)
 		MessageBoxW (hwndDlg,
 			L"Expanding a device hosted legacy volume with no NTFS file system\n"
 			L"is unsupported.\n"
-			L"Note that expanding the VeraCrypt volume itself is not neccessary\n"
+			L"Note that expanding the Revera volume itself is not neccessary\n"
 			L"for legacy volumes.\n",
 			lpszTitle, MB_OK|MB_ICONEXCLAMATION);
 		goto ret;
@@ -664,7 +664,7 @@ void ExpandVolumeWizard (HWND hwndDlg, wchar_t *lpszVolume)
 
 	if (!bIsDevice && hostSize != volSize ) {
 		// there is some junk data at the end of the volume
-		if (MessageBoxW (hwndDlg, L"Warning: The container file is larger than the VeraCrypt volume area. The data after the VeraCrypt volume area will be overwritten.\n\nDo you want to continue?", lpszTitle, YES_NO|MB_ICONQUESTION|MB_DEFBUTTON2) == IDNO)
+		if (MessageBoxW (hwndDlg, L"Warning: The container file is larger than the Revera volume area. The data after the Revera volume area will be overwritten.\n\nDo you want to continue?", lpszTitle, YES_NO|MB_ICONQUESTION|MB_DEFBUTTON2) == IDNO)
 			goto ret;
 	}
 
@@ -673,17 +673,17 @@ void ExpandVolumeWizard (HWND hwndDlg, wchar_t *lpszVolume)
 	case EV_FS_TYPE_NTFS:
 		break;
 	case EV_FS_TYPE_FAT:
-		if (MessageBoxW (hwndDlg,L"Warning: The VeraCrypt volume contains a FAT file system!\n\nOnly the VeraCrypt volume itself will be expanded, but not the file system.\n\nDo you want to continue?",
+		if (MessageBoxW (hwndDlg,L"Warning: The Revera volume contains a FAT file system!\n\nOnly the Revera volume itself will be expanded, but not the file system.\n\nDo you want to continue?",
 			lpszTitle, YES_NO|MB_ICONQUESTION|MB_DEFBUTTON2) == IDNO)
 			goto ret;
 		break;
 	case EV_FS_TYPE_EXFAT:
-		if (MessageBoxW (hwndDlg,L"Warning: The VeraCrypt volume contains an exFAT file system!\n\nOnly the VeraCrypt volume itself will be expanded, but not the file system.\n\nDo you want to continue?",
+		if (MessageBoxW (hwndDlg,L"Warning: The Revera volume contains an exFAT file system!\n\nOnly the Revera volume itself will be expanded, but not the file system.\n\nDo you want to continue?",
 			lpszTitle, YES_NO|MB_ICONQUESTION|MB_DEFBUTTON2) == IDNO)
 			goto ret;
 		break;
 	default:
-		if (MessageBoxW (hwndDlg,L"Warning: The VeraCrypt volume contains an unknown or no file system!\n\nOnly the VeraCrypt volume itself will be expanded, the file system remains unchanged.\n\nDo you want to continue?",
+		if (MessageBoxW (hwndDlg,L"Warning: The Revera volume contains an unknown or no file system!\n\nOnly the Revera volume itself will be expanded, the file system remains unchanged.\n\nDo you want to continue?",
 			lpszTitle, YES_NO|MB_ICONQUESTION|MB_DEFBUTTON2) == IDNO)
 			goto ret;
 	}
@@ -742,7 +742,7 @@ void ExpandVolumeWizard (HWND hwndDlg, wchar_t *lpszVolume)
 		if ( newVolumeSize > TC_MAX_VOLUME_SIZE )
 		{
 			// note: current limit TC_MAX_VOLUME_SIZE is 1 PetaByte
-			StringCbPrintfW(szTmp,sizeof(szTmp),L"Maximum VeraCrypt volume size of %I64u TB exceeded!\n",TC_MAX_VOLUME_SIZE/BYTES_PER_TB);
+			StringCbPrintfW(szTmp,sizeof(szTmp),L"Maximum Revera volume size of %I64u TB exceeded!\n",TC_MAX_VOLUME_SIZE/BYTES_PER_TB);
 			MessageBoxW (hwndDlg, szTmp,lpszTitle, MB_OK | MB_ICONEXCLAMATION );
 			if (bIsDevice)
 				break; // TODO: ask to limit volume size to TC_MAX_VOLUME_SIZE

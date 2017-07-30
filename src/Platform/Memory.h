@@ -67,7 +67,7 @@
 #	error Unsupported byte ordering detected.
 #endif
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Memory
 	{

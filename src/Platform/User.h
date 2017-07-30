@@ -20,7 +20,7 @@
 #include <sys/types.h>
 #endif
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct UserId
 	{

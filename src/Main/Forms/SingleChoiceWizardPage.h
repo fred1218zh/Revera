@@ -15,7 +15,7 @@
 
 #include "Forms.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	template <class ChoiceType>
 	class SingleChoiceWizardPage : public SingleChoiceWizardPageBase

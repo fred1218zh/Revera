@@ -29,7 +29,7 @@
 #define SRC_POS (__FUNCTION__ ":" TC_TO_STRING(__LINE__))
 #endif
 
-#define OutputPackageFile L"VeraCrypt Setup " _T(VERSION_STRING) L".exe"
+#define OutputPackageFile L"Revera Setup " _T(VERSION_STRING) L".exe"
 
 #define MAG_START_MARKER	"TCINSTRT"
 #define MAG_END_MARKER_OBFUSCATED	"T/C/I/N/S/C/R/C"
@@ -67,19 +67,19 @@ static void DeobfuscateMagEndMarker (void)
 
 static void PkgError (wchar_t *msg)
 {
-	MessageBox (NULL, msg, L"VeraCrypt", MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
+	MessageBox (NULL, msg, L"Revera", MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
 }
 
 
 static void PkgWarning (wchar_t *msg)
 {
-	MessageBox (NULL, msg, L"VeraCrypt", MB_ICONWARNING | MB_SETFOREGROUND | MB_TOPMOST);
+	MessageBox (NULL, msg, L"Revera", MB_ICONWARNING | MB_SETFOREGROUND | MB_TOPMOST);
 }
 
 
 static void PkgInfo (wchar_t *msg)
 {
-	MessageBox (NULL, msg, L"VeraCrypt", MB_ICONINFORMATION | MB_SETFOREGROUND | MB_TOPMOST);
+	MessageBox (NULL, msg, L"Revera", MB_ICONINFORMATION | MB_SETFOREGROUND | MB_TOPMOST);
 }
 
 
@@ -141,12 +141,12 @@ BOOL MakeSelfExtractingPackage (HWND hwndDlg, wchar_t *szDestDir)
 	StringCchCopyW (outputFile, ARRAYSIZE(outputFile), szDestDir);
 	StringCchCatW (outputFile, ARRAYSIZE(outputFile), OutputPackageFile);
 
-	// Clone 'VeraCrypt Setup.exe' to create the base of the new self-extracting archive
+	// Clone 'revera-setup.exe' to create the base of the new self-extracting archive
 
 	if (!TCCopyFile (inputFile, outputFile))
 	{
 		handleWin32Error (hwndDlg, SRC_POS);
-		PkgError (L"Cannot copy 'VeraCrypt Setup.exe' to the package");
+		PkgError (L"Cannot copy 'revera-setup.exe' to the package");
 		goto err;
 	}
 

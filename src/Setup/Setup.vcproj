@@ -66,7 +66,7 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/NODEFAULTLIB:LIBCMTD"
 				AdditionalDependencies="libcmtd.lib atlsd.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptSetup.exe"
+				OutputFile="$(OutDir)/revera-setup.exe"
 				LinkIncremental="2"
 				GenerateManifest="false"
 				UACExecutionLevel="2"
@@ -100,7 +100,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy Debug\VeraCryptSetup.exe &quot;..\Debug\Setup Files\VeraCrypt Setup.exe&quot; &gt;NUL:&#x0D;&#x0A;"
+				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy Debug\revera-setup.exe &quot;..\Debug\Setup Files\revera-setup.exe&quot; &gt;NUL:&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -154,7 +154,7 @@
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
 				AdditionalDependencies="mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptSetup.exe"
+				OutputFile="$(OutDir)/revera-setup.exe"
 				LinkIncremental="1"
 				GenerateManifest="false"
 				UACExecutionLevel="2"
@@ -189,7 +189,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy Release\VeraCryptSetup.exe &quot;..\Release\Setup Files\VeraCrypt Setup.exe&quot;"
+				CommandLine="copy Release\revera-setup.exe &quot;..\Release\Setup Files\revera-setup.exe&quot;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -418,19 +418,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt.ico"
+				RelativePath="..\Common\Revera.ico"
 				>
 			</File>
 			<File
-				RelativePath=".\VeraCrypt_setup.bmp"
+				RelativePath=".\Revera_setup.bmp"
 				>
 			</File>
 			<File
-				RelativePath=".\VeraCrypt_setup_background.bmp"
+				RelativePath=".\Revera_setup_background.bmp"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt_Volume.ico"
+				RelativePath="..\Common\Revera_Volume.ico"
 				>
 			</File>
 			<Filter

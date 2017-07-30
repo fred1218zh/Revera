@@ -123,11 +123,11 @@ typedef struct
 	BOOL systemFavorites;
 	BOOL logOnMount;
 	BOOL hotKeyMount;
-	VeraCrypt::FavoriteVolume* favoriteVolumeToMount;
+	Revera::FavoriteVolume* favoriteVolumeToMount;
 } mountFavoriteVolumeThreadParam;
 
 void SetDriverConfigurationFlag (uint32 flag, BOOL state);
-BOOL MountFavoriteVolumes (HWND hwnd, BOOL systemFavorites = FALSE, BOOL logOnMount = FALSE, BOOL hotKeyMount = FALSE, const VeraCrypt::FavoriteVolume &favoriteVolumeToMount = VeraCrypt::FavoriteVolume());
+BOOL MountFavoriteVolumes (HWND hwnd, BOOL systemFavorites = FALSE, BOOL logOnMount = FALSE, BOOL hotKeyMount = FALSE, const Revera::FavoriteVolume &favoriteVolumeToMount = Revera::FavoriteVolume());
 void __cdecl mountFavoriteVolumeThreadFunction (void *pArg);
 
 #endif

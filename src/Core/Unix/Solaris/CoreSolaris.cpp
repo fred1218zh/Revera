@@ -19,7 +19,7 @@
 #include "CoreSolaris.h"
 #include "Core/Unix/CoreServiceProxy.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	CoreSolaris::CoreSolaris ()
 	{

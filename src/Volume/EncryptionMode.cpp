@@ -14,7 +14,7 @@
 #include "EncryptionModeXTS.h"
 #include "EncryptionThreadPool.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	EncryptionMode::EncryptionMode () : KeySet (false), SectorOffset (0)
 	{

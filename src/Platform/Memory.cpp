@@ -15,7 +15,7 @@
 #include "Exception.h"
 #include <stdlib.h>
 
-namespace VeraCrypt
+namespace Revera
 {
 	void *Memory::Allocate (std::size_t size)
 	{

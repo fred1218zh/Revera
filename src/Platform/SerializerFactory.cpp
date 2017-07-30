@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include "SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void SerializerFactory::Deinitialize ()
 	{

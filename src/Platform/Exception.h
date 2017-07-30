@@ -17,7 +17,7 @@
 #include "PlatformBase.h"
 #include "Serializable.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 #define TC_SERIALIZABLE_EXCEPTION(TYPE) TC_SERIALIZABLE (TYPE); \
 	virtual Exception *CloneNew () { return new TYPE (*this); } \

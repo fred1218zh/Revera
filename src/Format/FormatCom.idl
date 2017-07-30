@@ -15,7 +15,7 @@ import "..\Common\Password.h";
 
 [
 	uuid(56327DDA-F1A7-4e13-B128-520D129BDEF6),
-	helpstring("VeraCrypt Format UAC Support Library"),
+	helpstring("Revera Format UAC Support Library"),
 	version(2.7)	// Update ComSetup.cpp when changing version number
 ]
 library TrueCryptFormatCom
@@ -24,7 +24,7 @@ library TrueCryptFormatCom
 		uuid(7AB357D9-A17F-466e-BCD6-F49E97C218D8),
 		object,
 		oleautomation,
-		helpstring("VeraCrypt Format UAC Support Interface")
+		helpstring("Revera Format UAC Support Interface")
 	]
 	interface ITrueCryptFormatCom : IUnknown
 	{
@@ -51,7 +51,7 @@ library TrueCryptFormatCom
 
 	[
 		uuid(A96D3797-9F31-49f4-A0CE-9657392CF789),
-		helpstring("VeraCrypt Format UAC Support Coclass")
+		helpstring("Revera Format UAC Support Coclass")
 	]
 	coclass TrueCryptFormatCom
 	{

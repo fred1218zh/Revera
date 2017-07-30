@@ -17,7 +17,7 @@
 #include "Common/Crypto.h"
 #include "Cipher.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class EncryptionMode;
 	typedef list < shared_ptr <EncryptionMode> > EncryptionModeList;

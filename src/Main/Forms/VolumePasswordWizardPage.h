@@ -16,7 +16,7 @@
 #include "Forms.h"
 #include "VolumePasswordPanel.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumePasswordWizardPage : public VolumePasswordWizardPageBase
 	{

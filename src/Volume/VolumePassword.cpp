@@ -14,7 +14,7 @@
 #include "Platform/SerializerFactory.h"
 #include "Platform/StringConverter.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumePassword::VolumePassword () : PasswordSize (0)
 	{

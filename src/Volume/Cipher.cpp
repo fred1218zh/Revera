@@ -35,13 +35,13 @@ extern "C" int IsAesHwCpuSupported ()
 		state = g_hasAESNI ? true : false;
 		stateValid = true;
 	}
-	return state && VeraCrypt::Cipher::IsHwSupportEnabled();
+	return state && Revera::Cipher::IsHwSupportEnabled();
 #else
 	return false;
 #endif
 }
 
-namespace VeraCrypt
+namespace Revera
 {
 	Cipher::Cipher () : Initialized (false)
 	{

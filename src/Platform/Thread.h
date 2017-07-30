@@ -25,7 +25,7 @@
 #include "SharedPtr.h"
 #include "SyncEvent.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Thread
 	{

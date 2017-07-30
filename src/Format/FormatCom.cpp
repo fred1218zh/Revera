@@ -24,7 +24,7 @@
 #include "FormatCom_h.h"
 #include "FormatCom_i.c"
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 static volatile LONG ObjectCount = 0;
 

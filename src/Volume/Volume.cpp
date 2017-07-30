@@ -19,7 +19,7 @@
 #include "VolumeLayout.h"
 #include "Common/Crypto.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	Volume::Volume ()
 		: HiddenVolumeProtectionTriggered (false),
@@ -267,7 +267,7 @@ namespace VeraCrypt
 
 			if (!partitionInSystemEncryptionScope && GetPath().IsDevice())
 			{
-				// Check if the device contains VeraCrypt Boot Loader
+				// Check if the device contains Revera Boot Loader
 				try
 				{
 					File driveDevice;
@@ -276,7 +276,7 @@ namespace VeraCrypt
 					Buffer mbr (VolumeFile->GetDeviceSectorSize());
 					driveDevice.ReadAt (mbr, 0);
 
-					// Search for the string "VeraCrypt" or "TrueCrypt"
+					// Search for the string "Revera" or "TrueCrypt"
 					const char* bootSignature = truecryptMode? "TrueCrypt" : TC_APP_NAME;
 					size_t nameLen = strlen (bootSignature);
 					for (size_t i = 0; i < mbr.Size() - nameLen; ++i)

@@ -69,7 +69,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\Debug\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptFormat.exe"
+				OutputFile="$(OutDir)/reveraf.exe"
 				LinkIncremental="2"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -102,7 +102,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy Debug\VeraCryptFormat.exe &quot;..\Debug\Setup Files\VeraCrypt Format.exe&quot; &gt;NUL:&#x0D;&#x0A;"
+				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy Debug\reveraf.exe &quot;..\Debug\Setup Files\reveraf.exe&quot; &gt;NUL:&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -156,7 +156,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\x64\Debug\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptFormat.exe"
+				OutputFile="$(OutDir)/reveraf.exe"
 				LinkIncremental="2"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -189,7 +189,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy $(TargetPath) &quot;..\Debug\Setup Files\VeraCrypt Format-x64.exe&quot; &gt;NUL:&#x0D;&#x0A;"
+				CommandLine="md &quot;..\Debug\Setup Files&quot; 2&gt;NUL:&#x0D;&#x0A;copy $(TargetPath) &quot;..\Debug\Setup Files\reveraf-x64.exe&quot; &gt;NUL:&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -243,7 +243,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\Release\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptFormat.exe"
+				OutputFile="$(OutDir)/reveraf.exe"
 				LinkIncremental="1"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -278,7 +278,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy Release\VeraCryptFormat.exe &quot;..\Release\Setup Files\VeraCrypt Format.exe&quot;"
+				CommandLine="copy Release\reveraf.exe &quot;..\Release\Setup Files\reveraf.exe&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -333,7 +333,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="..\Crypto\x64\Release\crypto.lib mpr.lib"
-				OutputFile="$(OutDir)/VeraCryptFormat.exe"
+				OutputFile="$(OutDir)/reveraf.exe"
 				LinkIncremental="1"
 				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
@@ -368,7 +368,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy $(TargetPath) &quot;..\Release\Setup Files\VeraCrypt Format-x64.exe&quot;"
+				CommandLine="copy $(TargetPath) &quot;..\Release\Setup Files\reveraf-x64.exe&quot;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -846,15 +846,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt_mounted.ico"
+				RelativePath="..\Common\Revera_mounted.ico"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\VeraCrypt_Volume.ico"
+				RelativePath="..\Common\Revera_Volume.ico"
 				>
 			</File>
 			<File
-				RelativePath=".\VeraCrypt_wizard.bmp"
+				RelativePath=".\Revera_wizard.bmp"
 				>
 			</File>
 			<Filter
@@ -985,7 +985,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\Common\VeraCrypt.ico"
+					RelativePath="..\Common\Revera.ico"
 					>
 				</File>
 			</Filter>

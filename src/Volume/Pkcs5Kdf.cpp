@@ -14,7 +14,7 @@
 #include "Pkcs5Kdf.h"
 #include "VolumePassword.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	Pkcs5Kdf::Pkcs5Kdf (bool truecryptMode) : m_truecryptMode(truecryptMode)
 	{

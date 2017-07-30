@@ -42,7 +42,7 @@ IMPORTANT: Due to this issue, functions in this file must not directly interact 
 #include <Strsafe.h>
 
 using namespace std;
-using namespace VeraCrypt;
+using namespace Revera;
 
 #if TC_VOLUME_DATA_OFFSET != 131072
 #	error TC_VOLUME_DATA_OFFSET != 131072

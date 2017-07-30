@@ -16,7 +16,7 @@
 #include "NewSecurityTokenKeyfileDialog.h"
 #include "SecurityTokenKeyfilesDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	SecurityTokenKeyfilesDialog::SecurityTokenKeyfilesDialog (wxWindow* parent, bool selectionMode)
 		: SecurityTokenKeyfilesDialogBase (parent)

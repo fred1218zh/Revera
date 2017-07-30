@@ -15,7 +15,7 @@
 
 #include "Platform/Platform.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	typedef uint32 VolumeSlotNumber;
 }

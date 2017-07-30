@@ -50,8 +50,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VeraCryptSetup</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">VeraCryptSetup</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">revera-setup</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">revera-setup</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -71,7 +71,7 @@
     <Link>
       <AdditionalOptions>/NODEFAULTLIB:LIBCMTD %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>libcmtd.lib;atls.lib;mpr.lib;..\Common\Debug\Zip.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCryptSetup.exe</OutputFile>
+      <OutputFile>$(OutDir)revera-setup.exe</OutputFile>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
       <DelayLoadDLLs>user32.dll;gdi32.dll;advapi32.dll;shell32.dll;ole32.dll;oleaut32.dll;mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -86,7 +86,7 @@
     </Manifest>
     <PostBuildEvent>
       <Command>md "..\Debug\Setup Files" 2&gt;NUL:
-copy Debug\VeraCryptSetup.exe "..\Debug\Setup Files\VeraCrypt Setup.exe" &gt;NUL:
+copy Debug\revera-setup.exe "..\Debug\Setup Files\revera-setup.exe" &gt;NUL:
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -109,7 +109,7 @@ copy Debug\VeraCryptSetup.exe "..\Debug\Setup Files\VeraCrypt Setup.exe" &gt;NUL
     <Link>
       <AdditionalOptions>/IGNORE:4089 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>atls.lib;mpr.lib;..\Common\Release\Zip.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCryptSetup.exe</OutputFile>
+      <OutputFile>$(OutDir)revera-setup.exe</OutputFile>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
       <DelayLoadDLLs>user32.dll;gdi32.dll;advapi32.dll;shell32.dll;ole32.dll;oleaut32.dll;mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -125,7 +125,7 @@ copy Debug\VeraCryptSetup.exe "..\Debug\Setup Files\VeraCrypt Setup.exe" &gt;NUL
       <AdditionalManifestFiles>Setup.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PostBuildEvent>
-      <Command>copy Release\VeraCryptSetup.exe "..\Release\Setup Files\VeraCrypt Setup.exe"</Command>
+      <Command>copy Release\revera-setup.exe "..\Release\Setup Files\revera-setup.exe"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -158,10 +158,10 @@ copy Debug\VeraCryptSetup.exe "..\Debug\Setup Files\VeraCrypt Setup.exe" &gt;NUL
   <ItemGroup>
     <None Include="ComSetup.rgs" />
     <None Include="Setup.ico" />
-    <None Include="..\Common\VeraCrypt.ico" />
-    <None Include="VeraCrypt_setup.bmp" />
-    <None Include="VeraCrypt_setup_background.bmp" />
-    <None Include="..\Common\VeraCrypt_Volume.ico" />
+    <None Include="..\Common\Revera.ico" />
+    <None Include="Revera_setup.bmp" />
+    <None Include="Revera_setup_background.bmp" />
+    <None Include="..\Common\Revera_Volume.ico" />
     <None Include="..\Common\Language.xml" />
     <None Include="..\Resources\Texts\License.rtf" />
     <None Include="..\Common\Textual_logo_288dpi.bmp" />

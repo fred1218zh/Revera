@@ -18,7 +18,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "VolumePimWizardPage.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumePimWizardPage::VolumePimWizardPage (wxPanel* parent)
 		: VolumePimWizardPageBase (parent)

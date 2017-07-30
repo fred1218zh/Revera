@@ -14,7 +14,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "VolumeCreationProgressWizardPage.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumeCreationProgressWizardPage::VolumeCreationProgressWizardPage (wxPanel* parent, bool displayKeyInfo)
 		: VolumeCreationProgressWizardPageBase (parent),

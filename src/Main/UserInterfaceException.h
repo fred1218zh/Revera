@@ -15,7 +15,7 @@
 
 #include "Platform/Platform.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	TC_EXCEPTION_DECL (UserInterfaceException, Exception);
 	TC_EXCEPTION_DECL (MissingArgument, UserInterfaceException);

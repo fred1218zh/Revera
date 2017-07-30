@@ -24,7 +24,7 @@
 #include "Driver/Fuse/FuseService.h"
 #include "Core/Unix/CoreServiceProxy.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	CoreMacOSX::CoreMacOSX ()
 	{

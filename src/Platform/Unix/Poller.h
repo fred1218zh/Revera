@@ -15,7 +15,7 @@
 
 #include "Platform/PlatformBase.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Poller
 	{

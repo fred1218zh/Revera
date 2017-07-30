@@ -18,7 +18,7 @@
 #include "SharedPtr.h"
 #include "Stream.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class FileStream : public Stream
 	{

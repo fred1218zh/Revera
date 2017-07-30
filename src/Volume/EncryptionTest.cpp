@@ -19,7 +19,7 @@
 #include "EncryptionTest.h"
 #include "Pkcs5Kdf.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void EncryptionTest::TestAll ()
 	{

@@ -15,7 +15,7 @@
 
 #include "Platform/Platform.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct VolumeException : public Exception
 	{

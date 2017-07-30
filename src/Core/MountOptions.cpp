@@ -14,7 +14,7 @@
 #include "Platform/MemoryStream.h"
 #include "Platform/SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void MountOptions::CopyFrom (const MountOptions &other)
 	{

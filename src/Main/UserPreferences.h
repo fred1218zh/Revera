@@ -17,7 +17,7 @@
 #include "Main.h"
 #include "Hotkey.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	struct UserPreferences
 	{

@@ -23,7 +23,7 @@
 #include "VolumeCreator.h"
 #include "FatFormatter.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumeCreator::VolumeCreator ()
 		: SizeDone (0)

@@ -13,7 +13,7 @@
 #include "Serializable.h"
 #include "SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	string Serializable::DeserializeHeader (shared_ptr <Stream> stream)
 	{

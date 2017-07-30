@@ -16,7 +16,7 @@
 #include "VolumePasswordPanel.h"
 #include "SecurityTokenKeyfilesDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	VolumePasswordPanel::VolumePasswordPanel (wxWindow* parent, MountOptions* options, shared_ptr <VolumePassword> password, bool disableTruecryptMode, shared_ptr <KeyfileList> keyfiles, bool enableCache, bool enablePassword, bool enableKeyfiles, bool enableConfirmation, bool enablePkcs5Prf, bool isMountPassword, const wxString &passwordLabel)
 		: VolumePasswordPanelBase (parent), Keyfiles (new KeyfileList), EnablePimEntry (true)

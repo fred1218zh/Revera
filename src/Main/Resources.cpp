@@ -18,7 +18,7 @@
 #include "Main/resource.h"
 #endif
 
-namespace VeraCrypt
+namespace Revera
 {
 
 #ifdef TC_WINDOWS
@@ -150,13 +150,13 @@ namespace VeraCrypt
 #endif
 	}
 
-	wxIcon Resources::GetVeraCryptIcon ()
+	wxIcon Resources::GetReveraIcon ()
 	{
 #ifdef TC_WINDOWS
 		return wxIcon (L"IDI_TRUECRYPT_ICON", wxBITMAP_TYPE_ICO_RESOURCE, 16, 16);
 #else
-#		include "Resources/Icons/VeraCrypt-256x256.xpm"
-		return wxIcon (VeraCryptIcon256x256);
+#		include "Resources/Icons/Revera-256x256.xpm"
+		return wxIcon (ReveraIcon256x256);
 #endif
 	}
 
@@ -167,7 +167,7 @@ namespace VeraCrypt
 #else
 		static const byte VolumeWizardIcon[] =
 		{
-#			include "Format/VeraCrypt_Wizard.bmp.h"
+#			include "Format/Revera_Wizard.bmp.h"
 		};
 
 		wxMemoryInputStream stream (VolumeWizardIcon, sizeof (VolumeWizardIcon));

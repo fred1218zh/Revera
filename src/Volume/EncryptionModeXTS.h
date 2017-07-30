@@ -16,7 +16,7 @@
 #include "Platform/Platform.h"
 #include "EncryptionMode.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class EncryptionModeXTS : public EncryptionMode
 	{

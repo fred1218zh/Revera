@@ -55,7 +55,7 @@
 
 #include <Strsafe.h>
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 enum wizard_pages
 {
@@ -510,11 +510,11 @@ static void localcleanup (void)
 static BOOL CALLBACK BroadcastSysEncCfgUpdateCallb (HWND hwnd, LPARAM lParam)
 {
 	LONG_PTR userDataVal = GetWindowLongPtrW (hwnd, GWLP_USERDATA);
-	if ((userDataVal == (LONG_PTR) 'VERA') || (userDataVal == (LONG_PTR) 'TRUE')) // Prior to 1.0e, 'TRUE' was used for VeraCrypt dialogs
+	if ((userDataVal == (LONG_PTR) 'VERA') || (userDataVal == (LONG_PTR) 'TRUE')) // Prior to 1.0e, 'TRUE' was used for Revera dialogs
 	{
 		wchar_t name[1024] = { 0 };
 		GetWindowText (hwnd, name, ARRAYSIZE (name) - 1);
-		if (hwnd != MainDlg && wcsstr (name, L"VeraCrypt"))
+		if (hwnd != MainDlg && wcsstr (name, L"Revera"))
 		{
 			PostMessage (hwnd, TC_APPMSG_SYSENC_CONFIG_UPDATE, 0, 0);
 		}
@@ -825,7 +825,7 @@ static void SaveSettings (HWND hwndDlg)
 	WaitCursor ();
 
 	// Check first if modifications ocurred before writing to the settings and history files
-	// This avoids leaking information about VeraCrypt usage when user only mount volumes without changing setttings or history
+	// This avoids leaking information about Revera usage when user only mount volumes without changing setttings or history
 	BOOL bSettingsChanged = FALSE;
 	BOOL bHistoryChanged = FALSE;
 
@@ -6304,9 +6304,9 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 
 			SHGetFolderPath (NULL, CSIDL_MYDOCUMENTS, NULL, 0, szRescueDiskISO);
 			if (bSystemIsGPT)
-				StringCbCatW (szRescueDiskISO, sizeof(szRescueDiskISO), L"\\VeraCrypt Rescue Disk.zip");
+				StringCbCatW (szRescueDiskISO, sizeof(szRescueDiskISO), L"\\Revera Rescue Disk.zip");
 			else
-				StringCbCatW (szRescueDiskISO, sizeof(szRescueDiskISO), L"\\VeraCrypt Rescue Disk.iso");
+				StringCbCatW (szRescueDiskISO, sizeof(szRescueDiskISO), L"\\Revera Rescue Disk.iso");
 
 			if (IsOSAtLeast (WIN_VISTA))
 			{

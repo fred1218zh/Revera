@@ -17,7 +17,7 @@
 #include "Main/Main.h"
 #include "KeyfilesPanel.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class KeyfilesDialog : public KeyfilesDialogBase
 	{

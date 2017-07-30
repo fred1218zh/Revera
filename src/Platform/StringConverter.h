@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include "PlatformBase.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class StringConverter
 	{

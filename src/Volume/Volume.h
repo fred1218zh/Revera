@@ -22,7 +22,7 @@
 #include "VolumeException.h"
 #include "VolumeLayout.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumePath
 	{

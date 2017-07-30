@@ -16,7 +16,7 @@
 #include "Forms.h"
 #include "Core/VolumeCreator.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumeFormatOptionsWizardPage : public VolumeFormatOptionsWizardPageBase
 	{

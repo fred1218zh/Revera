@@ -15,7 +15,7 @@
 #include "Volume/Hash.h"
 #include "KeyfileGeneratorDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	KeyfileGeneratorDialog::KeyfileGeneratorDialog (wxWindow* parent) : KeyfileGeneratorDialogBase (parent)
 	{

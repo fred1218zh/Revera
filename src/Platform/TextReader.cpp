@@ -12,7 +12,7 @@
 
 #include "TextReader.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	TextReader::TextReader (const FilePath &path)
 	{

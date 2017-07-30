@@ -18,7 +18,7 @@
 #include "FilesystemPath.h"
 #include "SystemException.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class File
 	{

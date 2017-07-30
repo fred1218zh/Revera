@@ -14,7 +14,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "ProgressWizardPage.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	ProgressWizardPage::ProgressWizardPage (wxPanel* parent, bool enableAbort)
 		: ProgressWizardPageBase (parent),

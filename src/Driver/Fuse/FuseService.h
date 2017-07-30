@@ -19,7 +19,7 @@
 #include "Volume/VolumeInfo.h"
 #include "Volume/Volume.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 
 	class FuseService
@@ -47,7 +47,7 @@ namespace VeraCrypt
 		static int ExceptionToErrorCode ();
 		static const char *GetControlPath () { return "/control"; }
 		static const char *GetVolumeImagePath ();
-		static string GetDeviceType () { return "veracrypt"; }
+		static string GetDeviceType () { return "revera"; }
 		static uid_t GetGroupId () { return GroupId; }
 		static uid_t GetUserId () { return UserId; }
 		static shared_ptr <Buffer> GetVolumeInfo ();

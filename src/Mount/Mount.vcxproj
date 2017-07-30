@@ -83,10 +83,10 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VeraCrypt</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">VeraCrypt</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VeraCrypt</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VeraCrypt</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Revera</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Revera</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Revera</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Revera</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -117,7 +117,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\Crypto\Debug\crypto.lib;..\Common\Debug\Zip.lib;mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCrypt.exe</OutputFile>
+      <OutputFile>$(OutDir)revera.exe</OutputFile>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -132,7 +132,7 @@
     </Manifest>
     <PostBuildEvent>
       <Command>md "..\Debug\Setup Files" 2&gt;NUL:
-copy Debug\VeraCrypt.exe "..\Debug\Setup Files" &gt;NUL:
+copy Debug\revera.exe "..\Debug\Setup Files" &gt;NUL:
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -166,7 +166,7 @@ copy Debug\VeraCrypt.exe "..\Debug\Setup Files" &gt;NUL:
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\Crypto\x64\Debug\crypto.lib;..\Common\x64\Debug\Zip.lib;mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCrypt.exe</OutputFile>
+      <OutputFile>$(OutDir)revera.exe</OutputFile>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -181,7 +181,7 @@ copy Debug\VeraCrypt.exe "..\Debug\Setup Files" &gt;NUL:
     </Manifest>
     <PostBuildEvent>
       <Command>md "..\Debug\Setup Files" 2&gt;NUL:
-copy $(TargetPath) "..\Debug\Setup Files\VeraCrypt-x64.exe" &gt;NUL:
+copy $(TargetPath) "..\Debug\Setup Files\revera-x64.exe" &gt;NUL:
 </Command>
     </PostBuildEvent>
     <ResourceCompile>
@@ -212,7 +212,7 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCrypt-x64.exe" &gt;NUL:
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\Crypto\Release\crypto.lib;..\Common\Release\Zip.lib;mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCrypt.exe</OutputFile>
+      <OutputFile>$(OutDir)revera.exe</OutputFile>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -228,7 +228,7 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCrypt-x64.exe" &gt;NUL:
       <AdditionalManifestFiles>Mount.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PostBuildEvent>
-      <Command>copy Release\VeraCrypt.exe "..\Release\Setup Files"</Command>
+      <Command>copy Release\revera.exe "..\Release\Setup Files"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -256,7 +256,7 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCrypt-x64.exe" &gt;NUL:
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\Crypto\x64\Release\crypto.lib;..\Common\x64\Release\Zip.lib;mpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)VeraCrypt.exe</OutputFile>
+      <OutputFile>$(OutDir)revera.exe</OutputFile>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <DelayLoadDLLs>mpr.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -272,7 +272,7 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCrypt-x64.exe" &gt;NUL:
       <AdditionalManifestFiles>Mount.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PostBuildEvent>
-      <Command>copy $(TargetPath) "..\Release\Setup Files\VeraCrypt-x64.exe"</Command>
+      <Command>copy $(TargetPath) "..\Release\Setup Files\revera-x64.exe"</Command>
     </PostBuildEvent>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -384,8 +384,8 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCrypt-x64.exe" &gt;NUL:
     <None Include="Mount.tlb" />
     <None Include="System_drive_icon_96dpi.bmp" />
     <None Include="System_drive_icon_mask_96dpi.bmp" />
-    <None Include="..\Common\VeraCrypt_mounted.ico" />
-    <None Include="..\Common\VeraCrypt_volume.ico" />
+    <None Include="..\Common\Revera_mounted.ico" />
+    <None Include="..\Common\Revera_volume.ico" />
     <None Include="..\Boot\Windows\Release_Serpent\BootLoader.com.gz" />
     <None Include="..\Boot\Windows\Release_AES\BootLoader.com.gz" />
     <None Include="..\Boot\Windows\Release\BootLoader.com.gz" />
@@ -408,7 +408,7 @@ copy $(TargetPath) "..\Debug\Setup Files\VeraCrypt-x64.exe" &gt;NUL:
     <None Include="..\Common\Textual_logo_288dpi.bmp" />
     <None Include="..\Common\Textual_logo_96dpi.bmp" />
     <None Include="..\Common\Textual_logo_background.bmp" />
-    <None Include="..\Common\VeraCrypt.ico" />
+    <None Include="..\Common\Revera.ico" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="Mount.manifest" />

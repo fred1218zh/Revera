@@ -254,13 +254,13 @@
     <None Include="..\Common\Textual_logo_background.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Common\VeraCrypt.ico">
+    <None Include="..\Common\Revera.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Common\VeraCrypt_mounted.ico">
+    <None Include="..\Common\Revera_mounted.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Common\VeraCrypt_Volume.ico">
+    <None Include="..\Common\Revera_Volume.ico">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\Common\Language.xml">
@@ -268,7 +268,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="VeraCryptExpander.manifest">
+    <Manifest Include="reverax.manifest">
       <Filter>Resource Files</Filter>
     </Manifest>
   </ItemGroup>

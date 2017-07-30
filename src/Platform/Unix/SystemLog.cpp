@@ -13,18 +13,18 @@
 #include <syslog.h>
 #include "Platform/SystemLog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	void SystemLog::WriteDebug (const string &debugMessage)
 	{
-		openlog ("veracrypt", LOG_PID, LOG_USER);
+		openlog ("revera", LOG_PID, LOG_USER);
 		syslog (LOG_DEBUG, "%s", debugMessage.c_str());
 		closelog();
 	}
 
 	void SystemLog::WriteError (const string &errorMessage)
 	{
-		openlog ("veracrypt", LOG_PID, LOG_USER);
+		openlog ("revera", LOG_PID, LOG_USER);
 		syslog (LOG_ERR, "%s", errorMessage.c_str());
 		closelog();
 	}

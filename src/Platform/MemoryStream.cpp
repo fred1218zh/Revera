@@ -13,7 +13,7 @@
 #include "Exception.h"
 #include "MemoryStream.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	MemoryStream::MemoryStream (const ConstBufferPtr &data) :
 		ReadPosition (0)

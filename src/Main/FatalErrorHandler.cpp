@@ -31,7 +31,7 @@
 
 #include "FatalErrorHandler.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	static terminate_handler DefaultTerminateHandler;
 
@@ -74,9 +74,9 @@ namespace VeraCrypt
 		url.Replace (L"=0X0x", L"=0x");
 		url.Replace (L"=0X", L"=0x");
 
-		wxString msg = L"A critical error has occurred and VeraCrypt must be terminated. If this is caused by a bug in VeraCrypt, we would like to fix it. To help us, you can send us an automatically generated error report containing the following items:\n\n- Program version\n- Operating system version\n- Hardware architecture\n- Checksum of VeraCrypt executable\n- Error category\n- Error address\n";
+		wxString msg = L"A critical error has occurred and Revera must be terminated. If this is caused by a bug in Revera, we would like to fix it. To help us, you can send us an automatically generated error report containing the following items:\n\n- Program version\n- Operating system version\n- Hardware architecture\n- Checksum of Revera executable\n- Error category\n- Error address\n";
 #if wxUSE_STACKWALKER == 1
-		msg += L"- VeraCrypt call stack\n";
+		msg += L"- Revera call stack\n";
 #endif
 		msg += L"\nIf you select 'Yes', the following URL (which contains the entire error report) will be opened in your default Internet browser.\n\n";
 
@@ -196,11 +196,11 @@ namespace VeraCrypt
 			wxString vars;
 
 			wxString exName = StringConverter::ToWide (StringConverter::GetTypeName (typeid (e)));
-			if (exName.find (L"VeraCrypt::") != string::npos)
+			if (exName.find (L"Revera::") != string::npos)
 				exName = exName.Mid (11);
 
 			wxString exPos = StringConverter::ToWide (e.what());
-			if (exPos.find (L"VeraCrypt::") != string::npos)
+			if (exPos.find (L"Revera::") != string::npos)
 				exPos = exPos.Mid (11);
 
 			vars << L"cpus=" << wxThread::GetCPUCount();
@@ -217,9 +217,9 @@ namespace VeraCrypt
 			url.Replace (L"=0X0x", L"=0x");
 			url.Replace (L"=0X", L"=0x");
 
-			wxString msg = L"An unhandled exception has occurred and VeraCrypt must be terminated. If this is caused by a bug in VeraCrypt, we would like to fix it. To help us, you can send us an automatically generated error report containing the following items:\n\n- Program version\n- Operating system version\n- Hardware architecture\n- Checksum of VeraCrypt executable\n- Error description\n- Error location\n";
+			wxString msg = L"An unhandled exception has occurred and Revera must be terminated. If this is caused by a bug in Revera, we would like to fix it. To help us, you can send us an automatically generated error report containing the following items:\n\n- Program version\n- Operating system version\n- Hardware architecture\n- Checksum of Revera executable\n- Error description\n- Error location\n";
 #if wxUSE_STACKWALKER == 1
-			msg += L"- VeraCrypt call stack\n";
+			msg += L"- Revera call stack\n";
 #endif
 			msg += L"\nIf you select 'Yes', the following URL (which contains the entire error report) will be opened in your default Internet browser.\n\n";
 

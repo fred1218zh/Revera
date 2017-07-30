@@ -17,7 +17,7 @@
 #include "PlatformBase.h"
 #include "StringConverter.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Serializable;
 

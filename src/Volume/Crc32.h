@@ -16,7 +16,7 @@
 #include "Platform/Platform.h"
 #include "Common/Crc.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Crc32
 	{

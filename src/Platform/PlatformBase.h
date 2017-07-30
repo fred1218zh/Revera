@@ -35,7 +35,7 @@ using namespace std;
 #define nullptr 0
 #endif
 
-namespace VeraCrypt
+namespace Revera
 {
 #ifdef _MSC_VER
 #	ifndef TC_INT_TYPES_DEFINED

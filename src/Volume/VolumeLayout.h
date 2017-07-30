@@ -19,7 +19,7 @@
 #include "Volume/Pkcs5Kdf.h"
 #include "VolumeHeader.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class VolumeLayout;
 	typedef list < shared_ptr <VolumeLayout> > VolumeLayoutList;

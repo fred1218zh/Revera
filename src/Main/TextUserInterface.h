@@ -17,7 +17,7 @@
 #include "Main.h"
 #include "UserInterface.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class TextUserInterface : public UserInterface
 	{

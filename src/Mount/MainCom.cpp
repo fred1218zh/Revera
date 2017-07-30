@@ -22,7 +22,7 @@
 #include "Mount.h"
 #include "Password.h"
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 static volatile LONG ObjectCount = 0;
 

@@ -19,7 +19,7 @@
 #include "Serializer.h"
 #include "SerializerFactory.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Serializable
 	{

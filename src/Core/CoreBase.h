@@ -26,7 +26,7 @@
 #include "MountOptions.h"
 #include "VolumeCreator.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class CoreBase
 	{

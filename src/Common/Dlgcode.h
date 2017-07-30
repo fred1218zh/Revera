@@ -47,12 +47,12 @@ enum
 	TC_TBXID_EXTRA_BOOT_PARTITION_REMOVAL_INSTRUCTIONS
 };
 
-#define TC_APPLICATION_ID	L"IDRIX.VeraCrypt"
+#define TC_APPLICATION_ID	L"SLIBIO.Revera"
 
-#define TC_MUTEX_NAME_SYSENC				L"Global\\VeraCrypt System Encryption Wizard"
-#define TC_MUTEX_NAME_NONSYS_INPLACE_ENC	L"Global\\VeraCrypt In-Place Encryption Wizard"
-#define TC_MUTEX_NAME_APP_SETUP				L"Global\\VeraCrypt Setup"
-#define TC_MUTEX_NAME_DRIVER_SETUP			L"Global\\VeraCrypt Driver Setup"
+#define TC_MUTEX_NAME_SYSENC				L"Global\\Revera System Encryption Wizard"
+#define TC_MUTEX_NAME_NONSYS_INPLACE_ENC	L"Global\\Revera In-Place Encryption Wizard"
+#define TC_MUTEX_NAME_APP_SETUP				L"Global\\Revera Setup"
+#define TC_MUTEX_NAME_DRIVER_SETUP			L"Global\\Revera Driver Setup"
 
 #define IDC_ABOUT 0x7fff	/* ID for AboutBox on system menu in wm_user range */
 

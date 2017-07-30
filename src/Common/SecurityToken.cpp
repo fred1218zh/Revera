@@ -34,7 +34,7 @@
 
 using namespace std;
 
-namespace VeraCrypt
+namespace Revera
 {
 	SecurityTokenKeyfile::SecurityTokenKeyfile (const SecurityTokenKeyfilePath &path)
 	{

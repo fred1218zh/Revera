@@ -17,7 +17,7 @@
 #include "Volume/Volume.h"
 #include "RandomNumberGenerator.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 
 	struct VolumeCreationOptions

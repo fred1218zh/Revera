@@ -17,7 +17,7 @@
 #include "Main/Resources.h"
 #include "AboutDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	AboutDialog::AboutDialog (wxWindow* parent) : AboutDialogBase (parent)
 	{
@@ -29,7 +29,7 @@ namespace VeraCrypt
 
 		VersionStaticText->SetLabel (Application::GetName() + L" " + StringConverter::ToWide (Version::String()));
 		CopyrightStaticText->SetLabel (TC_STR_RELEASED_BY);
-		WebsiteHyperlink->SetLabel (L"www.idrix.fr");
+		WebsiteHyperlink->SetLabel (L"revera.slib.io");
 
 		CreditsTextCtrl->SetMinSize (wxSize (
 			Gui->GetCharWidth (CreditsTextCtrl) * 70,
@@ -68,10 +68,10 @@ namespace VeraCrypt
 			L"Copyright \xA9 1999-2013,2014,2015,2016 Jack Lloyd. All rights reserved.\n\n"
 
 			L"\nThis software as a whole:\n"
-			L"Copyright \xA9 2013-2017 IDRIX. All rights reserved.\n\n"
+			L"Copyright \xA9 2017- SLIBIO. All rights reserved.\n\n"
 
 			L"This software uses wxWidgets library, which is copyright \xA9 1998-2011 Julian Smart, Robert Roebling et al.\n\n"
 
-			L"An IDRIX Release");
+			L"An SLIBIO Release");
 	}
 }

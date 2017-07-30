@@ -15,7 +15,7 @@
 
 #include "Platform/Platform.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Hash;
 	typedef list < shared_ptr <Hash> > HashList;

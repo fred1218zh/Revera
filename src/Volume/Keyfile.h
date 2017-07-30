@@ -17,7 +17,7 @@
 #include "Platform/Stream.h"
 #include "VolumePassword.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	class Keyfile;
 	typedef list < shared_ptr <Keyfile> > KeyfileList;

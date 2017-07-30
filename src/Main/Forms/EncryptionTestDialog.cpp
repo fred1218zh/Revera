@@ -16,7 +16,7 @@
 #include "Main/GraphicUserInterface.h"
 #include "EncryptionTestDialog.h"
 
-namespace VeraCrypt
+namespace Revera
 {
 	EncryptionTestDialog::EncryptionTestDialog (wxWindow* parent)
 		: EncryptionTestDialogBase (parent)

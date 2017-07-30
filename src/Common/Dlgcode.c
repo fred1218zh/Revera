@@ -90,7 +90,7 @@ LOCAL_DEFINE_GUID(PARTITION_LDM_DATA_GUID,       0xAF9B60A0L, 0x1431, 0x4F62, 0x
 LOCAL_DEFINE_GUID(PARTITION_MSFT_RECOVERY_GUID,  0xDE94BBA4L, 0x06D1, 0x4D40, 0xA1, 0x6A, 0xBF, 0xD5, 0x01, 0x79, 0xD6, 0xAC);    // Microsoft recovery partition
 LOCAL_DEFINE_GUID(PARTITION_CLUSTER_GUID, 	   0xdb97dba9L, 0x0840, 0x4bae, 0x97, 0xf0, 0xff, 0xb9, 0xa3, 0x27, 0xc7, 0xe1);    // Cluster metadata partition
 
-using namespace VeraCrypt;
+using namespace Revera;
 
 LONG DriverVersion;
 
@@ -321,8 +321,8 @@ ChangeWindowMessageFilterPtr ChangeWindowMessageFilterFn = NULL;
 #define WINDOWS_DIALOG_CLASS L"#32770"
 
 /* Custom class names */
-#define TC_DLG_CLASS L"VeraCryptCustomDlg"
-#define TC_SPLASH_CLASS L"VeraCryptSplashDlg"
+#define TC_DLG_CLASS L"ReveraCustomDlg"
+#define TC_SPLASH_CLASS L"ReveraSplashDlg"
 
 /* constant used by ChangeWindowMessageFilter calls */
 #ifndef MSGFLT_ADD
@@ -623,7 +623,7 @@ void CreateFullVolumePath (wchar_t *lpszDiskFile, size_t cbDiskFile, const wchar
 int FakeDosNameForDevice (const wchar_t *lpszDiskFile , wchar_t *lpszDosDevice , size_t cbDosDevice, wchar_t *lpszCFDevice , size_t cbCFDevice, BOOL bNameOnly)
 {
 	BOOL bDosLinkCreated = TRUE;
-	StringCbPrintfW (lpszDosDevice, cbDosDevice,L"veracrypt%lu", GetCurrentProcessId ());
+	StringCbPrintfW (lpszDosDevice, cbDosDevice,L"revera%lu", GetCurrentProcessId ());
 
 	if (bNameOnly == FALSE)
 		bDosLinkCreated = DefineDosDevice (DDD_RAW_TARGET_PATH, lpszDosDevice, lpszDiskFile);
@@ -1224,7 +1224,7 @@ BOOL CALLBACK AboutDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam
 			LocalizeDialog (hwndDlg, "IDD_ABOUT_DLG");
 
 			// Hyperlink
-			SetWindowText (GetDlgItem (hwndDlg, IDC_HOMEPAGE), L"www.idrix.fr");
+			SetWindowText (GetDlgItem (hwndDlg, IDC_HOMEPAGE), L"slib.io");
 			ToHyperlink (hwndDlg, IDC_HOMEPAGE);
 
 			// Logo area background (must not keep aspect ratio; must retain Windows-imposed distortion)
@@ -1244,7 +1244,7 @@ BOOL CALLBACK AboutDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam
 
 			// Version
 			SendMessage (GetDlgItem (hwndDlg, IDT_ABOUT_VERSION), WM_SETFONT, (WPARAM) hUserBoldFont, 0);
-			StringCbPrintfW (szTmp, sizeof(szTmp), L"VeraCrypt %s", _T(VERSION_STRING));
+			StringCbPrintfW (szTmp, sizeof(szTmp), L"Revera %s", _T(VERSION_STRING));
 #ifdef _WIN64
 			StringCbCatW (szTmp, sizeof(szTmp), L"  (64-bit)");
 #else
@@ -1278,9 +1278,9 @@ BOOL CALLBACK AboutDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lParam
 			L"Copyright \xA9 1999-2013,2014,2015,2016 Jack Lloyd. All rights reserved.\r\n\r\n"
 
 			L"This software as a whole:\r\n"
-			L"Copyright \xA9 2013-2017 IDRIX. All rights reserved.\r\n\r\n"
+			L"Copyright \xA9 2017- SLIBIO. All rights reserved.\r\n\r\n"
 
-			L"An IDRIX Release");
+			L"An SLIBIO Release");
 
 		return 1;
 
@@ -2005,7 +2005,7 @@ void ExceptionHandlerThread (void *threadArg)
 	{
 	case STATUS_IN_PAGE_ERROR:
 	case 0xeedfade:
-		// Exception not caused by VeraCrypt
+		// Exception not caused by Revera
 		MessageBoxW (0, GetString ("EXCEPTION_REPORT_EXT"),
 			GetString ("EXCEPTION_REPORT_TITLE"),
 			MB_ICONERROR | MB_OK | MB_SETFOREGROUND | MB_TOPMOST);
@@ -2228,12 +2228,12 @@ BOOL LaunchElevatedProcess (HWND hwndDlg, const wchar_t* szModPath, const wchar_
 	wcex.cbSize = sizeof(WNDCLASSEX); 
 	wcex.lpfnWndProc = (WNDPROC) NonInstallUacWndProc;
 	wcex.hInstance = hInst;
-	wcex.lpszClassName = L"VeraCrypt";
+	wcex.lpszClassName = L"Revera";
 	RegisterClassExW (&wcex);
 
 	// A small transparent window is necessary to bring the new instance to foreground
 	hWnd = CreateWindowExW (WS_EX_TOOLWINDOW | WS_EX_LAYERED,
-		L"VeraCrypt", L"VeraCrypt", 0,
+		L"Revera", L"Revera", 0,
 		GetSystemMetrics (SM_CXSCREEN)/2,
 		GetSystemMetrics (SM_CYSCREEN)/2,
 		1, 1, NULL, NULL, hInst, NULL);
@@ -2408,7 +2408,7 @@ uint32 ReadDriverConfigurationFlags ()
 {
 	DWORD configMap;
 
-	if (!ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", TC_DRIVER_CONFIG_REG_VALUE_NAME, &configMap))
+	if (!ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\revera", TC_DRIVER_CONFIG_REG_VALUE_NAME, &configMap))
 		configMap = 0;
 
 	return configMap;
@@ -2419,7 +2419,7 @@ uint32 ReadEncryptionThreadPoolFreeCpuCountLimit ()
 {
 	DWORD count;
 
-	if (!ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", TC_ENCRYPTION_FREE_CPU_COUNT_REG_VALUE_NAME, &count))
+	if (!ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\revera", TC_ENCRYPTION_FREE_CPU_COUNT_REG_VALUE_NAME, &count))
 		count = 0;
 
 	return count;
@@ -2858,7 +2858,7 @@ void InitApp (HINSTANCE hInstance, wchar_t *lpszCommandLine)
 		{
 			// only support automatic use of a language file in portable mode
 			// this is achieved by placing a unique language XML file in the same
-			// place as portable VeraCrypt binaries.
+			// place as portable Revera binaries.
 			DialogBoxParamW (hInst, MAKEINTRESOURCEW (IDD_LANGUAGE), NULL,
 				(DLGPROC) LanguageDlgProc, (LPARAM) 1);
 		}
@@ -3090,11 +3090,11 @@ void InitHelpFileName (void)
 		if (strcmp (GetPreferredLangId(), "en") == 0
 			|| strlen(GetPreferredLangId()) == 0)
 		{
-			StringCbCatW (szHelpFile, sizeof(szHelpFile), L"docs\\VeraCrypt User Guide.chm");
+			StringCbCatW (szHelpFile, sizeof(szHelpFile), L"docs\\User Guide.chm");
 		}
 		else
 		{
-			StringCbPrintfW (szTemp, sizeof(szTemp), L"docs\\VeraCrypt User Guide.%S.chm", GetPreferredLangId());
+			StringCbPrintfW (szTemp, sizeof(szTemp), L"docs\\User Guide.%S.chm", GetPreferredLangId());
 			StringCbCatW (szHelpFile, sizeof(szHelpFile), szTemp);
 		}
 
@@ -3105,7 +3105,7 @@ void InitHelpFileName (void)
 		{
 			++lpszTmp;
 			*lpszTmp = 0;
-			StringCbCatW (szHelpFile2, sizeof(szHelpFile2), L"docs\\VeraCrypt User Guide.chm");
+			StringCbCatW (szHelpFile2, sizeof(szHelpFile2), L"docs\\User Guide.chm");
 		}
 	}
 }
@@ -3554,7 +3554,7 @@ BOOL CALLBACK TextInfoDialogBoxDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, L
 				break;
 
 			case TC_TBXID_SYS_ENC_RESCUE_DISK:
-				PrintHardCopyTextUTF16 ((wchar_t *) GetRescueDiskHelpString ().c_str(), L"VeraCrypt Rescue Disk Help", GetRescueDiskHelpString ().length () * 2);
+				PrintHardCopyTextUTF16 ((wchar_t *) GetRescueDiskHelpString ().c_str(), L"Revera Rescue Disk Help", GetRescueDiskHelpString ().length () * 2);
 				break;
 
 			case TC_TBXID_DECOY_OS_INSTRUCTIONS:
@@ -4025,9 +4025,9 @@ BOOL DoDriverInstall (HWND hwndDlg)
 	StatusMessage (hwndDlg, "INSTALLING_DRIVER");
 #endif
 
-	hService = CreateService (hManager, L"veracrypt", L"veracrypt",
+	hService = CreateService (hManager, L"revera", L"revera",
 		SERVICE_ALL_ACCESS, SERVICE_KERNEL_DRIVER, SERVICE_SYSTEM_START, SERVICE_ERROR_NORMAL,
-		L"System32\\drivers\\veracrypt.sys",
+		L"System32\\drivers\\revera.sys",
 		NULL, NULL, NULL, NULL, NULL);
 
 	if (hService == NULL)
@@ -4035,7 +4035,7 @@ BOOL DoDriverInstall (HWND hwndDlg)
 	else
 		CloseServiceHandle (hService);
 
-	hService = OpenService (hManager, L"veracrypt", SERVICE_ALL_ACCESS);
+	hService = OpenService (hManager, L"revera", SERVICE_ALL_ACCESS);
 	if (hService == NULL)
 		goto error;
 
@@ -4079,7 +4079,7 @@ static int DriverLoad ()
 	wchar_t *tmp;
 	DWORD startType;
 
-	if (ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\veracrypt", L"Start", &startType) && startType == SERVICE_BOOT_START)
+	if (ReadLocalMachineRegistryDword (L"SYSTEM\\CurrentControlSet\\Services\\revera", L"Start", &startType) && startType == SERVICE_BOOT_START)
 		return ERR_PARAMETER_INCORRECT;
 
 	GetModuleFileName (NULL, driverPath, ARRAYSIZE (driverPath));
@@ -4092,7 +4092,7 @@ static int DriverLoad ()
 	else
 		*tmp = 0;
 
-	StringCbCatW (driverPath, sizeof(driverPath), !Is64BitOs () ? L"\\veracrypt.sys" : L"\\veracrypt-x64.sys");
+	StringCbCatW (driverPath, sizeof(driverPath), !Is64BitOs () ? L"\\revera.sys" : L"\\revera-x64.sys");
 
 	file = FindFirstFile (driverPath, &find);
 
@@ -4116,7 +4116,7 @@ static int DriverLoad ()
 		return ERR_OS_ERROR;
 	}
 
-	hService = OpenService (hManager, L"veracrypt", SERVICE_ALL_ACCESS);
+	hService = OpenService (hManager, L"revera", SERVICE_ALL_ACCESS);
 	if (hService != NULL)
 	{
 		// Remove stale service (driver is not loaded but service exists)
@@ -4125,7 +4125,7 @@ static int DriverLoad ()
 		Sleep (500);
 	}
 
-	hService = CreateService (hManager, L"veracrypt", L"veracrypt",
+	hService = CreateService (hManager, L"revera", L"revera",
 		SERVICE_ALL_ACCESS, SERVICE_KERNEL_DRIVER, SERVICE_DEMAND_START, SERVICE_ERROR_NORMAL,
 		driverPath, NULL, NULL, NULL, NULL, NULL);
 
@@ -4202,7 +4202,7 @@ BOOL DriverUnload ()
 	if (hManager == NULL)
 		goto error;
 
-	hService = OpenService (hManager, L"veracrypt", SERVICE_ALL_ACCESS);
+	hService = OpenService (hManager, L"revera", SERVICE_ALL_ACCESS);
 	if (hService == NULL)
 		goto error;
 
@@ -4838,7 +4838,7 @@ void LocalizeDialog (HWND hwnd, char *stringId)
 	SendMessageW (hwnd, WM_SETFONT, (WPARAM) hUserFont, 0);
 
 	if (stringId == NULL)
-		SetWindowTextW (hwnd, L"VeraCrypt");
+		SetWindowTextW (hwnd, L"Revera");
 	else
 		SetWindowTextW (hwnd, GetString (stringId));
 	
@@ -7500,7 +7500,7 @@ BOOL GetPhysicalDriveStorageInformation(UINT nDriveNumber, STORAGE_ACCESS_ALIGNM
 
 // implementation of the generic wait dialog mechanism
 
-static UINT g_wmWaitDlg = ::RegisterWindowMessage(L"VeraCryptWaitDlgMessage");
+static UINT g_wmWaitDlg = ::RegisterWindowMessage(L"ReveraWaitDlgMessage");
 
 typedef struct
 {
@@ -9133,7 +9133,7 @@ BOOL IsNonInstallMode ()
 			// We can't use GetConfigPath() here because it would call us back (indirect recursion)
 			if (SUCCEEDED(SHGetFolderPath (NULL, CSIDL_APPDATA, NULL, 0, path)))
 			{
-				StringCbCatW (path, MAX_PATH * 2, L"\\VeraCrypt\\");
+				StringCbCatW (path, MAX_PATH * 2, L"\\Revera\\");
 				StringCbCatW (path, MAX_PATH * 2, TC_APPD_FILENAME_SYSTEM_ENCRYPTION);
 
 				if (FileExists (path))
@@ -9159,7 +9159,7 @@ BOOL IsNonInstallMode ()
 
 	// The following test may be unreliable in some cases (e.g. after the user selects restore "Last Known Good
 	// Configuration" from the Windows boot menu).
-	if (RegOpenKeyEx (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\VeraCrypt", 0, KEY_READ | KEY_WOW64_32KEY, &hkey) == ERROR_SUCCESS)
+	if (RegOpenKeyEx (HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Revera", 0, KEY_READ | KEY_WOW64_32KEY, &hkey) == ERROR_SUCCESS)
 	{
 		RegCloseKey (hkey);
 		return FALSE;
@@ -9216,7 +9216,7 @@ void ManageStartupSeq (void)
 				if (tmp = wcsrchr (exe, L'\\'))
 				{
 					*tmp = 0;
-					StringCbCatW (exe, MAX_PATH * 2, L"\\VeraCrypt.exe");
+					StringCbCatW (exe, MAX_PATH * 2, L"\\revera.exe");
 				}
 			}
 #endif
@@ -9225,15 +9225,15 @@ void ManageStartupSeq (void)
 			if (bMountDevicesOnLogon) StringCbCatW (exe, MAX_PATH * 2, L" /a devices");
 			if (bMountFavoritesOnLogon) StringCbCatW (exe, MAX_PATH * 2, L" /a favorites");
 
-			WriteRegistryString (regk, L"VeraCrypt", exe);
+			WriteRegistryString (regk, L"revera", exe);
 		}
 		else
-			DeleteRegistryValue (regk, L"VeraCrypt");
+			DeleteRegistryValue (regk, L"revera");
 	}
 }
 
 
-// Adds or removes the VeraCrypt Volume Creation Wizard to/from the system startup sequence
+// Adds or removes the Revera Volume Creation Wizard to/from the system startup sequence
 void ManageStartupSeqWiz (BOOL bRemove, const wchar_t *arg)
 {
 	wchar_t regk [64];
@@ -9255,7 +9255,7 @@ void ManageStartupSeqWiz (BOOL bRemove, const wchar_t *arg)
 				{
 					*tmp = 0;
 
-					StringCchCatW (exe, exeSize, L"\\VeraCrypt Format.exe");
+					StringCchCatW (exe, exeSize, L"\\reveraf.exe");
 				}
 			}
 #endif
@@ -9266,12 +9266,12 @@ void ManageStartupSeqWiz (BOOL bRemove, const wchar_t *arg)
 			StringCchCatW (exe, exeSize, arg);
 		}
 
-		WriteRegistryString (regk, L"VeraCrypt Format", exe);
+		WriteRegistryString (regk, L"reveraf", exe);
 
 		free(exe);
 	}
 	else
-		DeleteRegistryValue (regk, L"VeraCrypt Format");
+		DeleteRegistryValue (regk, L"reveraf");
 }
 
 
@@ -9644,7 +9644,7 @@ wchar_t *GetConfigPath (wchar_t *fileName)
 
 	if (SUCCEEDED(SHGetFolderPath (NULL, CSIDL_APPDATA | CSIDL_FLAG_CREATE, NULL, 0, path)))
 	{
-		StringCchCatW (path, (MAX_PATH * 2), L"\\VeraCrypt\\");
+		StringCchCatW (path, (MAX_PATH * 2), L"\\Revera\\");
 		CreateDirectory (path, NULL);
 		StringCchCatW (path, (MAX_PATH * 2), fileName);
 	}
@@ -9661,7 +9661,7 @@ wchar_t *GetProgramConfigPath (wchar_t *fileName)
 
 	if (SUCCEEDED (SHGetFolderPath (NULL, CSIDL_COMMON_APPDATA | CSIDL_FLAG_CREATE, NULL, 0, path)))
 	{
-		StringCchCatW (path, (MAX_PATH * 2), L"\\VeraCrypt\\");
+		StringCchCatW (path, (MAX_PATH * 2), L"\\Revera\\");
 		CreateDirectory (path, NULL);
 		StringCchCatW (path, (MAX_PATH * 2), fileName);
 	}
@@ -9741,7 +9741,7 @@ void InfoBalloon (char *headingStringId, char *textStringId, HWND hwnd)
 		return;
 
 	TaskBarIconDisplayBalloonTooltip (hwnd,
-		headingStringId == NULL ? L"VeraCrypt" : GetString (headingStringId),
+		headingStringId == NULL ? L"Revera" : GetString (headingStringId),
 		textStringId == NULL ? L" " : GetString (textStringId),
 		FALSE);
 }
@@ -9754,7 +9754,7 @@ void InfoBalloonDirect (wchar_t *headingString, wchar_t *textString, HWND hwnd)
 		return;
 
 	TaskBarIconDisplayBalloonTooltip (hwnd,
-		headingString == NULL ? L"VeraCrypt" : headingString,
+		headingString == NULL ? L"Revera" : headingString,
 		textString == NULL ? L" " : textString,
 		FALSE);
 }
@@ -9767,7 +9767,7 @@ void WarningBalloon (char *headingStringId, char *textStringId, HWND hwnd)
 		return;
 
 	TaskBarIconDisplayBalloonTooltip (hwnd,
-		headingStringId == NULL ? L"VeraCrypt" : GetString (headingStringId),
+		headingStringId == NULL ? L"Revera" : GetString (headingStringId),
 		textStringId == NULL ? L" " : GetString (textStringId),
 		TRUE);
 }
@@ -9780,7 +9780,7 @@ void WarningBalloonDirect (wchar_t *headingString, wchar_t *textString, HWND hwn
 		return;
 
 	TaskBarIconDisplayBalloonTooltip (hwnd,
-		headingString == NULL ? L"VeraCrypt" : headingString,
+		headingString == NULL ? L"Revera" : headingString,
 		textString == NULL ? L" " : textString,
 		TRUE);
 }
@@ -10297,7 +10297,7 @@ void DebugMsgBox (char *format, ...)
 	StringCbVPrintfA (buf, sizeof (buf), format, val);
 	va_end(val);
 
-	MessageBoxA (MainDlg, buf, "VeraCrypt debug", 0);
+	MessageBoxA (MainDlg, buf, "Revera debug", 0);
 }
 
 
@@ -10765,11 +10765,11 @@ void HandleDriveNotReadyError (HWND hwnd)
 BOOL CALLBACK CloseTCWindowsEnum (HWND hwnd, LPARAM lParam)
 {
 	LONG_PTR userDataVal = GetWindowLongPtrW (hwnd, GWLP_USERDATA);
-	if ((userDataVal == (LONG_PTR) 'VERA') || (userDataVal == (LONG_PTR) 'TRUE')) // Prior to 1.0e, 'TRUE' was used for VeraCrypt dialogs
+	if ((userDataVal == (LONG_PTR) 'VERA') || (userDataVal == (LONG_PTR) 'TRUE')) // Prior to 1.0e, 'TRUE' was used for Revera dialogs
 	{
 		wchar_t name[1024] = { 0 };
 		GetWindowText (hwnd, name, ARRAYSIZE (name) - 1);
-		if (hwnd != MainDlg && wcsstr (name, L"VeraCrypt"))
+		if (hwnd != MainDlg && wcsstr (name, L"Revera"))
 		{
 			PostMessage (hwnd, TC_APPMSG_CLOSE_BKG_TASK, 0, 0);
 
@@ -10788,11 +10788,11 @@ BOOL CALLBACK FindTCWindowEnum (HWND hwnd, LPARAM lParam)
 		return TRUE;
 
 	LONG_PTR userDataVal = GetWindowLongPtrW (hwnd, GWLP_USERDATA);
-	if ((userDataVal == (LONG_PTR) 'VERA') || (userDataVal == (LONG_PTR) 'TRUE')) // Prior to 1.0e, 'TRUE' was used for VeraCrypt dialogs
+	if ((userDataVal == (LONG_PTR) 'VERA') || (userDataVal == (LONG_PTR) 'TRUE')) // Prior to 1.0e, 'TRUE' was used for Revera dialogs
 	{
 		wchar_t name[32] = { 0 };
 		GetWindowText (hwnd, name, ARRAYSIZE (name) - 1);
-		if (hwnd != MainDlg && wcscmp (name, L"VeraCrypt") == 0)
+		if (hwnd != MainDlg && wcscmp (name, L"Revera") == 0)
 		{
 			if (lParam != 0)
 				*((HWND *)lParam) = hwnd;
@@ -12437,8 +12437,8 @@ BOOL RemoveDeviceWriteProtection (HWND hwndDlg, wchar_t *devicePath)
 	if (GetTempPath (ARRAYSIZE (temp), temp) == 0)
 		return FALSE;
 
-	StringCbPrintfW (cmdBatch, sizeof (cmdBatch), L"%s\\VeraCrypt_Write_Protection_Removal.cmd", temp);
-	StringCbPrintfW (diskpartScript, sizeof (diskpartScript), L"%s\\VeraCrypt_Write_Protection_Removal.diskpart", temp);
+	StringCbPrintfW (cmdBatch, sizeof (cmdBatch), L"%s\\Revera_Write_Protection_Removal.cmd", temp);
+	StringCbPrintfW (diskpartScript, sizeof (diskpartScript), L"%s\\Revera_Write_Protection_Removal.diskpart", temp);
 
 	FILE *f = _wfopen (cmdBatch, L"w");
 	if (!f)
@@ -12487,7 +12487,7 @@ void EnableElevatedCursorChange (HWND parent)
 	// Create a transparent window to work around a UAC issue preventing change of the cursor
 	if (UacElevated)
 	{
-		const wchar_t *className = L"VeraCryptEnableElevatedCursorChange";
+		const wchar_t *className = L"ReveraEnableElevatedCursorChange";
 		WNDCLASSEXW winClass;
 		HWND hWnd;
 
@@ -12498,7 +12498,7 @@ void EnableElevatedCursorChange (HWND parent)
 		winClass.lpszClassName = className;
 		RegisterClassExW (&winClass);
 
-		hWnd = CreateWindowExW (WS_EX_TOOLWINDOW | WS_EX_LAYERED, className, L"VeraCrypt UAC", 0, 0, 0, GetSystemMetrics (SM_CXSCREEN), GetSystemMetrics (SM_CYSCREEN), parent, NULL, hInst, NULL);
+		hWnd = CreateWindowExW (WS_EX_TOOLWINDOW | WS_EX_LAYERED, className, L"Revera UAC", 0, 0, 0, GetSystemMetrics (SM_CXSCREEN), GetSystemMetrics (SM_CYSCREEN), parent, NULL, hInst, NULL);
 		if (hWnd)
 		{
 			SetLayeredWindowAttributes (hWnd, 0, 1, LWA_ALPHA);
@@ -12815,14 +12815,14 @@ void HandleShowPasswordFieldAction (HWND hwndDlg, UINT checkBoxId, UINT edit1Id,
 
 void RegisterDriverInf (bool registerFilter, const string& filter, const string& filterReg, HWND ParentWindow, HKEY regKey)
 {
-	wstring infFileName = GetTempPathString() + L"\\veracrypt_driver_setup.inf";
+	wstring infFileName = GetTempPathString() + L"\\revera_driver_setup.inf";
 
 	File infFile (infFileName, false, true);
 	finally_do_arg (wstring, infFileName, { DeleteFile (finally_arg.c_str()); });
 
-	string infTxt = "[veracrypt]\r\n"
-					+ string (registerFilter ? "Add" : "Del") + "Reg=veracrypt_reg\r\n\r\n"
-					"[veracrypt_reg]\r\n"
+	string infTxt = "[revera]\r\n"
+					+ string (registerFilter ? "Add" : "Del") + "Reg=revera_reg\r\n\r\n"
+					"[revera_reg]\r\n"
 					"HKR,,\"" + filterReg + "\",0x0001" + string (registerFilter ? "0008" : "8002") + ",\"" + filter + "\"\r\n";
 
 	infFile.Write ((byte *) infTxt.c_str(), (DWORD) infTxt.size());
@@ -12832,7 +12832,7 @@ void RegisterDriverInf (bool registerFilter, const string& filter, const string&
 	throw_sys_if (hInf == INVALID_HANDLE_VALUE);
 	finally_do_arg (HINF, hInf, { SetupCloseInfFileFn (finally_arg); });
 
-	throw_sys_if (!SetupInstallFromInfSectionWFn (ParentWindow, hInf, L"veracrypt", SPINST_REGISTRY, regKey, NULL, 0, NULL, NULL, NULL, NULL));
+	throw_sys_if (!SetupInstallFromInfSectionWFn (ParentWindow, hInf, L"revera", SPINST_REGISTRY, regKey, NULL, 0, NULL, NULL, NULL, NULL));
 }
 
 HKEY OpenDeviceClassRegKey (const GUID *deviceClassGuid)
