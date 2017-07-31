@@ -1551,9 +1551,9 @@ static void VerifySizeAndUpdate (HWND hwndDlg, BOOL bUpdate)
 		}
 	}
 
-	_mountOffset = GetDlgItemInt(hCurPage, IDC_MOUNT_OFFSET, NULL, FALSE);
+	_mountOffset = GetDlgItemInt(hwndDlg, IDC_MOUNT_OFFSET, NULL, FALSE);
 	_mountOffset *= 1024 * 1024;
-	_mountSize = GetDlgItemInt(hCurPage, IDC_MOUNT_SIZE, NULL, FALSE);
+	_mountSize = GetDlgItemInt(hwndDlg, IDC_MOUNT_SIZE, NULL, FALSE);
 	_mountSize *= 1024 * 1024;
 	if (_mountOffset + TC_MIN_VOLUME_SIZE > i * lTmp) {
 		bEnable = FALSE;

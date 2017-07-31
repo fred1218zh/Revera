@@ -3968,9 +3968,9 @@ BOOL CALLBACK RawDevicesDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM l
 				{
 					if (!selectedDevice.Partitions.empty())
 					{
-						EnableWindow (GetDlgItem (hwndDlg, IDOK), FALSE);
+						//EnableWindow (GetDlgItem (hwndDlg, IDOK), FALSE);
 						Error ("DEVICE_PARTITIONS_ERR_W_INPLACE_ENC_NOTE", hwndDlg);
-						return 1;
+						//return 1;
 					}
 
 					if (AskWarnNoYes ("WHOLE_NONSYS_DEVICE_ENC_CONFIRM", hwndDlg) == IDNO)
