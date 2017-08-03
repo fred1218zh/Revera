@@ -1058,6 +1058,7 @@ err:
 	return bOK;
 }
 
+#ifndef PORTABLE
 BOOL DoRegInstall (HWND hwndDlg, wchar_t *szDestDir, BOOL bInstallType)
 {
 	wchar_t szDir[TC_MAX_PATH], *key;
@@ -2493,6 +2494,7 @@ BOOL CALLBACK UninstallDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM lP
 
 	return 0;
 }
+#endif
 
 
 int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpszCommandLine, int nCmdShow)
@@ -2501,18 +2503,23 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 
 	SelfExtractStartupInit();
 
+#ifdef PORTABLE
+	lpszTitle = L"Revera Portable";
+#else
 	lpszTitle = L"Revera Setup";
+#endif
 
 	/* Call InitApp to initialize the common code */
 	InitApp (hInstance, NULL);
 
+#ifndef PORTABLE
 	if (IsAdmin () != TRUE)
 		if (MessageBoxW (NULL, GetString ("SETUP_ADMIN"), lpszTitle, MB_YESNO | MB_ICONQUESTION) != IDYES)
 		{
 			FinalizeApp ();
 			exit (1);
 		}
-
+#endif
 	/* Setup directory */
 	{
 		wchar_t *s;
@@ -2526,6 +2533,7 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 
 	if (lpszCommandLine[0] == L'/')
 	{
+#ifndef PORTABLE
 		if (lpszCommandLine[1] == L'u')
 		{
 			// Uninstall:	/u
@@ -2538,7 +2546,9 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 
 			bChangeMode = TRUE;
 		}
-		else if (lpszCommandLine[1] == L'p')
+		else
+#endif
+		if (lpszCommandLine[1] == L'p')
 		{
 			// Create self-extracting package:	/p
 
@@ -2559,8 +2569,9 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 	}
 	else
 	{
+#ifndef PORTABLE
 		SetInstallationPath (NULL);
-
+#endif
 		if (!bUninstall)
 		{
 			if (IsSelfExtractingPackage())
@@ -2574,11 +2585,16 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 			}
 			else if (!bDevm)
 			{
+#ifndef PORTABLE
 				MessageBox (NULL, L"Error: This installer file does not contain any compressed files.\n\nTo create a self-extracting installation package (with embedded compressed files), run:\n\"revera-setup.exe\" /p", L"Revera", MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
+#else
+				MessageBox (NULL, L"Error: This portable installer file does not contain any compressed files.\n\nTo create a self-extracting portable installation package (with embedded compressed files), run:\n\"revera-portable.exe\" /p", L"Revera", MB_ICONERROR | MB_SETFOREGROUND | MB_TOPMOST);
+#endif
 				FinalizeApp ();
 				exit (1);
 			}
 
+#ifndef PORTABLE
 			if (bChangeMode)
 			{
 				/* Revera is already installed on this system and we were launched from the Program Files folder */
@@ -2599,8 +2615,10 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 					exit (1);
 				}
 			}
+#endif
 		}
 
+#ifndef PORTABLE
 		// System Restore
 		if (IsSystemRestoreEnabled ())
 		{
@@ -2615,6 +2633,7 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 		}
 		else
 			SystemRestoreDll = 0;
+#endif
 
 		if (!bUninstall)
 		{
@@ -2623,6 +2642,7 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 			DialogBoxParamW (hInstance, MAKEINTRESOURCEW (IDD_INSTL_DLG), NULL, (DLGPROC) MainDialogProc,
 				(LPARAM)lpszCommandLine);
 		}
+#ifndef PORTABLE
 		else
 		{
 			/* Create the main dialog for uninstall  */
@@ -2648,6 +2668,7 @@ int WINAPI wWinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, wchar_t *lpsz
 				}
 			}
 		}
+#endif
 	}
 	FinalizeApp ();
 	return 0;

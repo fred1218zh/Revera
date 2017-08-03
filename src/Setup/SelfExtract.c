@@ -29,7 +29,11 @@
 #define SRC_POS (__FUNCTION__ ":" TC_TO_STRING(__LINE__))
 #endif
 
-#define OutputPackageFile L"Revera Setup " _T(VERSION_STRING) L".exe"
+#ifdef PORTABLE
+#define OutputPackageFile L"revera-portable-" _T(VERSION_STRING) L".exe"
+#else
+#define OutputPackageFile L"revera-setup-" _T(VERSION_STRING) L".exe"
+#endif
 
 #define MAG_START_MARKER	"TCINSTRT"
 #define MAG_END_MARKER_OBFUSCATED	"T/C/I/N/S/C/R/C"
@@ -146,7 +150,11 @@ BOOL MakeSelfExtractingPackage (HWND hwndDlg, wchar_t *szDestDir)
 	if (!TCCopyFile (inputFile, outputFile))
 	{
 		handleWin32Error (hwndDlg, SRC_POS);
+#ifdef PORTABLE
+		PkgError (L"Cannot copy 'revera-portable.exe' to the package");
+#else
 		PkgError (L"Cannot copy 'revera-setup.exe' to the package");
+#endif
 		goto err;
 	}
 
