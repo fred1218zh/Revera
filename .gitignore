@@ -39,3 +39,5 @@ src/Format/x64/
 src/Mount/x64/
 *.err
 *.wrn
+src/Setup/PortableRelease/
+src/Setup/PortableDebug/

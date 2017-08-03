@@ -62,16 +62,16 @@
     <None Include="Setup.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Common\VeraCrypt.ico">
+    <None Include="..\Common\Revera.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VeraCrypt_setup.bmp">
+    <None Include="Revera_setup.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="VeraCrypt_setup_background.bmp">
+    <None Include="Revera_setup_background.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Common\VeraCrypt_Volume.ico">
+    <None Include="..\Common\Revera_Volume.ico">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\Common\Language.xml">
