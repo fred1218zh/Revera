@@ -250,21 +250,6 @@ begin_format:
 			}
 		}
 
-		// For extra safety, we will try to gain "raw" access to the partition. Note that this should actually be
-		// redundant because if the filesystem was mounted, we already tried to obtain DASD above. If we failed,
-		// bFailedRequiredDASD was set to TRUE and therefore we will perform pseudo "quick format" below. However,
-		// for extra safety, in case IsDeviceMounted() failed to detect a live filesystem, we will blindly
-		// send FSCTL_ALLOW_EXTENDED_DASD_IO (possibly for a second time) without checking the result.
-
-		DeviceIoControl (dev,
-			FSCTL_ALLOW_EXTENDED_DASD_IO,
-			NULL,
-			0,
-			NULL,
-			0,
-			&dwResult,
-			NULL);
-
 
 		// If DASD is needed but we failed to obtain it, perform open - 'quick format' - close - open
 		// so that the filesystem driver does not prevent us from formatting hidden sectors.
@@ -336,10 +321,34 @@ begin_format:
 			}
 		}
 
+		// For extra safety, we will try to gain "raw" access to the partition. Note that this should actually be
+		// redundant because if the filesystem was mounted, we already tried to obtain DASD above. If we failed,
+		// bFailedRequiredDASD was set to TRUE and therefore we will perform pseudo "quick format" below. However,
+		// for extra safety, in case IsDeviceMounted() failed to detect a live filesystem, we will blindly
+		// send FSCTL_ALLOW_EXTENDED_DASD_IO (possibly for a second time) without checking the result.
+
+		DeviceIoControl(dev,
+			FSCTL_ALLOW_EXTENDED_DASD_IO,
+			NULL,
+			0,
+			NULL,
+			0,
+			&dwResult,
+			NULL);
+
 		if (DeviceIoControl (dev, FSCTL_IS_VOLUME_MOUNTED, NULL, 0, NULL, 0, &dwResult, NULL))
 		{
 			Error ("FORMAT_CANT_DISMOUNT_FILESYS", hwndDlg);
 			nStatus = ERR_DONT_REPORT;
+			goto error;
+		}
+
+		LARGE_INTEGER offset;
+		offset.QuadPart = FormatMountOffset;
+
+		if (!SetFilePointerEx((HANDLE)dev, offset, NULL, FILE_BEGIN))
+		{
+			nStatus = ERR_OS_ERROR;
 			goto error;
 		}
 	}
