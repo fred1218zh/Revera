@@ -3942,12 +3942,12 @@ BOOL CALLBACK RawDevicesDlgProc (HWND hwndDlg, UINT msg, WPARAM wParam, LPARAM l
 
 						bSysDriveSelected = TRUE;
 						bSysPartitionSelected = FALSE;
-						lpszFileName[0] = 0;
-						SwitchWizardToSysEncMode ();
+						//lpszFileName[0] = 0;
+						//SwitchWizardToSysEncMode ();
 
-						NormalCursor ();
-						EndDialog (hwndDlg, IDOK);
-						return 1;
+						//NormalCursor ();
+						//EndDialog (hwndDlg, IDOK);
+						//return 1;
 					}
 					else
 					{

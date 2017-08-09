@@ -7371,11 +7371,14 @@ BOOL CALLBACK MainDialogProc (HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lPa
 							NormalCursor ();
 							return 1;
 						}
-						szFileName[0] = 0;
-						szDiskFile[0] = 0;
-						SwitchWizardToSysEncMode ();
+
+						//szFileName[0] = 0;
+						//szDiskFile[0] = 0;
+						//SwitchWizardToSysEncMode();
+
 						NormalCursor ();
-						return 1;
+						//return 1;
+						break;
 
 					case -1:
 						// In some environments (such as PE), the system volume is not located on a hard drive.
